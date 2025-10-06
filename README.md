@@ -3,7 +3,7 @@ All the sources (Schematics, PCB, VHDL, BIOS sources) for the M8SBC-486.
 
 This project is a 486 Homebrew computer, with some efforts to make it kinda PC compatible
 
-<img width="600" alt="3d render top" src="https://github.com/user-attachments/assets/c3660d31-5cec-41c4-a888-bc9a218be1a0" />
+<img alt="soldered board" src="https://github.com/maniekx86/M8SBC-486/blob/main/photos/IMG_20251005.jpeg" />
 
 # Folders
 ## pcb/
@@ -27,10 +27,14 @@ Schematic and PCB design for this homebrew computer. Board is 150mm*150mm with 4
 Special thanks to PCBWay for sponsoring PCBs for this project! Their sponsorship was a huge help and enabled me to make progress with this project. PCBWay is a well-known PCB prototyping and manufacturing service, providing high-quality boards and excellent customer support. I have worked with their boards in the past and can say that they are of great quality. I easily placed an order for PCBs on their platform for this project without any problems. The sponsorship also included a free quick delivery option. If you’re looking for reliable PCB prototyping and manufacturing services, I highly recommend [checking them](https://www.pcbway.com).
 
 ## xilinx/
-FPGA sources [to do]
+FPGA (Xilinx Spartan II) sources [to do]
+
+## avr/
+AVR (ATMega128) sources [to do]
 
 [rest to do]
 
 ## Images
+<img alt="PCB bottom" src="https://github.com/maniekx86/M8SBC-486/blob/main/photos/IMG_20251002_235903_preview.jpeg">
 <img width="600" alt="3d render back" src="https://github.com/user-attachments/assets/ad219e94-d9bd-4d1b-94ef-2878d594568b" />
 <img width="600" alt="pcb view" src="https://github.com/user-attachments/assets/de7f4183-888d-4929-84c8-d80f1c8443ea" />
