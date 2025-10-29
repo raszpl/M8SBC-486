@@ -1,0 +1,9 @@
+*.o
+*.elf
+*.hex
+*.bit
+*.bin
+bitstream.S
+tool_extract_bit
+tool_checksum
+

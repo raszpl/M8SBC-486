@@ -27,12 +27,17 @@ Schematic and PCB design for this homebrew computer. Board is 150mm*150mm with 4
 Special thanks to PCBWay for sponsoring PCBs for this project! Their sponsorship was a huge help and enabled me to make progress with this project. PCBWay is a well-known PCB prototyping and manufacturing service, providing high-quality boards and excellent customer support. I have worked with their boards in the past and can say that they are of great quality. I easily placed an order for PCBs on their platform for this project without any problems. The sponsorship also included a free quick delivery option. If you’re looking for reliable PCB prototyping and manufacturing services, I highly recommend [checking them](https://www.pcbway.com).
 
 ## xilinx/
-FPGA (Xilinx Spartan II) sources [to do]
+Sources for XC2S100 (Xilinx Spartan II) FPGA:
+
+[to do]
 
 ## avr/
-AVR (ATMega128) sources [to do]
+Sources for AVR ATMega128:
 
-[rest to do]
+Small AVR firmware that configures the FPGA from on-chip flash at power-up and manages system reset for the M8SBC-486 project
+
+
+[W.I.P]
 
 ## Images
 <img alt="PCB bottom" src="https://github.com/maniekx86/M8SBC-486/blob/main/photos/IMG_20251002_235903_preview.jpeg">
