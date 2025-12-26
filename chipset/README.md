@@ -5,13 +5,9 @@ Codename: "Hamster 1" chipset
 Experimental "chipset" made for M8SBC-486. 
 
 - 24 MHz max FSB (At current time of writing, might be possible to go further)
-
 - Can address up to a maximum of 4MB of SRAM
-
 - No support for burst data transfers
-
 - Integrated keyboard controller (not full implementation, yet)
-
 - Integrated simple RTC/CMOS (non volatile)
 
 Full documentation: TO DO
@@ -29,25 +25,15 @@ To properly import and build VHDL sources to an FPGA bitstream, you have to:
 4. Configure Device Properties:
    
    - Product Category: All
-   
    - Family: Spartan2
-   
    - Device: XC2S100
-   
    - Package: TQ144
-   
    - Speed: Choose depending on your part, if unsure -6 should work for all
-   
    - Synthesis Tool: XST (VHDL/Verilog)
-   
    - Simulator: Leave as is
-   
    - Preferred Language: VHDL
-   
    - Enable enhanced Design Summary:  Yes
-   
    - Enable Message Filtering: No
-   
    - Enable Incremental Messages: No
    
    Click next
