@@ -655,7 +655,7 @@
     },
     "net_format_name": "",
     "page_layout_descr_file": "",
-    "plot_directory": "",
+    "plot_directory": "/home/piotrek/Dokumenty/",
     "space_save_all_events": true,
     "spice_current_sheet_as_root": false,
     "spice_external_command": "spice \"%I\"",
@@ -672,20 +672,36 @@
       "Root"
     ],
     [
+      "fbf186da-bb07-4f4b-b163-c8c06da16076",
+      "Power"
+    ],
+    [
       "98e7b245-1892-4961-80dc-a2961de8ec76",
-      "cpu"
+      "CPU"
     ],
     [
       "49c3128c-49f0-451c-bde3-bf7412e8a8c9",
-      "fpga"
+      "FPGA"
     ],
     [
-      "8c5c6d69-b749-4a24-8458-c5389575129e",
-      "isa"
+      "0fbac7c2-a12e-482c-a1ee-b6a8a7ce57c3",
+      "AVR"
     ],
     [
       "e1325e05-380c-469a-ad77-c2c9c9155003",
-      "ramrom"
+      "RAM & ROM"
+    ],
+    [
+      "80d0c219-e690-401a-8c6a-4246d88de18d",
+      "Bus transceivers"
+    ],
+    [
+      "a079297a-8bd2-4ab2-b4a1-b608a7e51686",
+      "PIC, PIT"
+    ],
+    [
+      "8c5c6d69-b749-4a24-8458-c5389575129e",
+      "ISA"
     ]
   ],
   "text_variables": {}
