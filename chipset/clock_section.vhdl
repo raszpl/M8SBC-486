@@ -177,7 +177,7 @@ end Behavioral;
 --    ----------------------------------------------------------------
 --    CLKDLL_inst : CLKDLL
 --    generic map (
---        CLKDV_DIVIDE => 4.0,  
+--        CLKDV_DIVIDE => 1.5,  
 --		  -- We can divide by: 1.5,2.0,2.5,3.0,4.0,5.0,8.0 or 16.0
 --		  -- 4.0: 12.0 MHz
 --		  -- 3.0: 16.0 MHz

@@ -2,24 +2,25 @@
 
 All the sources (Schematics, PCB, VHDL, BIOS sources) for the M8SBC-486. 
 
-This project is a 486 Homebrew computer, with some efforts to make it kinda PC compatible
+This project is a 486 Homebrew computer, with some efforts to make it kinda PC compatible. See [my page about it](https://maniek86.xyz/projects/m8sbc_486.php).
 
 <img title="" src="photos/IMG_20251019_031401_g.jpeg" alt="soldered board">
 
 ## Specs:
 
-- 5V 486 CPU socket
+- 150*150mm 4 layer PCB
+- PGA-168 socket for 5V 486 CPUs.
 - Xilinx Spartan II XC2S100 FPGA as "chipset". Codename "Hamster 1"
 - 4MB SRAM, (8*HM628512)
-- 256KB of ROM (W29C020)
-- Two 16-bit ISA slots
+- 256KB of ROM (W29C020) (224 KB accessible)
 - 8254 Programmable Interval Timer
 - 8259 Programmable Interrupt controller
-- PS/2 Keyboard
-- ATMega128 as reset circuit handler and bitstream loader
-- 150*150mm 4 layer PCB
+- Two 16-bit ISA slots
+- PS/2 Keyboard port. Controller is implemented in the FPGA
+- Simple CMOS RTC and CMOS storage. Implemented in the FPGA too
+- ATMega128 as reset circuit handler, nonvolatile CMOS storage and bitstream loader.
 
-The FSB frequency is currently set to a fixed 24 MHz, but this can be changed by uncommenting/commenting lines in the FPGA source.
+The FSB frequency is currently set to a fixed 24 MHz (DX2 CPUs run then at 48 MHz), but this can be changed by uncommenting/commenting lines in the FPGA source.
 
 Secondary PIC and DMA are missing, so the compatibility is not full. The missing DMA especially breaks support for sound cards.
 
@@ -27,11 +28,13 @@ Secondary PIC and DMA are missing, so the compatibility is not full. The missing
 
 The hardware and FPGA are mostly done. BIOS is in WIP. There are a few issues & bugs, but they are being slowly fixed.
 
-Among the most impressive things the board (as time of writing: 26/12/2025) is capable of: 
+Among the most impressive things the board (as time of writing: 09/01/2025) is capable of: 
 
 - Booting Linux (2.2.26) (using custom bootloader, release TODO)
 
-- Booting MS-DOS and FreeDOS: The software compatibility is mixed. Some software hangs the system, throws exceptions, but some run fine. Most notable are: Second Reality demo (no sound, small glitches at two parts), Prince of Persia, Fasttracker II (PC speaker works in one mode, LPT DAC works okay), 3DBench 1.0c, CACHEHK.
+- Booting MS-DOS and FreeDOS: The software compatibility is mixed. Some software hangs the system, throws exceptions, but some run fine. Most notable are: Second Reality demo (no sound, small glitches at two parts), Prince of Persia, Fasttracker II (PC speaker works in one mode, LPT DAC works okay), 3DBench 1.0c, CACHECHK.
+
+- Running DOOM ([FastDOOM](https://github.com/viti95/FastDoom) running on FreeDOS 1.4)
 
 ## Hardware diagram
 
@@ -61,9 +64,15 @@ Sources for AVR ATMega128:
 
 Small AVR firmware that configures the FPGA from on-chip flash at power-up and manages system reset for the M8SBC-486 project
 
+## bios/
+
+BIOS. To do: release
+
+Based on this project: [b-dmitry1/BIOS](https://github.com/b-dmitry1/BIOS)
+
 ## Disclaimer
 
-This project is essentially my hobby, as I like retro, electronics, digital circuits and low-level programming. I never expected this computer to run DOS in the first place. I consider it pretty much experimental and made to research the workings of older x86 chips. I am pretty sure that this work could be used to build something more robust and stable or even to develop fully custom-made boards for other x86 CPUs.
+This project is essentially my hobby, as I like retro, electronics, digital circuits and low-level programming. I never expected this computer to run DOS in the first place. I consider it pretty much experimental and made to research the workings of older x86 chips. I am pretty sure that this work could be used to build something more robust and stable or even to develop fully custom-made boards for other x86 CPUs. It took me a lot of time, but I don't regret it. There are still many issues, but it's heartwarming that I can get so much existing software to work. And, thanks to everyone for support!
 
 ## Acknowledgements
 

@@ -112,7 +112,7 @@ BEGIN
       END IF;
    END PROCESS;
 	
-	OUTPUT_DECODE: PROCESS (drv_state, RW, MIO, WS_COUNT) -- RW: 0 - read, 1 - write
+	OUTPUT_DECODE: PROCESS (drv_state, RW, MIO, WS_COUNT, EXTRA_WS) -- RW: 0 - read, 1 - write
 		VARIABLE	RD		: STD_LOGIC;
 		VARIABLE	WR		: STD_LOGIC;
 		VARIABLE allow_drive : STD_LOGIC;

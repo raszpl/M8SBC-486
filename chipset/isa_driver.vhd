@@ -33,9 +33,9 @@ ENTITY isa_driver IS
 		WAITSTATE_16C	: IN	INTEGER RANGE 0 to 15; -- From ADS to check 16B signals
 		WAITSTATE_END	: IN  INTEGER RANGE 0 to 127; -- From check to end of transfer
 		
-		ISA_MEMCS16		: IN		STD_LOGIC;
-		ISA_IOCS16		: IN		STD_LOGIC;
-		ISA_IO_READY	: IN		STD_LOGIC; -- Input from ISA
+		ISA_MEMCS16		: IN	STD_LOGIC;
+		ISA_IOCS16		: IN	STD_LOGIC;
+		ISA_IO_READY	: IN	STD_LOGIC; -- Input from ISA
 		
 		ISA_RDY			: OUT	STD_LOGIC; -- Output from driver
 		ISA_MEM_WR		: OUT	STD_LOGIC;
@@ -46,6 +46,7 @@ ENTITY isa_driver IS
 		BS8_O				: OUT	STD_LOGIC;
 		BS16_O			: OUT	STD_LOGIC;
 		
+		CPU_16BTR		: IN	STD_LOGIC; -- Do not do 16-bit transfer if CPU does 8-bit one!
 		ISA_SBHE			: OUT STD_LOGIC
 	);
 END ISA_DRIVER;
@@ -143,7 +144,7 @@ BEGIN
       END IF;
    END PROCESS;
 	
-	OUTPUT_DECODE: PROCESS (drv_state, drv_next_state, RW, MIO, WS_COUNT, ISA_16B_I) -- RW: 0 - read, 1 - write
+	OUTPUT_DECODE: PROCESS (drv_state, drv_next_state, RW, MIO, WS_COUNT, ISA_16B_I, EXTRA_WS) -- RW: 0 - read, 1 - write
 		VARIABLE	RD		: STD_LOGIC;
 		VARIABLE	WR		: STD_LOGIC;
 		VARIABLE allow_drive : STD_LOGIC;
@@ -170,7 +171,7 @@ BEGIN
 		END IF;
 		
 		IF (drv_state = st2_check_16b) AND (allow_drive = '1') THEN
-			ISA_SBHE <= '0'; -- in case device needs SBHE before pulling cs16
+			ISA_SBHE <= CPU_16BTR; -- in case device needs SBHE before pulling cs16
 		END IF;
 		
       IF (drv_state = st3_wait_state) AND (allow_drive = '1') THEN
@@ -195,7 +196,7 @@ BEGIN
 			-- so we should be able to indicate 8/16 bit transfer even after ADS
 			
 			IF ISA_16B_I = '1' THEN -- 16 bit transfer
-				ISA_SBHE <= '0'; -- keep 
+				ISA_SBHE <= CPU_16BTR;
 				BS16_O <= '0';
 			ELSE 
 				ISA_SBHE <= '1'; -- deassert

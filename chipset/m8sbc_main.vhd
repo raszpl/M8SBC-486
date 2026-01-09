@@ -101,7 +101,11 @@ ENTITY m8sbc_main IS
 	-- Keyboard controller (IO 0x60)
 		PS2_CLK				: IN		STD_LOGIC;
 		PS2_DATA				: IN		STD_LOGIC;
-		PS2_INTERUPT		: OUT		STD_LOGIC
+		PS2_INTERUPT		: OUT		STD_LOGIC;
+		
+	-- CMOS NVRAM AVR interface
+		AVR_CLK				: IN	STD_LOGIC;
+		AVR_IO				: INOUT STD_LOGIC
 	);
 END m8sbc_main;
 
@@ -111,6 +115,8 @@ ARCHITECTURE Behavioral of m8sbc_main is
 
 	-- CONSTANTS
 	-- Update Divider in CLKGEN!
+	
+	CONSTANT FPGA_VER						: STD_LOGIC_VECTOR(31 downto 0) := x"48860001"; -- first 2 bytes - chipset ident, last 2 bytes - version
 	
 	
 	CONSTANT REVERSE_CLOCK				: STD_LOGIC	:= '0'; -- Use 1 for 12 MHz, for 16> use 0
@@ -146,8 +152,7 @@ ARCHITECTURE Behavioral of m8sbc_main is
 	CONSTANT PIC_INT_ACK_WAITSTATES	: INTEGER RANGE 0 to 127 := 23;
 		
 	CONSTANT ISA_WAITSTATES_TOTAL		: INTEGER RANGE 0 to 127 := 38; -- should be 39, but what about tiny overclock?
-	CONSTANT ISA_CHECK_16_WAITSTATES	: INTEGER RANGE 0 to 127 := 7;
-	
+	CONSTANT ISA_CHECK_16_WAITSTATES	: INTEGER RANGE 0 to 127 := 6; -- should be 7
 
 
 	-- COMPONENTS
@@ -279,9 +284,9 @@ ARCHITECTURE Behavioral of m8sbc_main is
 			WAITSTATE_16C	: IN	INTEGER RANGE 0 to 15; -- From ADS to check 16B signals
 			WAITSTATE_END	: IN  INTEGER RANGE 0 to 127; -- From check to end of transfer
 			
-			ISA_MEMCS16		: IN		STD_LOGIC;
-			ISA_IOCS16		: IN		STD_LOGIC;
-			ISA_IO_READY	: IN		STD_LOGIC; -- Input from ISA
+			ISA_MEMCS16		: IN	STD_LOGIC;
+			ISA_IOCS16		: IN	STD_LOGIC;
+			ISA_IO_READY	: IN	STD_LOGIC; -- Input from ISA
 			
 			ISA_RDY			: OUT	STD_LOGIC; -- Output from driver
 			ISA_MEM_WR		: OUT	STD_LOGIC;
@@ -292,6 +297,7 @@ ARCHITECTURE Behavioral of m8sbc_main is
 			BS8_O				: OUT	STD_LOGIC;
 			BS16_O			: OUT	STD_LOGIC;
 			
+			CPU_16BTR		: IN	STD_LOGIC;
 			ISA_SBHE			: OUT STD_LOGIC
 		);
 	END COMPONENT;
@@ -323,7 +329,13 @@ ARCHITECTURE Behavioral of m8sbc_main is
 			RD			: IN	STD_LOGIC;
 			A0			: IN	STD_LOGIC;
 			
-			CLK_PIT	: IN	STD_LOGIC
+			CLK_PIT	: IN	STD_LOGIC;
+					
+			AVR_CLK	: IN	STD_LOGIC;
+			AVR_IO	: INOUT STD_LOGIC;
+			
+			FPGA_VER	: IN	STD_LOGIC_VECTOR(31 downto 0);
+			RESET		: IN	STD_LOGIC
 		);
 	END COMPONENT;
 
@@ -382,8 +394,7 @@ ARCHITECTURE Behavioral of m8sbc_main is
 	SIGNAL	O_CPU_DATA		: STD_LOGIC_VECTOR(7 downto 0);
 	SIGNAL	O_CPU_DATA_P_O	: STD_LOGIC;	-- PS2 or O61
 	SIGNAL	O61_DATA_L		: STD_LOGIC_VECTOR(7 downto 0) := x"00";
-	
-	SIGNAL	I_PS2_CLEAR_BUF	: STD_LOGIC;
+
 	SIGNAL	O_PS2_DATA			: STD_LOGIC_VECTOR(7 downto 0);
 	SIGNAL	O_PS2_STATUS		: STD_LOGIC_VECTOR(7 downto 0);
 	SIGNAL	O_PS2_INT			: STD_LOGIC;
@@ -397,6 +408,8 @@ ARCHITECTURE Behavioral of m8sbc_main is
 	SIGNAL	EXTRA_BS16		: STD_LOGIC;
 	
 	SIGNAL	CPU_O_KEN		: STD_LOGIC;
+	
+	SIGNAL	O_CPU_16BTR		: STD_LOGIC;
 	
 BEGIN
 	-----------------------------------------
@@ -531,6 +544,7 @@ BEGIN
 		BS8_O				=> ISA_BS8,
 		BS16_O			=> ISA_BS16,
 		
+		CPU_16BTR		=> O_CPU_16BTR,
 		ISA_SBHE			=> ISA_SBHE
 	);
 	
@@ -558,9 +572,17 @@ BEGIN
 		RD			=> O_IO_RD,
 		A0			=> O_A0_BLE,
 		
-		CLK_PIT	=> CLK_PIT
+		CLK_PIT	=> CLK_PIT,
+		
+				
+		AVR_CLK	=> AVR_CLK,
+		AVR_IO	=> AVR_IO,
+		
+		FPGA_VER	=> FPGA_VER,
+		RESET		=> RESET_SYS_IN
 	);
 	
+	O_CPU_16BTR <= O_BHE;
 	
 	I_INT_ACK <= '0' WHEN (CPU_IN_DC = '0' AND CPU_IN_MIO = '0') ELSE '1';
 
@@ -643,7 +665,7 @@ BEGIN
 	PIT_CS	<= I_CS_PIT;
 	
 	
-	PROCESS(O_IO_RD, CPU_IN_WR, I_CS_PS2, I_CS_O61, I_CS_CMOS) -- Output from the FPGA to the CPU driver (Data)
+	PROCESS(O_IO_RD, CPU_IN_WR, I_CS_PS2, I_CS_O61, I_CS_CMOS, CPU_IN_ADDR, O_PS2_STATUS, O_PS2_DATA, O61_DATA_L, O_CMOS_DATA_OUT) -- Output from the FPGA to the CPU driver (Data)
 	BEGIN
 		O_CPU_DATA <= "ZZZZZZZZ";
 		O_CPU_DATA_P_O <= '0';

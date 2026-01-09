@@ -68,14 +68,14 @@ BEGIN
 
 	ADDR_INT <= UNSIGNED(ADDR_IN & ADDR_A1 & ADDR_A0);
 	
-	-- RAM CS: MEM, 0x000000 to 0x0A0000 and 0x100000 to 2GB (4MB wraps)
+	-- RAM CS: MEM, 0x000000 to 0x09FFFF, 0x100000 to 0x3FFFFF and 0x4A0000 to 0x4FFFFF (wrap to access 384KB memory hole)
 	PROCESS(ADDR_INT, ADDR_31, CPU_MIO, RAM_CACHEABLE)
 	BEGIN
 		RAM_CS <= '1'; -- inactive
 		RAM_CACHE <= '1';
 		IF NOT ((ADDR_31 = '1') OR (CPU_MIO = '0')) THEN -- inactive if addr>2GB or IO 
 			-- decode
-			IF (ADDR_INT < x"0A0000") OR (ADDR_INT >= x"100000") THEN
+			IF (ADDR_INT < x"0A0000") OR (ADDR_INT >= x"100000" AND ADDR_INT < x"400000") OR (ADDR_INT >= x"4A0000" AND ADDR_INT < x"500000") THEN
 				RAM_CS <= '0';
 				IF RAM_CACHEABLE = '1' THEN
 					RAM_CACHE <= '0';

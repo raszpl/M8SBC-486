@@ -131,7 +131,7 @@ BEGIN
    END PROCESS;
 
 	
-	OUTPUT_DECODE: PROCESS (drv_state, CPU_RW, BE, ADDR21) -- RW: 0 - read, 1 - write
+	OUTPUT_DECODE: PROCESS (drv_state, CPU_RW, BE, ADDR21, EXTRA_WS, WS_COUNT) -- RW: 0 - read, 1 - write
 		VARIABLE allow_drive : STD_LOGIC;
    BEGIN
       --insert statements to decode internal output signals
@@ -173,7 +173,7 @@ BEGIN
       END IF;
    END PROCESS;
 	
-	NEXT_STATE_DECODE: PROCESS(drv_state, ADS, RAMCS, WS_COUNT)
+	NEXT_STATE_DECODE: PROCESS(drv_state, ADS, RAMCS, WS_COUNT, WS_TO_WAIT)
    BEGIN
       --declare default state for next_state to avoid latches
       drv_next_state <= drv_state;  -- default is to stay in current state

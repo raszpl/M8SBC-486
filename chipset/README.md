@@ -8,9 +8,9 @@ Experimental "chipset" made for M8SBC-486.
 - Can address up to a maximum of 4MB of SRAM
 - No support for burst data transfers
 - Integrated keyboard controller (not full implementation, yet)
-- Integrated simple RTC/CMOS (non volatile)
+- Integrated simple RTC/CMOS (CMOS volatile)
 
-Full documentation: TO DO
+Full documentation: TO DO. At this time some information available is [here](https://maniek86.xyz/projects/m8sbc_486_hw_chp.php).
 
 ## Importing & building
 
