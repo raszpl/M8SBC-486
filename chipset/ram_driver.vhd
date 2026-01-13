@@ -16,6 +16,15 @@
 -- Revision 0.01 - File Created
 -- Additional Comments: 
 --
+-- 13/01/2026: 
+-- RAM read performance improvement: If a read occurs after a read, keep RAM CS/OE active and skip waitstate
+-- This driver design waits for ADS signal in order to begin transfer. RAM CS/OE are inactive during first clock cycle when ADS asserts
+-- which already takes one cycle. RAM is doing nothing! Next cycle asserts CS/OE and that begins the RAM access time count. 
+-- But what if we see that CPU is constantly accessing the memory? We can keep the CS/OE active and skip one wait state
+-- Improvement: At 24 MHz FSB, 486DX2, 70ns RAM, 1 waitstate and 0 burst waitstate we went up from 17.5 MB/s to 26.8 MB/s (DOS/CACHECHK)
+-- This could be also implemented for writes? TODO
+--
+--
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -38,7 +47,8 @@ ENTITY ram_driver IS
 		WE					: OUT		STD_LOGIC_VECTOR(3 downto 0); -- For each bytes
 		OE					: OUT		STD_LOGIC_VECTOR(3 downto 0);
 		
-		RAM_WAITSTATES	: IN		INTEGER RANGE 0 to 127
+		RAM_WAITSTATES				: IN INTEGER RANGE 0 to 127;
+		RAM_BURST_WAITSTATES 	: IN INTEGER RANGE 0 to 15
 
 	);
 END ram_driver;
@@ -65,11 +75,31 @@ ARCHITECTURE Behavioral OF ram_driver IS
 	
 	-- WR is held till the end of entire transaction
 	
+	SIGNAL LAST_CS0	: STD_LOGIC := '1';
+	SIGNAL LAST_CS1	: STD_LOGIC := '1';
+	SIGNAL KEEP_READ	: STD_LOGIC := '0';
+	SIGNAL d_cs0		: STD_LOGIC;
+	SIGNAL d_cs1		: STD_LOGIC;
 	
 BEGIN
+	CSDEC: PROCESS(ADDR21)
+	BEGIN
+		IF ADDR21 = '1' THEN
+			d_cs1 <= '0';
+			d_cs0 <= '1';
+		ELSE 
+			d_cs0 <= '0';
+			d_cs1 <= '1';
+		END IF;
+	END PROCESS;
+	
+	CS0 <= d_cs0;
+	CS1 <= d_cs1;
 
 	SYNC_PROC: PROCESS (CLK)
 		VARIABLE ram_waitstates_total	: INTEGER;
+		VARIABLE d_cs0 : STD_LOGIC;
+		VARIABLE d_cs1 : STD_LOGIC;
    BEGIN
       IF(RISING_EDGE(CLK)) THEN
          IF (RESET = '1') THEN
@@ -80,17 +110,32 @@ BEGIN
 				EXTRA_WS <= '0';
 				WS_TO_WAIT <= 0;
 				RDY_I <= '0'; -- flip flop
+				KEEP_READ <= '0';
+				LAST_CS0 <= '0';
+				LAST_CS1 <= '0';
          ELSE
-	
+			
 				IF (LAST_CS /= RAMCS) AND (NACTIVE = '1') THEN -- extend when previous address was pointing to other device
 					ram_waitstates_total := RAM_WAITSTATES + NCOUNT;
 				ELSE
 					ram_waitstates_total := RAM_WAITSTATES;
 				END IF;
-	
-			
+				
+				IF RAMCS = '1' OR CPU_RW = '1' THEN -- reset on switch to different device or on switch to write
+					KEEP_READ <= '0';
+					LAST_CS0 <= '0';
+					LAST_CS1 <= '0';
+				END IF;
+				
 				IF drv_state = st1_wait_for_ads THEN
-					IF drv_next_state = st2_wait_state THEN -- on toggle from s1 to s2
+					IF drv_next_state = st2_wait_state AND RAMCS = '0' THEN -- on toggle from s1 to s2 (ADS)
+					
+						IF LAST_CS0 = d_cs0 AND LAST_CS1 = d_cs1 AND CPU_RW = '0' THEN
+							-- eligible for quick read
+							KEEP_READ <= '1';
+							ram_waitstates_total := RAM_BURST_WAITSTATES;
+						END IF;
+					
 						IF ram_waitstates_total > 0 THEN -- go instantly high to indicate wait
 							RDY_I <= '1';
 						ELSE 
@@ -104,6 +149,10 @@ BEGIN
 						ELSE 
 							EXTRA_WS <= '0';
 						END IF;
+						
+							
+						LAST_CS0 <= d_cs0;
+						LAST_CS1 <= d_cs1;
 						
 					ELSE -- default low
 						RDY_I <= '0';
@@ -126,12 +175,13 @@ BEGIN
 				-- assign other outputs to internal signals
 
 				LAST_CS <= RAMCS;
+				
          END IF;        
       END IF;
    END PROCESS;
 
 	
-	OUTPUT_DECODE: PROCESS (drv_state, CPU_RW, BE, ADDR21, EXTRA_WS, WS_COUNT) -- RW: 0 - read, 1 - write
+	OUTPUT_DECODE: PROCESS (drv_state, CPU_RW, BE, ADDR21, EXTRA_WS, WS_COUNT, KEEP_READ) -- RW: 0 - read, 1 - write
 		VARIABLE allow_drive : STD_LOGIC;
    BEGIN
       --insert statements to decode internal output signals
@@ -155,21 +205,13 @@ BEGIN
 				OE <= "0000"; -- This fixes L1 cache! BE should be ignored during cache fills, but we can ignore it all time during reads anyway
 			END IF;
 			
-			
-			-- decode CS too to do
-			IF ADDR21 = '1' THEN
-				CS1 <= '0';
-				CS0 <= '1';
-			ELSE 
-				CS0 <= '0';
-				CS1 <= '1';
-			END IF;
-			
 		ELSE -- not S2
-			OE <= "1111";
-			WE <= "1111";
-			CS0 <= '1';
-			CS1 <= '1';
+			IF KEEP_READ = '1' THEN
+				OE <= "0000";
+			ELSE
+				OE <= "1111";
+			END IF;
+			WE <= "1111";	
       END IF;
    END PROCESS;
 	

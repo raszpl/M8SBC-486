@@ -3,6 +3,8 @@
 #PACE: Start of PACE I/O Pin Assignments
 NET "ADDR_A0"  LOC = "P23"  ; 
 NET "ADDR_A1"  LOC = "P22"  ; 
+NET "AVR_CLK"  LOC = "P39"  ;
+NET "AVR_IO"  LOC = "P68"  ;
 NET "CLK_IN_14_318"  LOC = "P18"  ; 
 NET "CLK_IN_MAIN"  LOC = "P91"  ; 
 NET "CLK_OUT_CPU"  LOC = "P29"  ; 
@@ -83,7 +85,7 @@ NET "RAM_WE_B<3>"  LOC = "P137"  ;
 NET "RESET_REQ_OUT"  LOC = "P76"  ; 
 NET "RESET_SYS_IN"  LOC = "P28"  ; 
 NET "ROM_CACHE_EN"  LOC = "P74"  ; 
-NET "ROM_CS"  LOC = "P132"  ;
+NET "ROM_CS"  LOC = "P132"  ; 
 NET "TR_16B_HIGH"  LOC = "P100"  ; 
 NET "TR_16B_LOW"  LOC = "P99"  ; 
 NET "TR_8B<0>"  LOC = "P93"  ; 
