@@ -2372,7 +2372,7 @@
 	)
 	(wire
 		(pts
-			(xy 96.52 59.69) (xy 109.22 59.69)
+			(xy 96.52 59.69) (xy 111.76 59.69)
 		)
 		(stroke
 			(width 0)
@@ -2382,7 +2382,7 @@
 	)
 	(wire
 		(pts
-			(xy 104.14 69.85) (xy 104.14 72.39)
+			(xy 119.38 54.61) (xy 119.38 72.39)
 		)
 		(stroke
 			(width 0)
@@ -2462,7 +2462,7 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 59.69) (xy 109.22 54.61)
+			(xy 111.76 59.69) (xy 111.76 54.61)
 		)
 		(stroke
 			(width 0)
@@ -2882,7 +2882,7 @@
 	)
 	(wire
 		(pts
-			(xy 96.52 72.39) (xy 104.14 72.39)
+			(xy 96.52 72.39) (xy 119.38 72.39)
 		)
 		(stroke
 			(width 0)
@@ -2992,7 +2992,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 109.22 54.61 0)
+		(at 111.76 54.61 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3000,7 +3000,7 @@
 		(dnp no)
 		(uuid "06ae1e57-43f6-49f8-8f75-88382fc0cc81")
 		(property "Reference" "#PWR061"
-			(at 109.22 58.42 0)
+			(at 111.76 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3009,7 +3009,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 109.728 50.546 0)
+			(at 112.268 50.546 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3017,7 +3017,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 109.22 54.61 0)
+			(at 111.76 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3026,7 +3026,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 109.22 54.61 0)
+			(at 111.76 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3035,7 +3035,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 109.22 54.61 0)
+			(at 111.76 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4484,7 +4484,7 @@
 		(fields_autoplaced yes)
 		(uuid "9bdbac7a-ba8c-4854-badc-53b94b5cf27a")
 		(property "Reference" "C39"
-			(at 141.351 60.1288 0)
+			(at 142.24 60.0709 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4492,8 +4492,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10u"
-			(at 141.351 62.5531 0)
+		(property "Value" "22u"
+			(at 142.24 62.6109 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4886,7 +4886,7 @@
 	)
 	(symbol
 		(lib_id "power:-12V")
-		(at 104.14 69.85 0)
+		(at 119.38 54.61 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4894,7 +4894,7 @@
 		(dnp no)
 		(uuid "c3e0e6a0-d60e-4acc-a74d-30e1a42b8804")
 		(property "Reference" "#PWR063"
-			(at 104.14 73.66 0)
+			(at 119.38 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4903,7 +4903,7 @@
 			)
 		)
 		(property "Value" "-12V"
-			(at 103.632 65.786 0)
+			(at 118.872 50.546 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4911,7 +4911,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 104.14 69.85 0)
+			(at 119.38 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4920,7 +4920,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 104.14 69.85 0)
+			(at 119.38 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4929,7 +4929,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"-12V\""
-			(at 104.14 69.85 0)
+			(at 119.38 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
