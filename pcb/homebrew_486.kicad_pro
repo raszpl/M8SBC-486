@@ -189,8 +189,8 @@
       "track_widths": [
         0.0,
         0.16,
-        0.3,
         0.4,
+        0.5,
         0.6,
         1.0,
         1.2,
@@ -519,7 +519,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 0,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.4
+        "track_width": 0.5
       },
       {
         "name": "power",
@@ -544,7 +544,7 @@
         "pattern": "+3.3V"
       },
       {
-        "netclass": "power",
+        "netclass": "low_power",
         "pattern": "+12V"
       },
       {
