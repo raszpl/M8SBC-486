@@ -6837,7 +6837,7 @@
 	)
 	(wire
 		(pts
-			(xy 57.15 34.29) (xy 57.15 36.83)
+			(xy 57.15 35.56) (xy 57.15 36.83)
 		)
 		(stroke
 			(width 0)
@@ -8785,7 +8785,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 49.022 35.306 0)
+			(at 49.022 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9421,7 +9421,7 @@
 	)
 	(symbol
 		(lib_id "power:-12V")
-		(at 57.15 34.29 0)
+		(at 57.15 35.56 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9429,7 +9429,7 @@
 		(dnp no)
 		(uuid "42240c16-a0a6-4bdb-8deb-eaa949ea973e")
 		(property "Reference" "#PWR0139"
-			(at 57.15 38.1 0)
+			(at 57.15 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9438,7 +9438,7 @@
 			)
 		)
 		(property "Value" "-12V"
-			(at 60.96 35.306 0)
+			(at 60.452 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9446,7 +9446,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 57.15 34.29 0)
+			(at 57.15 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9455,7 +9455,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 57.15 34.29 0)
+			(at 57.15 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9464,7 +9464,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"-12V\""
-			(at 57.15 34.29 0)
+			(at 57.15 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9492,7 +9492,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "4ac6062c-b82d-4f39-8c8d-a7fbce1b9d91")
 		(property "Reference" "C36"
 			(at 35.941 38.5388 0)
@@ -9503,7 +9502,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10u"
+		(property "Value" "22u"
 			(at 35.941 40.9631 0)
 			(effects
 				(font
@@ -9768,7 +9767,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 35.56 35.814 0)
+			(at 35.814 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11389,10 +11388,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "f4df19be-ad45-44cb-9c0f-69bc454fbbe4")
 		(property "Reference" "C38"
-			(at 60.071 40.3168 0)
+			(at 60.706 38.5388 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11401,7 +11399,7 @@
 			)
 		)
 		(property "Value" "10u"
-			(at 60.071 42.7411 0)
+			(at 60.706 40.9631 0)
 			(effects
 				(font
 					(size 1.27 1.27)
