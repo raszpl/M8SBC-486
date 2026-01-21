@@ -54,85 +54,49 @@
 		)
 	)
 	(attr through_hole)
-	(fp_line
+	(fp_rect
 		(start -4.572 -7.112)
-		(end 80.772 -7.112)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "9f0e9ff6-d70b-4f7b-8fb4-f542b95d822c")
-	)
-	(fp_line
-		(start -4.572 2.032)
-		(end -4.572 -7.112)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "feca4c2b-0b02-43f6-8017-93a5da568501")
-	)
-	(fp_line
-		(start 80.772 -7.112)
 		(end 80.772 2.032)
 		(stroke
-			(width 0.12)
+			(width 0.1)
 			(type solid)
 		)
+		(fill no)
 		(layer "F.SilkS")
-		(uuid "b4aaf532-aad1-4638-ad3c-e6e1ec43ab68")
+		(uuid "006005be-d86c-43e6-a0ad-e01ef1739876")
 	)
-	(fp_line
-		(start 80.772 2.032)
-		(end -4.572 2.032)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "50204c63-6d52-458e-893c-85d30bfffe98")
-	)
-	(fp_line
+	(fp_rect
 		(start 81.788 -7.112)
-		(end 134.112 -7.112)
+		(end 134.112 2.032)
 		(stroke
-			(width 0.12)
+			(width 0.1)
 			(type solid)
 		)
+		(fill no)
 		(layer "F.SilkS")
-		(uuid "6b174fc8-8e67-4ada-a1a4-066a9bec85a4")
+		(uuid "eb712177-9317-41e2-ad01-8f894aa94298")
 	)
-	(fp_line
-		(start 81.788 2.032)
-		(end 81.788 -7.112)
+	(fp_rect
+		(start -4.572 -7.112)
+		(end 80.772 2.032)
 		(stroke
-			(width 0.12)
-			(type solid)
+			(width 0.1)
+			(type default)
 		)
-		(layer "F.SilkS")
-		(uuid "465c437d-2038-4b8a-a8d5-b18d4d3471e0")
+		(fill no)
+		(layer "B.SilkS")
+		(uuid "abdcbca7-cd1b-44d2-bb4b-2431a65ffae3")
 	)
-	(fp_line
-		(start 134.112 2.032)
-		(end 81.788 2.032)
+	(fp_rect
+		(start 81.788 -7.112)
+		(end 134.112 2.032)
 		(stroke
-			(width 0.12)
-			(type solid)
+			(width 0.1)
+			(type default)
 		)
-		(layer "F.SilkS")
-		(uuid "11575dd7-43ad-423e-b42c-809871e5b4f8")
-	)
-	(fp_line
-		(start 134.112 2.032)
-		(end 134.112 -7.112)
-		(stroke
-			(width 0.12)
-			(type solid)
-		)
-		(layer "F.SilkS")
-		(uuid "eb903823-0340-47f1-bc89-75ffd8659223")
+		(fill no)
+		(layer "B.SilkS")
+		(uuid "f7093cc5-d255-4c62-b653-248785a63dde")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 71.77 -8.708 0)
@@ -931,9 +895,15 @@
 		(uuid "969bca96-e9af-4768-b1b3-3da716f4a6a6")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/ultimateretro/Connector_Edge.3dshapes/395-098-521-300.STEP"
-		(offset (xyz 141.41 7.24 0))
-		(scale (xyz 1 1 1))
-		(rotate (xyz -90 -0 -180))
+	(model "${KIPRJMOD}/486custom.pretty/Connector_Edge.3dshapes/395-098-521-300.STEP"
+		(offset
+			(xyz 141.41 7.24 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -180)
+		)
 	)
 )
