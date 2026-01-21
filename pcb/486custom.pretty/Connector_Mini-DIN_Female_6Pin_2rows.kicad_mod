@@ -256,4 +256,9 @@
 		(uuid "e78e8200-ae70-4b3d-a186-95a995e6ad4a")
 	)
 	(embedded_fonts no)
+	(model "${KIPRJMOD}/486custom.pretty/Connector_DIN_round.3dshapes/Conn_Mini_DIN_round_6_canned.stp"
+		(offset (xyz -1.25 -2 0))
+		(scale (xyz 1 1 1))
+		(rotate (xyz -0 -0 -0))
+	)
 )
