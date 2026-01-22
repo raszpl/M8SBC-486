@@ -2416,7 +2416,7 @@
 				)
 			)
 			(pin input line
-				(at 12.7 -16.51 180)
+				(at 12.7 -15.24 180)
 				(length 2.54)
 				(name "~{CS}"
 					(effects
