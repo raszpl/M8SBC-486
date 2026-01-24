@@ -2384,7 +2384,7 @@
 		)
 		(uuid "019ea3cf-24c9-418d-929d-b8c6a84c273b")
 	)
-	(label "PIT_LATCH_LE"
+	(label "PIT_SPK_GATE"
 		(at 266.7 132.08 180)
 		(effects
 			(font
@@ -2534,7 +2534,7 @@
 		)
 		(uuid "585bc0d0-df6a-4084-be32-65f4b2e53139")
 	)
-	(label "PIT_LATCH_LE"
+	(label "PIT_SPK_GATE"
 		(at 16.51 132.08 0)
 		(effects
 			(font
@@ -3544,7 +3544,7 @@
 				(justify left)
 			)
 		)
-		(pin "PIT_LATCH_LE" output
+		(pin "PIT_SPK_GATE" output
 			(at 34.29 128.27 270)
 			(uuid "9e1b043d-ad9a-446c-a5ec-877ec13014a7")
 			(effects
@@ -4318,7 +4318,7 @@
 				(justify left top)
 			)
 		)
-		(pin "PIT_LATCH_LE" input
+		(pin "PIT_SPK_GATE" input
 			(at 250.19 134.62 90)
 			(uuid "6c4f7b5f-ce29-4def-aed9-1f4141376048")
 			(effects

@@ -8714,7 +8714,7 @@
 		)
 		(uuid "176ea37a-8195-4036-903a-b641292100e0")
 	)
-	(hierarchical_label "PIT_LATCH_LE"
+	(hierarchical_label "PIT_SPK_GATE"
 		(shape output)
 		(at 157.48 101.6 0)
 		(effects
