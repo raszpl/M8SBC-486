@@ -1,0 +1,39 @@
+CMOS register map on M8SBC-486 
+
+I/O Ports:
+0x70 - CMOS index port
+0x71 - CMOS data port
+
+CMOS Registers:
+0x00 - RTC seconds
+0x02 - RTC minutes
+0x04 - RTC hours
+0x06 - RTC weekday
+0x07 - RTC day of month
+0x08 - RTC month
+0x09 - RTC year
+0x0A - RTC status register A (constant 0b00100110)
+0x0B - RTC status register B (constant 0b00000110)
+...
+0x32 - RTC century
+...
+0x40-0x60 - Nonvolatile CMOS storage
+...
+0xFC - Chipset identifier, constant 0x48
+0xFD - Chipset identifier, constant 0x86
+0xFE - Chipset version higher byte
+0xFF - Chipset version lower byte
+
+CMOS settings:
+0x40:
+|7|6|5|4|3|2|1|0|
+ | | | | | | | \---- Fast RAM test enabled
+ | | | | | | \------ Enable LBA support reporting
+ | | | | | \-------- Lock CMOS after boot 
+ | | | | | 
+ \------------------ Unused
+ 
+0x5F:
+CMOS checksum (calculated from 0x40 to 0x5E)
+
+

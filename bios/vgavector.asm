@@ -1,0 +1,4 @@
+cpu 486
+org 0xF065
+
+jmp (0xF000):(0x00FD)
