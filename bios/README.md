@@ -1,12 +1,14 @@
 # M8SBC-486 SeaPig BIOS
 
-Minimal BIOS for M8SBC-486 that is capable of booting various operating systems such as MS-DOS, FreeDOS or Linux.
+Minimal BIOS for M8SBC-486 that is capable of booting various operating systems such as MS-DOS, FreeDOS or Linux. 
+
+Current version: A2.00
 
 ## Building
 
-Requirements: make, nasm, dd, i686-linux-gnu-gcc, python3 (with Pillow installed)
+Requirements: `make`, `nasm`, `dd`, `i686-linux-gnu-gcc`, `python3` (with Pillow installed)
 
-To build, clone repository and run `make` in this directory. Ready to flash image will be at out/m8sbc_flash.bin
+To build, clone repository and run `make` in this directory. Ready to flash image will be at `out/m8sbc_flash.bin`
 
 ## Improvements
 
