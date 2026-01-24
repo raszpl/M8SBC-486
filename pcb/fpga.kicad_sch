@@ -5450,7 +5450,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 83.82) (xy 158.75 83.82)
+			(xy 139.7 83.82) (xy 148.59 83.82)
 		)
 		(stroke
 			(width 0)
@@ -5650,7 +5650,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 137.16) (xy 142.24 137.16)
+			(xy 139.7 137.16) (xy 154.94 137.16)
 		)
 		(stroke
 			(width 0)
@@ -5660,7 +5660,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 76.2) (xy 143.51 76.2)
+			(xy 139.7 76.2) (xy 142.24 76.2)
 		)
 		(stroke
 			(width 0)
@@ -5730,7 +5730,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 71.12) (xy 143.51 71.12)
+			(xy 139.7 71.12) (xy 158.75 71.12)
 		)
 		(stroke
 			(width 0)
@@ -5770,7 +5770,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 119.38) (xy 142.24 119.38)
+			(xy 139.7 119.38) (xy 148.59 119.38)
 		)
 		(stroke
 			(width 0)
@@ -6070,7 +6070,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 111.76) (xy 158.75 111.76)
+			(xy 139.7 111.76) (xy 142.24 111.76)
 		)
 		(stroke
 			(width 0)
@@ -6140,7 +6140,7 @@
 	)
 	(wire
 		(pts
-			(xy 152.4 153.67) (xy 142.24 153.67)
+			(xy 157.48 153.67) (xy 142.24 153.67)
 		)
 		(stroke
 			(width 0)
@@ -6420,7 +6420,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 88.9) (xy 143.51 88.9)
+			(xy 139.7 88.9) (xy 161.29 88.9)
 		)
 		(stroke
 			(width 0)
@@ -6530,7 +6530,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 66.04) (xy 143.51 66.04)
+			(xy 139.7 66.04) (xy 158.75 66.04)
 		)
 		(stroke
 			(width 0)
@@ -6560,7 +6560,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 124.46) (xy 154.94 124.46)
+			(xy 139.7 124.46) (xy 148.59 124.46)
 		)
 		(stroke
 			(width 0)
@@ -6580,7 +6580,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 78.74) (xy 158.75 78.74)
+			(xy 139.7 78.74) (xy 148.59 78.74)
 		)
 		(stroke
 			(width 0)
@@ -6920,7 +6920,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 93.98) (xy 140.97 93.98)
+			(xy 139.7 93.98) (xy 148.59 93.98)
 		)
 		(stroke
 			(width 0)
@@ -7100,7 +7100,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 114.3) (xy 142.24 114.3)
+			(xy 139.7 114.3) (xy 148.59 114.3)
 		)
 		(stroke
 			(width 0)
@@ -7120,7 +7120,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 129.54) (xy 151.13 129.54)
+			(xy 139.7 129.54) (xy 165.1 129.54)
 		)
 		(stroke
 			(width 0)
@@ -7180,7 +7180,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 60.96) (xy 143.51 60.96)
+			(xy 139.7 60.96) (xy 158.75 60.96)
 		)
 		(stroke
 			(width 0)
@@ -7330,7 +7330,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 99.06) (xy 142.24 99.06)
+			(xy 139.7 99.06) (xy 161.29 99.06)
 		)
 		(stroke
 			(width 0)
@@ -7400,7 +7400,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 132.08) (xy 142.24 132.08)
+			(xy 139.7 132.08) (xy 154.94 132.08)
 		)
 		(stroke
 			(width 0)
@@ -7480,7 +7480,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 106.68) (xy 154.94 106.68)
+			(xy 139.7 106.68) (xy 157.48 106.68)
 		)
 		(stroke
 			(width 0)
@@ -7700,7 +7700,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 81.28) (xy 142.24 81.28)
+			(xy 139.7 81.28) (xy 148.59 81.28)
 		)
 		(stroke
 			(width 0)
@@ -7850,7 +7850,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 101.6) (xy 154.94 101.6)
+			(xy 139.7 101.6) (xy 157.48 101.6)
 		)
 		(stroke
 			(width 0)
@@ -7910,7 +7910,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 142.24) (xy 142.24 142.24)
+			(xy 139.7 142.24) (xy 154.94 142.24)
 		)
 		(stroke
 			(width 0)
@@ -7960,7 +7960,17 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 109.22) (xy 142.24 109.22)
+			(xy 139.7 127) (xy 165.1 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f8ef6cfd-7111-4c6e-983c-bdf89b7ce5c4")
+	)
+	(wire
+		(pts
+			(xy 139.7 109.22) (xy 157.48 109.22)
 		)
 		(stroke
 			(width 0)
@@ -8030,7 +8040,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 116.84) (xy 158.75 116.84)
+			(xy 139.7 116.84) (xy 148.59 116.84)
 		)
 		(stroke
 			(width 0)
@@ -8047,16 +8057,6 @@
 			(type default)
 		)
 		(uuid "fe9222e5-9c04-4601-87e1-c2b44354d950")
-	)
-	(wire
-		(pts
-			(xy 139.7 127) (xy 151.13 127)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fec7b21a-5145-43da-85db-cde2357c82c0")
 	)
 	(label "TDO"
 		(at 41.91 33.02 0)
@@ -8079,7 +8079,7 @@
 		(uuid "0fdef520-e0a0-4115-ba14-f2d259b82322")
 	)
 	(label "~{MEM_WR}"
-		(at 151.13 127 180)
+		(at 165.1 127 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8429,7 +8429,7 @@
 		(uuid "99401571-1d22-43c7-b15d-dc1e57770d19")
 	)
 	(label "~{MEM_RD}"
-		(at 151.13 129.54 180)
+		(at 165.1 129.54 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8705,7 +8705,7 @@
 	)
 	(hierarchical_label "~{IO_WR}"
 		(shape output)
-		(at 142.24 119.38 0)
+		(at 148.59 119.38 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8716,7 +8716,7 @@
 	)
 	(hierarchical_label "PIT_LATCH_LE"
 		(shape output)
-		(at 154.94 101.6 0)
+		(at 157.48 101.6 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8749,7 +8749,7 @@
 	)
 	(hierarchical_label "~{RAM_OE_B3}"
 		(shape output)
-		(at 143.51 88.9 0)
+		(at 161.29 88.9 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8782,7 +8782,7 @@
 	)
 	(hierarchical_label "~{ISA_MEM_RD}"
 		(shape output)
-		(at 158.75 116.84 0)
+		(at 148.59 116.84 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8791,20 +8791,9 @@
 		)
 		(uuid "3886891c-ddf9-4808-9194-b86d6e9039da")
 	)
-	(hierarchical_label "~{RAM_OE_B0}"
-		(shape output)
-		(at 152.4 153.67 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "392193fa-ff81-4aed-8603-832e18cb13aa")
-	)
 	(hierarchical_label "~{ISA_IOCS16}"
 		(shape input)
-		(at 142.24 81.28 0)
+		(at 148.59 81.28 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8815,7 +8804,7 @@
 	)
 	(hierarchical_label "~{PIC_CS}"
 		(shape output)
-		(at 158.75 111.76 0)
+		(at 142.24 111.76 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8859,7 +8848,7 @@
 	)
 	(hierarchical_label "TR_8B_3"
 		(shape output)
-		(at 142.24 137.16 0)
+		(at 154.94 137.16 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8870,7 +8859,7 @@
 	)
 	(hierarchical_label "TR_8B_1"
 		(shape output)
-		(at 142.24 142.24 0)
+		(at 154.94 142.24 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8881,7 +8870,7 @@
 	)
 	(hierarchical_label "~{RAM_WE_B3}"
 		(shape output)
-		(at 143.51 66.04 0)
+		(at 158.75 66.04 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8903,7 +8892,7 @@
 	)
 	(hierarchical_label "~{PIT_CS}"
 		(shape output)
-		(at 142.24 109.22 0)
+		(at 157.48 109.22 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8914,7 +8903,7 @@
 	)
 	(hierarchical_label "CLK_PIT"
 		(shape output)
-		(at 154.94 106.68 0)
+		(at 157.48 106.68 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8956,6 +8945,17 @@
 		)
 		(uuid "8b787a3e-b6ae-427a-87e8-911c7c237611")
 	)
+	(hierarchical_label "~{RAM_OE_B0}"
+		(shape output)
+		(at 161.29 99.06 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "8cd4be93-ea74-4375-8abc-7fe0583211db")
+	)
 	(hierarchical_label "~{RAM_CS0}"
 		(shape output)
 		(at 158.75 63.5 0)
@@ -8967,9 +8967,20 @@
 		)
 		(uuid "938f3186-cfb6-4791-96c1-d936b351dc44")
 	)
+	(hierarchical_label "KB_INT"
+		(shape output)
+		(at 157.48 153.67 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "97fcee5d-bbe8-4e7a-81f6-8cef81a6aa78")
+	)
 	(hierarchical_label "ISA_IO_READY"
 		(shape input)
-		(at 140.97 93.98 0)
+		(at 148.59 93.98 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8991,7 +9002,7 @@
 	)
 	(hierarchical_label "~{IO_RD}"
 		(shape output)
-		(at 154.94 124.46 0)
+		(at 148.59 124.46 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9035,7 +9046,7 @@
 	)
 	(hierarchical_label "ISA_SBHE"
 		(shape output)
-		(at 158.75 83.82 0)
+		(at 148.59 83.82 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9046,7 +9057,7 @@
 	)
 	(hierarchical_label "~{ISA_MEMCS16}"
 		(shape input)
-		(at 158.75 78.74 0)
+		(at 148.59 78.74 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9077,17 +9088,6 @@
 		)
 		(uuid "bc6fced7-f0ff-4af2-8f7a-edc6e0d767a9")
 	)
-	(hierarchical_label "KB_INT"
-		(shape output)
-		(at 142.24 99.06 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "c13c3c40-97a1-4966-a6cb-5f58bad306d6")
-	)
 	(hierarchical_label "~{BS16}"
 		(shape output)
 		(at 45.72 101.6 180)
@@ -9101,7 +9101,7 @@
 	)
 	(hierarchical_label "~{RAM_WE_B1}"
 		(shape output)
-		(at 143.51 71.12 0)
+		(at 158.75 71.12 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9123,7 +9123,7 @@
 	)
 	(hierarchical_label "~{ROM_OE}"
 		(shape output)
-		(at 143.51 76.2 0)
+		(at 142.24 76.2 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9134,7 +9134,7 @@
 	)
 	(hierarchical_label "~{ISA_MEM_WR}"
 		(shape output)
-		(at 142.24 114.3 0)
+		(at 148.59 114.3 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9156,7 +9156,7 @@
 	)
 	(hierarchical_label "~{RAM_CS1}"
 		(shape output)
-		(at 143.51 60.96 0)
+		(at 158.75 60.96 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9178,7 +9178,7 @@
 	)
 	(hierarchical_label "TR_16B_3"
 		(shape output)
-		(at 142.24 132.08 0)
+		(at 154.94 132.08 0)
 		(effects
 			(font
 				(size 1.27 1.27)
