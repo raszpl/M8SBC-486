@@ -96,7 +96,9 @@ ENTITY m8sbc_main IS
 		
 	-- PIT (timer, IO 0x40-0x43)
 		PIT_CS				: OUT		STD_LOGIC;
-		PIT_LATCH_LE		: OUT		STD_LOGIC;
+
+	-- PIT gate2 input (IO 0x61)
+		PIT_SPK_GATE		: OUT		STD_LOGIC;
 		
 	-- Keyboard controller (IO 0x60)
 		PS2_CLK				: IN		STD_LOGIC;
@@ -708,11 +710,7 @@ BEGIN
 	-- PORT O61 read fix
 	-- As output port 61h is a latch, we cant read from it. However we can simulate that using this chipset
 	-- So capture data when write occurs to 61h and send it back if something tries to read from it
-	
-	-- PIT latch Output port LE.
-	-- Inverted. 74573 latch latches on 0, pass tho is on 1
-	PIT_LATCH_LE	<= (NOT O_IO_WR) WHEN (I_CS_O61 = '0') ELSE '0'; -- Activate when WR and O61_CS
-	
+
 	PROCESS(CLK_CPU, RESET_SYS_IN) -- O61 write to temp buf
 	BEGIN
 		IF RESET_SYS_IN = '1' THEN
@@ -724,6 +722,7 @@ BEGIN
 			IF FALLING_EDGE(CLK_CPU) THEN -- decoders update on rising edge
 				IF (I_CS_O61 = '0') AND (O_IO_WR = '0') THEN
 					O61_DATA_L <= CPU_DATA;
+					PIT_SPK_GATE <= CPU_DATA(0); -- drive Gate2 directly, CPU_DATA(1) should drive Speaker directly but we dont have IOs to spare for such trivialities :)
 				END IF;
 			END IF;
 			
