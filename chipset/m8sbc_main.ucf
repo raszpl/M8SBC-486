@@ -3,7 +3,7 @@
 #PACE: Start of PACE I/O Pin Assignments
 NET "AVR_CLK"  LOC = "P39"  ;
 NET "AVR_IO"  LOC = "P68"  ;
-NET "CLK_IN_14_318"  LOC = "P18"  ; 
+NET "CLK_IN_14_318"  LOC = "P88"  ; 
 NET "CLK_IN_MAIN"  LOC = "P91"  ; 
 NET "CLK_OUT_CPU"  LOC = "P29"  ; 
 NET "CLK_OUT_ISA"  LOC = "P26"  ; 
