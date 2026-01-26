@@ -26,7 +26,7 @@ Secondary PIC and DMA are missing, so the compatibility is not full. The missing
 
 ## Current progress:
 
-The hardware and FPGA are mostly done. BIOS is in WIP. There are a few issues & bugs, but they are being slowly fixed.
+The hardware and FPGA are mostly done. BIOS is capable of booting DOS. There are a few issues & bugs, but they are being slowly fixed.
 
 Among the most impressive things the board (as time of writing: 09/01/2025) is capable of: 
 
@@ -66,7 +66,7 @@ Small AVR firmware that configures the FPGA from on-chip flash at power-up and m
 
 ## bios/
 
-BIOS. To do: release
+M8SBC-486 SeaPig BIOS
 
 Based on this project: [b-dmitry1/BIOS](https://github.com/b-dmitry1/BIOS)
 

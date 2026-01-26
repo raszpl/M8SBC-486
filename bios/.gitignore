@@ -1,0 +1,9 @@
+out/
+
+c_src/out/
+*.o
+*.bin
+*.elf
+
+# keep empty template files
+!empty/*.bin
