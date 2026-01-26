@@ -32,8 +32,6 @@ ENTITY wr_rd_generator IS
 		WAITSTATE_CNT	: IN  INTEGER RANGE 0 to 127;
 		
 		RDY			: OUT	STD_LOGIC;
-		MEM_WR		: OUT	STD_LOGIC;
-		MEM_RD		: OUT	STD_LOGIC;
 		IO_WR			: OUT	STD_LOGIC;
 		IO_RD			: OUT	STD_LOGIC
 	);
@@ -120,8 +118,6 @@ BEGIN
       --insert statements to decode internal output signals
 		RD := '1';
 		WR := '1';
-		MEM_WR <= '1';
-		MEM_RD <= '1';
 		IO_WR <= '1';
 		IO_RD <= '1';
 		
@@ -144,16 +140,13 @@ BEGIN
 			
 			-- 0 = IO, 1 = MEM
 			IF MIO = '1' THEN
-				MEM_WR <= WR;
-				MEM_RD <= RD;
+				null;
 			ELSE
 				IO_WR <= WR;
 				IO_RD <= RD;
 			END IF;
 			
 		ELSE -- not S2
-			MEM_WR <= '1';
-			MEM_RD <= '1';
 			IO_WR <= '1';
 			IO_RD <= '1';
       END IF;
