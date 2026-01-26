@@ -56,7 +56,6 @@ ENTITY m8sbc_main IS
 		
 	-- Reset
 		RESET_SYS_IN		: IN		STD_LOGIC;
-		RESET_REQ_OUT		: OUT		STD_LOGIC;
 		
 	-- Config pins
 		RAM_CACHE_EN		: IN		STD_LOGIC;
@@ -738,8 +737,6 @@ BEGIN
 	-- ISA_IO_READY is 0 = wait
 	CPU_OUT_RDY		<= O_RDY_ISA OR O_RDY_RAM OR O_RDY_WRRD; -- TEMP (???)
 
-	
-	RESET_REQ_OUT	<= '1'; -- active LOW
 	CPU_OUT_NMI		<= '0';
 	PIC_INTA			<= O_IO_RD WHEN I_INT_ACK = '0' ELSE '1'; -- Int ack for 8259 is like RD. 486 holds INTA state both reads so we need to use IO_RD feature
 

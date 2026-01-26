@@ -71,9 +71,6 @@ extern const uint8_t bitstream_end[] PROGMEM;
 #define RESET_OUT_DDR  DDRF
 #define RESET_OUT_BIT  PF0   // RESET_OUT, output, active high
 
-#define FPGA_REQ_PIN   PINF
-#define FPGA_REQ_BIT   PF1   // FPGA_REQ_RESET input, active low
-
 #define RESET_BTN_PIN  PINB
 #define RESET_BTN_BIT  PB4   // RESET_BTN, input, active low
 
@@ -122,7 +119,6 @@ static inline void spi_write_byte(uint8_t b) {
 
 // Catch reset requests: FPGA reset (PF1 low) or button (PB4 low)
 static uint8_t reset_requested(void) {
-    if (!(PINF & (1<<FPGA_REQ_BIT))) return 1;
     if (!(PINB & (1<<RESET_BTN_BIT))) return 1;
     return 0;
 }
@@ -335,10 +331,8 @@ int main(void) {
     uint8_t cmos_rec_bit = 0;
     uint8_t cmos_rec_addr = 0;
     uint8_t cmos_rec_started = 0;
-    
-   
-    DDRF &= ~(1<<FPGA_REQ_BIT);
-    PORTF |= (1<<FPGA_REQ_BIT);
+
+
     DDRB &= ~(1<<RESET_BTN_BIT);
     PORTB |= (1<<RESET_BTN_BIT);
     DDRE &= ~((1<<PE4)|(1<<PE6));     // INIT and DONE inputs

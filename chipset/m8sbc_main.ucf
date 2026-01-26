@@ -80,7 +80,6 @@ NET "RAM_WE_B<0>"  LOC = "P133"  ;
 NET "RAM_WE_B<1>"  LOC = "P134"  ; 
 NET "RAM_WE_B<2>"  LOC = "P136"  ; 
 NET "RAM_WE_B<3>"  LOC = "P137"  ; 
-NET "RESET_REQ_OUT"  LOC = "P76"  ; 
 NET "RESET_SYS_IN"  LOC = "P28"  ; 
 NET "ROM_CACHE_EN"  LOC = "P74"  ; 
 NET "ROM_CS"  LOC = "P132"  ; 

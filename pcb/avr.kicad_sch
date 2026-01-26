@@ -3305,6 +3305,10 @@
 		(uuid "9ca7b5e6-3017-4475-a0bc-946adc1ebdcb")
 	)
 	(no_connect
+		(at 127 96.52)
+		(uuid "aaca1824-bce3-4013-afcc-78d7ab62bfef")
+	)
+	(no_connect
 		(at 157.48 78.74)
 		(uuid "aecb1a9b-0576-450e-8a0b-7870b9effcf7")
 	)
@@ -3651,16 +3655,6 @@
 			(type default)
 		)
 		(uuid "4c637593-301a-49f4-8506-406e658cbc20")
-	)
-	(wire
-		(pts
-			(xy 119.38 96.52) (xy 127 96.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "54f05b6b-cc46-412f-b0bf-5a257b6e5aa1")
 	)
 	(wire
 		(pts
@@ -4473,17 +4467,6 @@
 			(justify right)
 		)
 		(uuid "1c4404a0-f65f-4356-8c99-162b6ce48890")
-	)
-	(hierarchical_label "FPGA_REQ_RESET"
-		(shape input)
-		(at 119.38 96.52 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "2952620f-03b4-4ba7-b0e5-9f6c4ac8fa4b")
 	)
 	(hierarchical_label "FPGA_DIN"
 		(shape output)
