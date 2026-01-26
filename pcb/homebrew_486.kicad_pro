@@ -58,12 +58,7 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [
-        [
-          "courtyards_overlap|107671938|118901951|29b174c6-c944-4cab-90a8-754ed0f66605|e7bc16f6-fd76-41cd-a3b6-23ec6b0d19d8",
-          "testpoing between cpu pins"
-        ]
-      ],
+      "drc_exclusions": [],
       "meta": {
         "version": 2
       },
