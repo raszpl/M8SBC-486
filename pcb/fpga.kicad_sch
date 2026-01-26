@@ -4938,6 +4938,10 @@
 		(uuid "ff904927-3151-42ff-a0fa-503ff732c444")
 	)
 	(no_connect
+		(at 36.83 109.22)
+		(uuid "016f824d-b628-4811-8e52-56bb7b4e6470")
+	)
+	(no_connect
 		(at 238.76 114.3)
 		(uuid "16963947-54a2-4bbe-8141-1157c3d49b95")
 	)
@@ -4968,6 +4972,10 @@
 	(no_connect
 		(at 200.66 78.74)
 		(uuid "aae605f7-0029-40f9-a003-4cc5617c6ace")
+	)
+	(no_connect
+		(at 36.83 106.68)
+		(uuid "ef953dc6-e41f-439a-8ace-7a69b40911f1")
 	)
 	(no_connect
 		(at 200.66 83.82)
@@ -8078,16 +8086,6 @@
 		)
 		(uuid "2d6cda90-8063-49dc-8149-53e2fd8254c2")
 	)
-	(label "~{BE1}"
-		(at 41.91 68.58 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "3115e4c1-d62d-4de4-b7ec-18bcabd37987")
-	)
 	(label "TDI"
 		(at 41.91 35.56 0)
 		(effects
@@ -8117,16 +8115,6 @@
 			(justify right bottom)
 		)
 		(uuid "3a386e0a-a9c0-41e4-8b73-86a2e6635421")
-	)
-	(label "~{BE0}"
-		(at 41.91 66.04 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "456cb6e4-3d26-40dc-9c6d-a71bd13251d5")
 	)
 	(label "A20"
 		(at 41.91 172.72 0)
@@ -8187,6 +8175,16 @@
 			(justify left bottom)
 		)
 		(uuid "5a33750b-3257-4395-81ac-3e6c92862a68")
+	)
+	(label "~{BE3}"
+		(at 41.91 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5eb9c850-4914-4998-a5a7-f8170e5b5c20")
 	)
 	(label "DT0"
 		(at 147.32 157.48 180)
@@ -8378,6 +8376,16 @@
 		)
 		(uuid "98c16ae2-ffbf-4d81-9ed3-d044dddc0e85")
 	)
+	(label "~{BE0}"
+		(at 41.91 73.66 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9b6a77af-067e-4bb7-9960-3ae18e892130")
+	)
 	(label "ROM_CACHE_EN"
 		(at 161.29 186.69 180)
 		(effects
@@ -8418,6 +8426,16 @@
 		)
 		(uuid "b2931065-68dc-406b-ae86-dbdcf811e255")
 	)
+	(label "~{BE1}"
+		(at 41.91 71.12 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b363f36b-999d-4b66-a237-d744ed7db915")
+	)
 	(label "A21"
 		(at 41.91 175.26 0)
 		(effects
@@ -8439,14 +8457,14 @@
 		(uuid "bf0902c9-8b0b-4b42-9d70-cbd97a6d483f")
 	)
 	(label "~{BE2}"
-		(at 41.91 71.12 0)
+		(at 41.91 68.58 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "ca282c3e-5e4c-4b90-a353-1b340b33acc0")
+		(uuid "c821f7f1-a503-48c4-a91c-afa15c49f83f")
 	)
 	(label "DT5"
 		(at 147.32 170.18 180)
@@ -8517,16 +8535,6 @@
 			(justify left bottom)
 		)
 		(uuid "e0e90e1d-b545-49f2-9aa7-35190fd21b1b")
-	)
-	(label "~{BE3}"
-		(at 41.91 73.66 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "e20c78ea-a8ee-4d2a-95a6-febbc5e6a06c")
 	)
 	(label "DT2"
 		(at 147.32 162.56 180)
