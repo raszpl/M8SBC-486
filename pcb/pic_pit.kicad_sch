@@ -5296,7 +5296,7 @@
 		(dnp no)
 		(uuid "7f1220c5-4185-413a-8d75-b37ea64f4e0b")
 		(property "Reference" "R10"
-			(at 223.774 71.12 90)
+			(at 223.52 63.754 90)
 			(effects
 				(font
 					(size 1.27 1.27)
