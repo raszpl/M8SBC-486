@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.0,
-          "height": 0.5,
-          "width": 0.5
+          "drill": 1.0,
+          "height": 1.7,
+          "width": 1.7
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.3
+          "min_clearance": 0.1778
         }
       },
       "diff_pair_dimensions": [
@@ -267,7 +267,28 @@
     "equivalence_files": []
   },
   "erc": {
-    "erc_exclusions": [],
+    "erc_exclusions": [
+      [
+        "multiple_net_names|2616200|1143000|5a33750b-3257-4395-81ac-3e6c92862a68|1f89ef49-8873-4215-b2a5-cbccfb398766|/360fb3b9-a21a-4226-8954-bf45cf17bb35/49c3128c-49f0-451c-bde3-bf7412e8a8c9|/360fb3b9-a21a-4226-8954-bf45cf17bb35/49c3128c-49f0-451c-bde3-bf7412e8a8c9|/360fb3b9-a21a-4226-8954-bf45cf17bb35/49c3128c-49f0-451c-bde3-bf7412e8a8c9",
+        ""
+      ],
+      [
+        "pin_to_pin|1447800|1016000|e414d419-f346-439a-91cd-808b9295b992|5ddfa181-4d8c-45b8-ac80-9e9b68d08cf8|/360fb3b9-a21a-4226-8954-bf45cf17bb35/8c5c6d69-b749-4a24-8458-c5389575129e|/360fb3b9-a21a-4226-8954-bf45cf17bb35/8c5c6d69-b749-4a24-8458-c5389575129e|/360fb3b9-a21a-4226-8954-bf45cf17bb35/98e7b245-1892-4961-80dc-a2961de8ec76",
+        ""
+      ],
+      [
+        "pin_to_pin|1447800|990600|dce7f84e-a533-42d5-9c23-a0da5d0075df|f365660a-7dba-4c81-9d37-97f218724b92|/360fb3b9-a21a-4226-8954-bf45cf17bb35/8c5c6d69-b749-4a24-8458-c5389575129e|/360fb3b9-a21a-4226-8954-bf45cf17bb35/8c5c6d69-b749-4a24-8458-c5389575129e|/360fb3b9-a21a-4226-8954-bf45cf17bb35/98e7b245-1892-4961-80dc-a2961de8ec76",
+        ""
+      ],
+      [
+        "pin_to_pin|2463800|1016000|c2c07efe-38a4-4576-8c47-ba4759c45ed5|5ddfa181-4d8c-45b8-ac80-9e9b68d08cf8|/360fb3b9-a21a-4226-8954-bf45cf17bb35/8c5c6d69-b749-4a24-8458-c5389575129e|/360fb3b9-a21a-4226-8954-bf45cf17bb35/8c5c6d69-b749-4a24-8458-c5389575129e|/360fb3b9-a21a-4226-8954-bf45cf17bb35/98e7b245-1892-4961-80dc-a2961de8ec76",
+        ""
+      ],
+      [
+        "pin_to_pin|2463800|990600|8d9c5f7e-2eb8-4f0c-a05c-16ea5f7d35e5|f365660a-7dba-4c81-9d37-97f218724b92|/360fb3b9-a21a-4226-8954-bf45cf17bb35/8c5c6d69-b749-4a24-8458-c5389575129e|/360fb3b9-a21a-4226-8954-bf45cf17bb35/8c5c6d69-b749-4a24-8458-c5389575129e|/360fb3b9-a21a-4226-8954-bf45cf17bb35/98e7b245-1892-4961-80dc-a2961de8ec76",
+        ""
+      ]
+    ],
     "meta": {
       "version": 0
     },
@@ -516,16 +537,28 @@
         "wire_width": 6
       },
       {
-        "name": "low_power",
+        "name": "Address",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "Data",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "low_power",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 2,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.5
       },
       {
         "name": "power",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 1,
+        "priority": 3,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.6
       }
@@ -563,6 +596,14 @@
       {
         "netclass": "power",
         "pattern": "+3.3V_atx"
+      },
+      {
+        "netclass": "Address",
+        "pattern": "/A\\d*"
+      },
+      {
+        "netclass": "Data",
+        "pattern": "/D\\d*"
       }
     ]
   },
