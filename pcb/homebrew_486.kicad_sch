@@ -271,16 +271,6 @@
 		)
 		(uuid "07aab1cb-7f9d-48f5-a15c-faf7f138dd6d")
 	)
-	(wire
-		(pts
-			(xy 39.37 38.1) (xy 39.37 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "07af9b55-14e1-403f-b55c-a20c8bb78ae8")
-	)
 	(bus
 		(pts
 			(xy 152.4 55.88) (xy 152.4 38.1)
@@ -3063,16 +3053,6 @@
 				(justify left top)
 			)
 		)
-		(pin "FPGA_REQ_RESET" input
-			(at 39.37 38.1 270)
-			(uuid "6a75dd09-d5e9-42da-a2a1-fc3f162b3a69")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
 		(pin "~{FPGA_PROG}" bidirectional
 			(at 44.45 38.1 270)
 			(uuid "e16f9a19-6101-4642-9e35-97eb05b49d8b")
@@ -3347,16 +3327,6 @@
 		(pin "A[0..31]" input
 			(at 90.17 72.39 0)
 			(uuid "406577a4-2828-4343-83de-d876ff3506df")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "FPGA_REQ_RESET" output
-			(at 39.37 60.96 90)
-			(uuid "c88de4f6-07b2-46e1-a4cb-9d2a6590eb63")
 			(effects
 				(font
 					(size 1.27 1.27)
