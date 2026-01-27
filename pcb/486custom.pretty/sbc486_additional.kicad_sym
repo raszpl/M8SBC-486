@@ -3284,7 +3284,7 @@
 			(pin bidirectional line
 				(at -45.72 58.42 0)
 				(length 7.62)
-				(name "~{INIT/IO}"
+				(name "IO/~{INIT}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -3464,7 +3464,7 @@
 			(pin bidirectional line
 				(at -45.72 27.94 0)
 				(length 7.62)
-				(name "IO7P10"
+				(name "IO"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -4847,7 +4847,7 @@
 			(pin bidirectional line
 				(at 45.72 68.58 180)
 				(length 7.62)
-				(name "/WR"
+				(name "IO/~{WR}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -4865,7 +4865,7 @@
 			(pin bidirectional line
 				(at 45.72 66.04 180)
 				(length 7.62)
-				(name "/CS"
+				(name "IO/~{CS}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -4883,7 +4883,7 @@
 			(pin output line
 				(at 45.72 60.96 180)
 				(length 7.62)
-				(name "BUSY/DOUT"
+				(name "IO/BUSY/DOUT"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -4901,7 +4901,7 @@
 			(pin bidirectional line
 				(at 45.72 58.42 180)
 				(length 7.62)
-				(name "D0/DIN"
+				(name "IO/D0/DIN"
 					(effects
 						(font
 							(size 1.27 1.27)
