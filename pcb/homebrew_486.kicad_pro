@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 1.0,
-          "height": 1.7,
-          "width": 1.7
+          "drill": 0.0,
+          "height": 0.4,
+          "width": 0.4
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.1778
+          "min_clearance": 0.5
         }
       },
       "diff_pair_dimensions": [
@@ -273,19 +273,11 @@
         ""
       ],
       [
-        "pin_to_pin|1447800|1016000|e414d419-f346-439a-91cd-808b9295b992|5ddfa181-4d8c-45b8-ac80-9e9b68d08cf8|/360fb3b9-a21a-4226-8954-bf45cf17bb35/8c5c6d69-b749-4a24-8458-c5389575129e|/360fb3b9-a21a-4226-8954-bf45cf17bb35/8c5c6d69-b749-4a24-8458-c5389575129e|/360fb3b9-a21a-4226-8954-bf45cf17bb35/98e7b245-1892-4961-80dc-a2961de8ec76",
+        "pin_to_pin|635000|635000|c4da19b5-3ec1-4d5e-809c-39fef9f15838|5ddfa181-4d8c-45b8-ac80-9e9b68d08cf8|/360fb3b9-a21a-4226-8954-bf45cf17bb35/4473f6a5-ad82-4f82-96f4-7ead8b697ef7|/360fb3b9-a21a-4226-8954-bf45cf17bb35/4473f6a5-ad82-4f82-96f4-7ead8b697ef7|/360fb3b9-a21a-4226-8954-bf45cf17bb35/98e7b245-1892-4961-80dc-a2961de8ec76",
         ""
       ],
       [
-        "pin_to_pin|1447800|990600|dce7f84e-a533-42d5-9c23-a0da5d0075df|f365660a-7dba-4c81-9d37-97f218724b92|/360fb3b9-a21a-4226-8954-bf45cf17bb35/8c5c6d69-b749-4a24-8458-c5389575129e|/360fb3b9-a21a-4226-8954-bf45cf17bb35/8c5c6d69-b749-4a24-8458-c5389575129e|/360fb3b9-a21a-4226-8954-bf45cf17bb35/98e7b245-1892-4961-80dc-a2961de8ec76",
-        ""
-      ],
-      [
-        "pin_to_pin|2463800|1016000|c2c07efe-38a4-4576-8c47-ba4759c45ed5|5ddfa181-4d8c-45b8-ac80-9e9b68d08cf8|/360fb3b9-a21a-4226-8954-bf45cf17bb35/8c5c6d69-b749-4a24-8458-c5389575129e|/360fb3b9-a21a-4226-8954-bf45cf17bb35/8c5c6d69-b749-4a24-8458-c5389575129e|/360fb3b9-a21a-4226-8954-bf45cf17bb35/98e7b245-1892-4961-80dc-a2961de8ec76",
-        ""
-      ],
-      [
-        "pin_to_pin|2463800|990600|8d9c5f7e-2eb8-4f0c-a05c-16ea5f7d35e5|f365660a-7dba-4c81-9d37-97f218724b92|/360fb3b9-a21a-4226-8954-bf45cf17bb35/8c5c6d69-b749-4a24-8458-c5389575129e|/360fb3b9-a21a-4226-8954-bf45cf17bb35/8c5c6d69-b749-4a24-8458-c5389575129e|/360fb3b9-a21a-4226-8954-bf45cf17bb35/98e7b245-1892-4961-80dc-a2961de8ec76",
+        "pin_to_pin|635000|660400|1edd4aff-8032-46ed-9933-6a923be11413|f365660a-7dba-4c81-9d37-97f218724b92|/360fb3b9-a21a-4226-8954-bf45cf17bb35/4473f6a5-ad82-4f82-96f4-7ead8b697ef7|/360fb3b9-a21a-4226-8954-bf45cf17bb35/4473f6a5-ad82-4f82-96f4-7ead8b697ef7|/360fb3b9-a21a-4226-8954-bf45cf17bb35/98e7b245-1892-4961-80dc-a2961de8ec76",
         ""
       ]
     ],
@@ -775,15 +767,19 @@
     ],
     [
       "e1325e05-380c-469a-ad77-c2c9c9155003",
-      "RAM & ROM"
+      "RAM"
     ],
     [
       "80d0c219-e690-401a-8c6a-4246d88de18d",
-      "Bus transceivers"
+      "Data Bus transceivers"
+    ],
+    [
+      "4473f6a5-ad82-4f82-96f4-7ead8b697ef7",
+      "Address Bus buffers"
     ],
     [
       "a079297a-8bd2-4ab2-b4a1-b608a7e51686",
-      "PIC, PIT"
+      "PIC, PIT, BIOS"
     ],
     [
       "8c5c6d69-b749-4a24-8458-c5389575129e",
