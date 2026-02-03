@@ -21,9 +21,8 @@ LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
 
-
 ENTITY transceiver_driver IS
-	port (
+	PORT (
 		BE				: IN	STD_LOGIC_VECTOR(3 downto 0);
 		BS8				: IN	STD_LOGIC;
 		BS16			: IN	STD_LOGIC;
@@ -38,13 +37,13 @@ ARCHITECTURE Behavioral OF transceiver_driver IS
 
 BEGIN
 
-   PROCESS (BE, BS8, BS16)
+	PROCESS (BE, BS8, BS16)
 		VARIABLE bs_comb	: STD_LOGIC_VECTOR(1 downto 0);
 	BEGIN
 		bs_comb := BS8 & BS16;
-	  CASE bs_comb IS
-		 WHEN "01" =>
-			-- BS8 active
+		CASE bs_comb IS
+			WHEN "01" =>
+				-- BS8 active
 
 				TR_8B <= "1111";
 				TR_16B_LOW <= '1';
@@ -61,12 +60,12 @@ BEGIN
 						ELSE
 							IF BE(3) = '0' THEN
 								TR_8B(3) <= '0';
+							END IF;
 						END IF;
 					END IF;
 				END IF;
-			END IF;
 
-		 WHEN "10" =>
+			WHEN "10" =>
 				-- BS16 active
 
 				TR_8B <= "1111";
@@ -95,14 +94,11 @@ BEGIN
 					END IF;
 				END IF;
 
-
-		 WHEN OTHERS =>
-			TR_8B <= "1111";
+			WHEN OTHERS =>
+				TR_8B <= "1111";
 				TR_16B_LOW <= '1';
 				TR_16B_HIGH <= '1';
-	  END CASE;
-
-
-   END PROCESS;
+		END CASE;
+	END PROCESS;
 
 END Behavioral;
