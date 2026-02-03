@@ -109,7 +109,6 @@ BEGIN
 
 	ROM_CS <= ROM_CS_I WHEN (CPU_WR = '0') ELSE '1'; -- Allow only at reads
 
-
 	-- IO devices mapping
 	-- x86 IO has only 65536 ports, so for less complexity we can just check first 16 bits (or less if range is like x0h to x3h)
 
@@ -178,8 +177,6 @@ BEGIN
 
 	CMOS_CS <= CMOS_CS_I;
 
-
-
 	-- Special - IO and MEM both decoding
 	-- ISA CS: MEM, 0x0A0000 to 0x0C8000 (160KB window) and rest of IO
 	PROCESS(ADDR_INT, ADDR_31, CPU_MIO, PIC_CS_I, PIT_CS_I, PS2_CS_I, O61_CS_I, CMOS_CS_I, INT_ACK)
@@ -203,7 +200,6 @@ BEGIN
 	END PROCESS;
 
 	ISA_CS <= ISA_CS_I;
-
 
 	-- BS8/16 DECODER
 	PROCESS(CPU_MIO, ROM_CS_I, PIC_CS_I, PIT_CS_I, PS2_CS_I, O61_CS_I, ISA_CS_I, CMOS_CS_I)
@@ -249,4 +245,3 @@ BEGIN
 	OUT_KEN <= '0' WHEN ((ROM_CACHE = '0') OR (RAM_CACHE = '0')) ELSE '1';
 
 END Behavioral;
-
