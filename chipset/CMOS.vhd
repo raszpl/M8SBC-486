@@ -134,7 +134,6 @@ BEGIN
 			S2_AVR_CLK <= S1_AVR_CLK;
 			S2_AVR_DIN <= S1_AVR_DIN;
 
-
 			IF WR = '0' AND A0 = '1' AND CMOS_CS = '0' AND CMOS_IN_RANGE = '1' AND CMOS_WRITE_PROTECT = '0' THEN -- write oqcuired
 				TRANSFER_TIMER <= 0;
 				CONFIG_DATA_DIRTY <= '1';
@@ -165,7 +164,6 @@ BEGIN
 					END IF;
 				END IF;
 			END IF;
-
 
 			LAST_CONFIG_DATA_DIRTY <= CONFIG_DATA_DIRTY;
 
@@ -228,46 +226,46 @@ BEGIN
 									-- while AVR is still probing for data
 
 								--ELSE -- Write loop (normal state)
+								CASE CONFIG_WRITE_PHASE IS
+									WHEN 0 =>
+										CONFIG_TEMP_VAR := X"F5";
+									WHEN 1 =>
+										CONFIG_TEMP_VAR := RAM_OUT;
+									WHEN 2 =>
+										CONFIG_TEMP_VAR := X"AA";
+								END CASE;
+
+								AVR_OUT_TMP := CONFIG_TEMP_VAR(7 - CONFIG_C_BIT); -- Send MSB first
+
+								IF TRANSFER_DIRTY = '1' THEN
+									AVR_OUT <= '0'; -- cancel
+								ELSE
+									IF AVR_OUT_TMP = '1' THEN
+										AVR_OUT <= 'Z'; -- replace with Z later
+									ELSE
+										AVR_OUT <= '0';
+									END IF;
+								END IF;
+
+								IF CONFIG_C_BIT = 7 THEN
+									CONFIG_C_BIT <= 0;
 									CASE CONFIG_WRITE_PHASE IS
 										WHEN 0 =>
-											CONFIG_TEMP_VAR := X"F5";
+											CONFIG_WRITE_PHASE <= 1;
 										WHEN 1 =>
-											CONFIG_TEMP_VAR := RAM_OUT;
+											IF CONFIG_COUNT = 31 THEN
+												CONFIG_WRITE_PHASE <= 2;
+											ELSE
+												CONFIG_COUNT <= CONFIG_COUNT + 1;
+											END IF;
 										WHEN 2 =>
-											CONFIG_TEMP_VAR := X"AA";
+											-- Finish
+											TRANSFER_CONFIG <= '0';
+											CONFIG_DO_WRITE <= '0';
 									END CASE;
-
-									AVR_OUT_TMP := CONFIG_TEMP_VAR(7 - CONFIG_C_BIT); -- Send MSB first
-
-									IF TRANSFER_DIRTY = '1' THEN
-										AVR_OUT <= '0'; -- cancel
-									ELSE
-										IF AVR_OUT_TMP = '1' THEN
-											AVR_OUT <= 'Z'; -- replace with Z later
-										ELSE
-											AVR_OUT <= '0';
-										END IF;
-									END IF;
-
-									IF CONFIG_C_BIT = 7 THEN
-										CONFIG_C_BIT <= 0;
-										CASE CONFIG_WRITE_PHASE IS
-											WHEN 0 =>
-												CONFIG_WRITE_PHASE <= 1;
-											WHEN 1 =>
-												IF CONFIG_COUNT = 31 THEN
-													CONFIG_WRITE_PHASE <= 2;
-												ELSE
-													CONFIG_COUNT <= CONFIG_COUNT + 1;
-												END IF;
-											WHEN 2 =>
-												-- Finish
-												TRANSFER_CONFIG <= '0';
-												CONFIG_DO_WRITE <= '0';
-										END CASE;
-									ELSE
-										CONFIG_C_BIT <= CONFIG_C_BIT + 1;
-									END IF;
+								ELSE
+									CONFIG_C_BIT <= CONFIG_C_BIT + 1;
+								END IF;
 
 								--END IF; -- transfer_dirty
 							ELSE -- If BUS access becomes 1 (bus access to CPU)
@@ -353,7 +351,6 @@ BEGIN
 						END CASE;
 
 					END IF;
-
 				END IF;
 
 			ELSIF RD = '0' THEN -- Read
