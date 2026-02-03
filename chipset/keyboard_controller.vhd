@@ -105,7 +105,6 @@ ARCHITECTURE Behavioral OF keyboard_controller IS
 		16#78# => X"57", -- F11
 		16#07# => X"58", -- F12
 		16#7E# => X"46", -- SCROLL
-
 		16#54# => X"1A", -- [
 		16#77# => X"45", -- NUM
 		16#7C# => X"37", -- KP *
