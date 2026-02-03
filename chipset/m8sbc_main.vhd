@@ -682,9 +682,7 @@ BEGIN
 	PROCESS(CLK_CPU, RESET_SYS_IN) -- O61 write to temp buf
 	BEGIN
 		IF RESET_SYS_IN = '1' THEN
-
 			O61_DATA_L <= x"00";
-
 		ELSE
 
 			IF FALLING_EDGE(CLK_CPU) THEN -- decoders update on rising edge
