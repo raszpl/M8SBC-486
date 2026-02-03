@@ -70,13 +70,12 @@ ARCHITECTURE behavioral OF isa_driver IS
 	CONSTANT NACTIVE	: STD_LOGIC := '1';
 BEGIN
 
-
 	SYNC_PROC: PROCESS (CLK, MIO)
-   BEGIN
-	  IF(RISING_EDGE(CLK)) THEN
-		 IF (RESET = '1') THEN
-			drv_state <= st1_wait_for_ads;
-			-- reset output
+	BEGIN
+		IF(RISING_EDGE(CLK)) THEN
+			IF (RESET = '1') THEN
+				drv_state <= st1_wait_for_ads;
+				-- reset output
 				WS_COUNT <= 0;
 				WAITSTATE_16C_total <= 0;
 				WAITSTATE_END_total <= 0;
@@ -86,7 +85,7 @@ BEGIN
 
 				RDY_I <= '0'; -- flip flop
 				ISA_16B_I <= '0'; -- 0 is 8 bit, 1 is 16 bit
-		 ELSE
+			ELSE
 
 				IF drv_state = st1_wait_for_ads THEN
 
@@ -137,16 +136,16 @@ BEGIN
 
 				LAST_CS <= EN_ISA;
 
-		 END IF;
-	  END IF;
-   END PROCESS;
+			END IF;
+		END IF;
+	END PROCESS;
 
 	OUTPUT_DECODE: PROCESS (drv_state, drv_next_state, RW, MIO, WS_COUNT, ISA_16B_I, EXTRA_WS) -- RW: 0 - read, 1 - write
 		VARIABLE RD				: STD_LOGIC;
 		VARIABLE WR				: STD_LOGIC;
 		VARIABLE allow_drive	: STD_LOGIC;
-   BEGIN
-	  --insert statements to decode internal output signals
+	BEGIN
+		--insert statements to decode internal output signals
 		RD := '1';
 		WR := '1';
 		ISA_MEM_WR <= '1';
@@ -171,8 +170,8 @@ BEGIN
 			ISA_SBHE <= CPU_16BTR; -- in case device needs SBHE before pulling cs16
 		END IF;
 
-	  IF (drv_state = st3_wait_state) AND (allow_drive = '1') THEN
-		 IF RW = '1' THEN -- write
+		IF (drv_state = st3_wait_state) AND (allow_drive = '1') THEN
+			IF RW = '1' THEN -- write
 				WR := '0';
 			ELSE -- read
 				RD := '0';
@@ -205,24 +204,24 @@ BEGIN
 			ISA_MEM_RD <= '1';
 			ISA_IO_WR <= '1';
 			ISA_IO_RD <= '1';
-	  END IF;
+		END IF;
 
-   END PROCESS;
+	END PROCESS;
 
 	NEXT_STATE_DECODE: PROCESS(drv_state, ADS, EN_ISA, WS_COUNT, WAITSTATE_16C_total, WAITSTATE_END_total)
-   BEGIN
-	  --declare default state for next_state to avoid latches
-	  drv_next_state <= drv_state;	-- default is to stay in current state
+	BEGIN
+		--declare default state for next_state to avoid latches
+		drv_next_state <= drv_state; -- default is to stay in current state
 
 		-- ISA_16B_I
 
-	  CASE (drv_state) IS
-		 WHEN st1_wait_for_ads => -- Transfer begin, When ADS is 0 and RAMCS and 0 we activate
-			IF (ADS = '0') AND (EN_ISA = '0') THEN
-			   drv_next_state <= st2_check_16b;
-			END IF;
+		CASE (drv_state) IS
+			WHEN st1_wait_for_ads => -- Transfer begin, When ADS is 0 and RAMCS and 0 we activate
+				IF (ADS = '0') AND (EN_ISA = '0') THEN
+					drv_next_state <= st2_check_16b;
+				END IF;
 
-		 WHEN st2_check_16b => -- Before pulling RD/WR
+			WHEN st2_check_16b => -- Before pulling RD/WR
 				IF EN_ISA = '1' THEN
 					drv_next_state <= st1_wait_for_ads; -- ISA CS for some reason deasserted
 				ELSE
@@ -240,10 +239,10 @@ BEGIN
 					END IF;
 				END IF;
 
-		 WHEN OTHERS =>
-			drv_next_state <= st1_wait_for_ads;
-	  END CASE;
-   END PROCESS;
+			WHEN OTHERS =>
+				drv_next_state <= st1_wait_for_ads;
+		END CASE;
+	END PROCESS;
 
 	-- ISA_RDY - output from driver
 	-- ISA_IO_READY - input from ISA
