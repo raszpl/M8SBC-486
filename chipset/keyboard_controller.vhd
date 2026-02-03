@@ -41,7 +41,7 @@ ARCHITECTURE Behavioral OF keyboard_controller IS
 
 	TYPE rom_type IS ARRAY (0 to 255) OF STD_LOGIC_VECTOR(7 downto 0);
 
-	constant SET2_TO_SET1 : rom_type := ( -- NON EXT
+	CONSTANT SET2_TO_SET1 : rom_type := ( -- NON EXT
 		16#1C# => X"1E", -- A
 		16#32# => X"30", -- B
 		16#21# => X"2E", -- C
@@ -128,10 +128,10 @@ ARCHITECTURE Behavioral OF keyboard_controller IS
 		16#49# => X"34", -- .
 		16#4A# => X"35", -- /
 
-		others => X"00" -- Default/Error
+		OTHERS => X"00" -- Default/Error
 	);
 
-	constant SET2_TO_SET1_EXT : rom_type := ( -- 0xE0 ext codes
+	CONSTANT SET2_TO_SET1_EXT : rom_type := ( -- 0xE0 ext codes
 		16#1F# => X"5B", -- L WIN
 		16#14# => X"1D", -- R CTRL
 		16#27# => X"5C", -- R WIN
@@ -150,9 +150,8 @@ ARCHITECTURE Behavioral OF keyboard_controller IS
 		16#4A# => X"35", -- KP /
 		16#5A# => X"1C", -- KP EN
 
-		others => X"00" -- Default/Error
+		OTHERS => X"00" -- Default/Error
 	);
-
 
 	CONSTANT int_pulse_dur	: INTEGER := 7; -- 7 * 838 = about 5866 ns
 	CONSTANT timeout_limit	: INTEGER := 100000; -- 200 for tests, 100000 for final (100000 is about 83 ms)
