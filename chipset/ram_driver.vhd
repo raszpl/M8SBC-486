@@ -97,8 +97,8 @@ BEGIN
 
 	SYNC_PROC: PROCESS (CLK)
 		VARIABLE ram_waitstates_total	: INTEGER;
-		VARIABLE d_cs0 : STD_LOGIC;
-		VARIABLE d_cs1 : STD_LOGIC;
+		VARIABLE d_cs0					: STD_LOGIC;
+		VARIABLE d_cs1					: STD_LOGIC;
 	BEGIN
 		IF(RISING_EDGE(CLK)) THEN
 			IF (RESET = '1') THEN
@@ -149,7 +149,6 @@ BEGIN
 							EXTRA_WS <= '0';
 						END IF;
 
-
 						LAST_CS0 <= d_cs0;
 						LAST_CS1 <= d_cs1;
 
@@ -164,7 +163,6 @@ BEGIN
 
 				drv_state <= drv_next_state;
 
-
 				IF drv_state = st2_wait_state THEN
 					WS_COUNT <= WS_COUNT + 1;
 				ELSE
@@ -178,7 +176,6 @@ BEGIN
 			END IF;
 		END IF;
 	END PROCESS;
-
 
 	OUTPUT_DECODE: PROCESS (drv_state, CPU_RW, BE, ADDR21, EXTRA_WS, WS_COUNT, KEEP_READ) -- RW: 0 - read, 1 - write
 		VARIABLE allow_drive : STD_LOGIC;
