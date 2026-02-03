@@ -109,8 +109,7 @@ ENTITY m8sbc_main IS
 	);
 END m8sbc_main;
 
-
-ARCHITECTURE Behavioral of m8sbc_main is
+ARCHITECTURE Behavioral OF m8sbc_main IS
 
 	-- CONSTANTS
 	-- Update Divider in CLKGEN!
@@ -131,7 +130,6 @@ ARCHITECTURE Behavioral of m8sbc_main is
 --	CONSTANT ISA_CHECK_16_WAITSTATES	: INTEGER RANGE 0 to 127 := 3;	-- Doesn't add waitstates total, works on behalf - 3 cycles out of 19 are used for CS16 check
 --
 
-
 	-- DIV = 2.5 - 19.2 MHz
 --	CONSTANT RAM_WAITSTATES				: INTEGER RANGE 0 to 127 := 1;
 -- CONSTANT RAM_BURST_WAITSTATES		: INTEGER RANGE 0 to 15	 := 0;
@@ -142,7 +140,6 @@ ARCHITECTURE Behavioral of m8sbc_main is
 --
 --	CONSTANT ISA_WAITSTATES_TOTAL		: INTEGER RANGE 0 to 127 := 30;
 --	CONSTANT ISA_CHECK_16_WAITSTATES	: INTEGER RANGE 0 to 127 := 5;
-
 
 	-- DIV = 2.0 - 24 MHz
 	CONSTANT RAM_WAITSTATES				: INTEGER RANGE 0 to 127 := 1;
@@ -155,26 +152,25 @@ ARCHITECTURE Behavioral of m8sbc_main is
 	CONSTANT ISA_WAITSTATES_TOTAL		: INTEGER RANGE 0 to 127 := 38; -- should be 39, but what about tiny overclock?
 	CONSTANT ISA_CHECK_16_WAITSTATES	: INTEGER RANGE 0 to 127 := 6; -- should be 7
 
-
 	-- COMPONENTS
 	COMPONENT clock_section IS
 		PORT (
-			CLK_INPUT	: in  std_logic; -- 48 MHz
-			CPU_CLK_OUT : out std_logic
+			CLK_INPUT	: IN	STD_LOGIC; -- 48 MHz
+			CPU_CLK_OUT : OUT	STD_LOGIC
 		);
 	END COMPONENT;
 
 	COMPONENT clock_section_pit IS
 		PORT (
-			CLK_INPUT	: IN  STD_LOGIC; -- 14.318 MHz in
-			CLK_OUT		: OUT STD_LOGIC; -- 1.193 MHz out
+			CLK_INPUT	: IN	STD_LOGIC; -- 14.318 MHz in
+			CLK_OUT		: OUT	STD_LOGIC; -- 1.193 MHz out
 		);
 	END COMPONENT;
 
 	COMPONENT clock_section_isa IS
 		PORT (
-			CLK_INPUT	: IN  STD_LOGIC; -- 14.318 MHz in
-			CLK_OUT		: OUT STD_LOGIC; -- 7.159 MHz out
+			CLK_INPUT	: IN	STD_LOGIC; -- 14.318 MHz in
+			CLK_OUT		: OUT	STD_LOGIC; -- 7.159 MHz out
 		);
 	END COMPONENT;
 
@@ -271,7 +267,6 @@ ARCHITECTURE Behavioral of m8sbc_main is
 		);
 	END COMPONENT;
 
-
 	COMPONENT isa_driver IS
 		PORT (
 			CLK				: IN	STD_LOGIC;
@@ -301,7 +296,6 @@ ARCHITECTURE Behavioral of m8sbc_main is
 			ISA_SBHE		: OUT	STD_LOGIC
 		);
 	END COMPONENT;
-
 
 	COMPONENT keyboard_controller IS
 		PORT (
@@ -338,8 +332,6 @@ ARCHITECTURE Behavioral of m8sbc_main is
 			RESET		: IN	STD_LOGIC
 		);
 	END COMPONENT;
-
-
 
 	-- SIGNALS
 	SIGNAL	CLK_CPU			: STD_LOGIC; -- 12 MHz (def)
@@ -559,7 +551,7 @@ BEGIN
 		INT_OUT		=> O_PS2_INT
 	);
 
-	cmos_rtc: CMOS PORT	 MAP(
+	cmos_rtc: CMOS PORT MAP(
 		CLK_IN		=> CLK_CPU,
 		DATA_IN		=> CPU_DATA,
 		DATA_OUT	=> O_CMOS_DATA_OUT,
@@ -569,7 +561,6 @@ BEGIN
 		A0			=> O_A0_BLE,
 
 		CLK_PIT		=> CLK_PIT,
-
 
 		AVR_CLK		=> AVR_CLK,
 		AVR_IO		=> AVR_IO,
@@ -582,7 +573,6 @@ BEGIN
 
 	I_INT_ACK <= '0' WHEN (CPU_IN_DC = '0' AND CPU_IN_MIO = '0') ELSE '1';
 
-
 	-- ISA MEM WR/RD driven by isa_driver
 
 	-- If ISA active, forward outputs to ISA drv
@@ -593,7 +583,6 @@ BEGIN
 	IO_WR <= IO_WR_P WHEN TRUE ELSE '1';
 	ISA_MEM_WR <= ISA_MEM_WR_P WHEN TRUE ELSE '1';
 	ISA_MEM_RD <= ISA_MEM_RD_P WHEN TRUE ELSE '1';
-
 
 	EXTRA_BS8			<= ADDRDEC_BS8 WHEN I_CS_ISA = '1' ELSE ISA_BS8;
 	EXTRA_BS16			<= ADDRDEC_BS16 WHEN I_CS_ISA = '1' ELSE ISA_BS16;
@@ -648,14 +637,10 @@ BEGIN
 				S_ISA_EN <= '1';
 				S_WAITSTATES_ISA16 <= 0;
 		END CASE;
-
-
 	END PROCESS;
 
-
-	PIC_CS	<= I_CS_PIC;
-	PIT_CS	<= I_CS_PIT;
-
+	PIC_CS <= I_CS_PIC;
+	PIT_CS <= I_CS_PIT;
 
 	PROCESS(O_IO_RD, CPU_IN_WR, I_CS_PS2, I_CS_O61, I_CS_CMOS, CPU_IN_ADDR, O_PS2_STATUS, O_PS2_DATA, O61_DATA_L, O_CMOS_DATA_OUT) -- Output from the FPGA to the CPU driver (Data)
 	BEGIN
@@ -690,7 +675,6 @@ BEGIN
 
 	CPU_DATA <= O_CPU_DATA WHEN (O_CPU_DATA_P_O = '1') ELSE "ZZZZZZZZ";
 
-
 	-- PORT O61 read fix
 	-- As output port 61h is a latch, we cant read from it. However we can simulate that using this chipset
 	-- So capture data when write occurs to 61h and send it back if something tries to read from it
@@ -711,9 +695,7 @@ BEGIN
 			END IF;
 
 		END IF;
-
 	END PROCESS;
-
 
 	CLK_OUT_CPU		<= NOT CLK_CPU WHEN REVERSE_CLOCK = '1' ELSE CLK_CPU; -- For some timings? reason, running below 16 MHz requires inverting clock
 	CLK_OUT_PIT		<= CLK_PIT;
@@ -736,4 +718,4 @@ BEGIN
 
 	CPU_OUT_KEN		<= CPU_O_KEN WHEN TRUE ELSE '1'; -- To fix: doesn't work on RAM
 
-end Behavioral;
+END Behavioral;
