@@ -48,7 +48,7 @@ ENTITY m8sbc_main IS
 		CPU_OUT_KEN			: OUT		STD_LOGIC;
 		CPU_OUT_NMI			: OUT		STD_LOGIC;
 	-- CPU InOut pins
-		CPU_DATA			: INOUT	STD_LOGIC_VECTOR( 7 downto 0);
+		CPU_DATA			: INOUT		STD_LOGIC_VECTOR( 7 downto 0);
 
 	-- Generated address lines
 		ADDR_A0				: OUT		STD_LOGIC;
@@ -77,8 +77,8 @@ ENTITY m8sbc_main IS
 
 	-- Generic control lines
 
-		IO_WR				: OUT	STD_LOGIC;
-		IO_RD				: OUT	STD_LOGIC;
+		IO_WR				: OUT		STD_LOGIC;
+		IO_RD				: OUT		STD_LOGIC;
 
 	-- ISA bus
 		ISA_MEM_WR			: OUT		STD_LOGIC;
@@ -104,11 +104,10 @@ ENTITY m8sbc_main IS
 		PS2_INTERUPT		: OUT		STD_LOGIC;
 
 	-- CMOS NVRAM AVR interface
-		AVR_CLK				: IN	STD_LOGIC;
-		AVR_IO				: INOUT STD_LOGIC
+		AVR_CLK				: IN		STD_LOGIC;
+		AVR_IO				: INOUT		STD_LOGIC
 	);
 END m8sbc_main;
-
 
 
 ARCHITECTURE Behavioral of m8sbc_main is
@@ -117,7 +116,6 @@ ARCHITECTURE Behavioral of m8sbc_main is
 	-- Update Divider in CLKGEN!
 
 	CONSTANT FPGA_VER					: STD_LOGIC_VECTOR(31 downto 0) := x"48860001"; -- first 2 bytes - chipset ident, last 2 bytes - version
-
 
 	CONSTANT REVERSE_CLOCK				: STD_LOGIC	:= '0'; -- Use 1 for 12 MHz, for 16> use 0
 
@@ -198,7 +196,7 @@ ARCHITECTURE Behavioral of m8sbc_main is
 			OE				: OUT		STD_LOGIC_VECTOR(3 downto 0);
 
 			RAM_WAITSTATES	: IN		INTEGER RANGE 0 to 127;
-			RAM_BURST_WAITSTATES : IN INTEGER RANGE 0 to 15
+			RAM_BURST_WAITSTATES : IN	INTEGER RANGE 0 to 15
 		);
 	END COMPONENT;
 
@@ -216,14 +214,14 @@ ARCHITECTURE Behavioral of m8sbc_main is
 
 	COMPONENT be_decoder IS
 	PORT (
-		BE0		: in	STD_LOGIC;
-		BE1		: in	STD_LOGIC;
-		BE2		: in	STD_LOGIC;
-		BE3		: in	STD_LOGIC;
+		BE0		: IN	STD_LOGIC;
+		BE1		: IN	STD_LOGIC;
+		BE2		: IN	STD_LOGIC;
+		BE3		: IN	STD_LOGIC;
 
-		A1		: OUT STD_LOGIC;
-		A0_BLE	: OUT STD_LOGIC;
-		BHE		: OUT STD_LOGIC
+		A1		: OUT	STD_LOGIC;
+		A0_BLE	: OUT	STD_LOGIC;
+		BHE		: OUT	STD_LOGIC
 	);
 	END COMPONENT;
 
@@ -246,13 +244,13 @@ ARCHITECTURE Behavioral of m8sbc_main is
 			PIC_CS			: OUT	STD_LOGIC;
 			PIT_CS			: OUT	STD_LOGIC;
 			PS2_CS			: OUT	STD_LOGIC;
-			O61_CS			: OUT STD_LOGIC; -- Write only 61h output port (latch used)
+			O61_CS			: OUT	STD_LOGIC; -- Write only 61h output port (latch used)
 			ISA_CS			: OUT	STD_LOGIC;
-			CMOS_CS			: OUT STD_LOGIC;
+			CMOS_CS			: OUT	STD_LOGIC;
 
 			OUT_KEN			: OUT	STD_LOGIC;
 			OUT_BS16		: OUT	STD_LOGIC;
-			OUT_BS8			: OUT STD_LOGIC
+			OUT_BS8			: OUT	STD_LOGIC
 		);
 	END COMPONENT;
 
@@ -261,10 +259,10 @@ ARCHITECTURE Behavioral of m8sbc_main is
 			CLK				: IN	STD_LOGIC;
 			RESET			: IN	STD_LOGIC;
 			ADS				: IN	STD_LOGIC;
-			RW				: IN  STD_LOGIC;
+			RW				: IN	STD_LOGIC;
 			MIO				: IN	STD_LOGIC;
-			EN_WRRD			: IN  STD_LOGIC;
-			WAITSTATE_CNT	: IN  INTEGER RANGE 0 to 127;
+			EN_WRRD			: IN	STD_LOGIC;
+			WAITSTATE_CNT	: IN	INTEGER RANGE 0 to 127;
 
 			RDY				: OUT	STD_LOGIC;
 			IO_WR			: OUT	STD_LOGIC;
@@ -279,12 +277,12 @@ ARCHITECTURE Behavioral of m8sbc_main is
 			CLK				: IN	STD_LOGIC;
 			RESET			: IN	STD_LOGIC;
 			ADS				: IN	STD_LOGIC;
-			RW				: IN  STD_LOGIC;
+			RW				: IN	STD_LOGIC;
 			MIO				: IN	STD_LOGIC;
-			EN_ISA			: IN  STD_LOGIC; -- negated
+			EN_ISA			: IN	STD_LOGIC; -- negated
 
 			WAITSTATE_16C	: IN	INTEGER RANGE 0 to 15; -- From ADS to check 16B signals
-			WAITSTATE_END	: IN  INTEGER RANGE 0 to 127; -- From check to end of transfer
+			WAITSTATE_END	: IN	INTEGER RANGE 0 to 127; -- From check to end of transfer
 
 			ISA_MEMCS16		: IN	STD_LOGIC;
 			ISA_IOCS16		: IN	STD_LOGIC;
@@ -300,7 +298,7 @@ ARCHITECTURE Behavioral of m8sbc_main is
 			BS16_O			: OUT	STD_LOGIC;
 
 			CPU_16BTR		: IN	STD_LOGIC;
-			ISA_SBHE		: OUT STD_LOGIC
+			ISA_SBHE		: OUT	STD_LOGIC
 		);
 	END COMPONENT;
 
@@ -313,7 +311,7 @@ ARCHITECTURE Behavioral of m8sbc_main is
 			RESET		: IN	STD_LOGIC;
 
 			D_OUT		: OUT	STD_LOGIC_VECTOR(7 downto 0);
-			DS_OUT		: OUT STD_LOGIC_VECTOR(7 downto 0);
+			DS_OUT		: OUT	STD_LOGIC_VECTOR(7 downto 0);
 			CLK_CPU		: IN	STD_LOGIC;
 			RD_CLEAR	: IN	STD_LOGIC;
 			CLEAR_BUF	: IN	STD_LOGIC;
@@ -655,8 +653,6 @@ BEGIN
 	END PROCESS;
 
 
-
-
 	PIC_CS	<= I_CS_PIC;
 	PIT_CS	<= I_CS_PIT;
 
@@ -695,7 +691,6 @@ BEGIN
 	CPU_DATA <= O_CPU_DATA WHEN (O_CPU_DATA_P_O = '1') ELSE "ZZZZZZZZ";
 
 
-
 	-- PORT O61 read fix
 	-- As output port 61h is a latch, we cant read from it. However we can simulate that using this chipset
 	-- So capture data when write occurs to 61h and send it back if something tries to read from it
@@ -718,7 +713,6 @@ BEGIN
 		END IF;
 
 	END PROCESS;
-
 
 
 	CLK_OUT_CPU		<= NOT CLK_CPU WHEN REVERSE_CLOCK = '1' ELSE CLK_CPU; -- For some timings? reason, running below 16 MHz requires inverting clock
