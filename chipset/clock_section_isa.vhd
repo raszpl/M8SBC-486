@@ -22,8 +22,6 @@ USE IEEE.STD_LOGIC_1164.ALL;
 LIBRARY UNISIM;
 USE UNISIM.VCOMPONENTS.ALL;
 
-
-
 ENTITY clock_section_isa IS
 	PORT (
 		CLK_INPUT	: IN  STD_LOGIc;  -- 14.318 MHz in
@@ -51,4 +49,3 @@ BEGIN
 	
 	CLK_OUT <= out_state;
 END Behavioral;
-
