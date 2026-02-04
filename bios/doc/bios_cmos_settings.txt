@@ -30,10 +30,10 @@ CMOS settings:
  | | | | | | | \---- Fast RAM test enabled
  | | | | | | \------ Enable LBA support reporting
  | | | | | \-------- Lock CMOS after boot 
+ | | | | \---------- ROM_CACHEABLE
+ | | | \------------ RAM_CACHEABLE
  | | | | | 
  \------------------ Unused
  
 0x5F:
 CMOS checksum (calculated from 0x40 to 0x5E)
-
-

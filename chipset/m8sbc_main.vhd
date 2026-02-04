@@ -57,10 +57,6 @@ ENTITY m8sbc_main IS
 	-- Reset
 		RESET_SYS_IN		: IN		STD_LOGIC;
 
-	-- Config pins
-		RAM_CACHE_EN		: IN		STD_LOGIC;
-		ROM_CACHE_EN		: IN		STD_LOGIC;
-
 	-- RAM control lines
 		RAM_CS0				: OUT		STD_LOGIC;
 		RAM_CS1				: OUT		STD_LOGIC;
@@ -173,7 +169,6 @@ ARCHITECTURE Behavioral OF m8sbc_main IS
 			CLK_OUT		: OUT	STD_LOGIC; -- 7.159 MHz out
 		);
 	END COMPONENT;
-
 
 	COMPONENT ram_driver IS
 		PORT (
@@ -330,6 +325,9 @@ ARCHITECTURE Behavioral OF m8sbc_main IS
 
 			FPGA_VER	: IN	STD_LOGIC_VECTOR(31 downto 0);
 			RESET		: IN	STD_LOGIC
+
+			RAM_CACHEABLE	: OUT	STD_LOGIC;
+			ROM_CACHEABLE	: OUT	STD_LOGIC;
 		);
 	END COMPONENT;
 
@@ -399,6 +397,9 @@ ARCHITECTURE Behavioral OF m8sbc_main IS
 	SIGNAL	CPU_O_KEN		: STD_LOGIC;
 
 	SIGNAL	O_CPU_16BTR		: STD_LOGIC;
+
+	SIGNAL	RAM_CACHE_EN	: STD_LOGIC;
+	SIGNAL	ROM_CACHE_EN	: STD_LOGIC;
 
 BEGIN
 	-----------------------------------------
@@ -552,21 +553,24 @@ BEGIN
 	);
 
 	cmos_rtc: CMOS PORT MAP(
-		CLK_IN		=> CLK_CPU,
-		DATA_IN		=> CPU_DATA,
-		DATA_OUT	=> O_CMOS_DATA_OUT,
-		CMOS_CS		=> I_CS_CMOS,
-		WR			=> O_IO_WR,
-		RD			=> O_IO_RD,
-		A0			=> O_A0_BLE,
+		CLK_IN			=> CLK_CPU,
+		DATA_IN			=> CPU_DATA,
+		DATA_OUT		=> O_CMOS_DATA_OUT,
+		CMOS_CS			=> I_CS_CMOS,
+		WR				=> O_IO_WR,
+		RD				=> O_IO_RD,
+		A0				=> O_A0_BLE,
 
-		CLK_PIT		=> CLK_PIT,
+		CLK_PIT			=> CLK_PIT,
 
-		AVR_CLK		=> AVR_CLK,
-		AVR_IO		=> AVR_IO,
+		AVR_CLK			=> AVR_CLK,
+		AVR_IO			=> AVR_IO,
 
-		FPGA_VER	=> FPGA_VER,
-		RESET		=> RESET_SYS_IN
+		FPGA_VER		=> FPGA_VER,
+		RESET			=> RESET_SYS_IN
+
+		RAM_CACHEABLE	=> RAM_CACHE_EN,
+		ROM_CACHEABLE	=> ROM_CACHE_EN,
 	);
 
 	O_CPU_16BTR <= O_BHE;
@@ -661,6 +665,7 @@ BEGIN
 					END IF;
 
 					O_CPU_DATA_P_O <= '1';
+
 				ELSIF (I_CS_O61 = '0') THEN -- O61 read
 					O_CPU_DATA <= O61_DATA_L;
 					O_CPU_DATA_P_O <= '1';
