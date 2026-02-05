@@ -71,8 +71,11 @@ extern const uint8_t bitstream_end[] PROGMEM;
 #define RESET_OUT_DDR  DDRE
 #define RESET_OUT_BIT  PE3	 // RESET_OUT, output, active high
 
+#define RESET_BTN_PORT PORTB
 #define RESET_BTN_PIN  PINB
+#define RESET_BTN_DDR  DDRB
 #define RESET_BTN_BIT  PB4	 // RESET_BTN, input, active low
+#define RESET_BTN_PRESSED  (!(RESET_BTN_PIN & (1 << RESET_BTN_BIT)))
 
 // SPI pins: PB1 - SCK (CCLK), PB2 - MOSI (DIN)
 #define SPI_DDR	 DDRB
@@ -119,10 +122,9 @@ static inline void spi_write_byte(uint8_t b) {
 
 // Catch reset requests: FPGA reset (PF1 low) or button (PB4 low)
 static uint8_t reset_requested(void) {
-	if (!(PINB & (1<<RESET_BTN_BIT))) return 1;
+	if (RESET_BTN_PRESSED) return 1;
 	return 0;
 }
-
 
 static uint32_t bitstream_length(void) {
 	return pgm_get_far_address(bitstream_end) - pgm_get_far_address(bitstream);
@@ -154,7 +156,6 @@ static void uart1_puts(const char *str) {
 	}
 }
 
-
 // Load bitstream from flash into FPGA
 int load_fpga_from_flash(void) {
 	uart1_puts("Bitstream load:\r\n");
@@ -179,7 +180,6 @@ int load_fpga_from_flash(void) {
 			return -1;
 		}
 	}
-
 
 	// Send bitstream + print checksum
 
@@ -332,12 +332,10 @@ int main(void) {
 	uint8_t cmos_rec_addr = 0;
 	uint8_t cmos_rec_started = 0;
 
-
-	DDRB &= ~(1<<RESET_BTN_BIT);
-	PORTB |= (1<<RESET_BTN_BIT);
+	RESET_BTN_DDR &= ~(1<<RESET_BTN_BIT); // RESET_BTN input
+	RESET_BTN_PORT |= (1<<RESET_BTN_BIT); // RESET_BTN pull-up
 	DDRE &= ~((1<<PE4)|(1<<PE6));	  // INIT and DONE inputs
 	RESET_OUT_DDR |= (1<<RESET_OUT_BIT);	// Reset out
-
 
 	// Configuration jumpers (SPARE header)
 	// PC2 (1) - PC7 (6)
