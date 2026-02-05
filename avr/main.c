@@ -354,7 +354,6 @@ int main(void) {
 	DDRC |= (1<<PC6);
 	PORTC &= ~(1<<PC6);
 
-
 	RESET_OUT_PORT |= (1<<RESET_OUT_BIT); // RESET ON
 
 	uart1_init();
