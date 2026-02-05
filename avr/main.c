@@ -67,9 +67,9 @@ extern const uint8_t bitstream_end[] PROGMEM;
 #define FPGA_DONE_PIN  PINE
 #define FPGA_DONE_BIT  PE4	 // DONE, input
 
-#define RESET_OUT_PORT PORTF
-#define RESET_OUT_DDR  DDRF
-#define RESET_OUT_BIT  PF0	 // RESET_OUT, output, active high
+#define RESET_OUT_PORT PORTE
+#define RESET_OUT_DDR  DDRE
+#define RESET_OUT_BIT  PE3	 // RESET_OUT, output, active high
 
 #define RESET_BTN_PIN  PINB
 #define RESET_BTN_BIT  PB4	 // RESET_BTN, input, active low
