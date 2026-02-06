@@ -5427,7 +5427,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Reset ext"
+		(property "Value" "EXT. RESET"
 			(at 52.578 131.572 90)
 			(effects
 				(font
@@ -6417,7 +6417,7 @@
 				)
 			)
 		)
-		(property "Value" "Reset btn"
+		(property "Value" "Reset"
 			(at 48.26 145.2188 0)
 			(effects
 				(font
