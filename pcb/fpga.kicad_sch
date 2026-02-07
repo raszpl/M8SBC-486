@@ -4555,6 +4555,10 @@
 		(uuid "16963947-54a2-4bbe-8141-1157c3d49b95")
 	)
 	(no_connect
+		(at 48.26 96.52)
+		(uuid "310fc44a-c963-4c48-bec1-13d9a7e1474c")
+	)
+	(no_connect
 		(at 48.26 71.12)
 		(uuid "460fd196-3ba9-4780-b7dd-69eaba3b6328")
 	)
@@ -4581,10 +4585,6 @@
 	(no_connect
 		(at 48.26 76.2)
 		(uuid "d286bb09-f1d1-48ed-a497-631bb944fce2")
-	)
-	(no_connect
-		(at 48.26 81.28)
-		(uuid "e548ba5e-9b88-4398-8c58-d65ac65220c8")
 	)
 	(no_connect
 		(at 200.66 83.82)
@@ -5165,6 +5165,16 @@
 	)
 	(wire
 		(pts
+			(xy 45.72 81.28) (xy 48.26 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2191fc42-f76f-4825-99bc-c14050b4e56b")
+	)
+	(wire
+		(pts
 			(xy 33.02 144.78) (xy 48.26 144.78)
 		)
 		(stroke
@@ -5455,6 +5465,16 @@
 	)
 	(wire
 		(pts
+			(xy 139.7 88.9) (xy 166.37 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3de89fa0-0859-480b-9d3b-4022e195fd70")
+	)
+	(wire
+		(pts
 			(xy 44.45 33.02) (xy 48.26 33.02)
 		)
 		(stroke
@@ -5533,16 +5553,6 @@
 		)
 		(uuid "46bdec50-4388-4e28-82ae-afdbe1e99a09")
 	)
-	(wire
-		(pts
-			(xy 45.72 83.82) (xy 48.26 83.82)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "46c940ea-f482-41cd-b853-c29ecdaa2a14")
-	)
 	(bus
 		(pts
 			(xy 30.48 147.32) (xy 30.48 144.78)
@@ -5562,16 +5572,6 @@
 			(type default)
 		)
 		(uuid "4cd39004-7db7-4e29-9a18-74df631e76aa")
-	)
-	(wire
-		(pts
-			(xy 139.7 147.32) (xy 149.86 147.32)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4cfd9511-62a7-4f20-b78d-0f343cf54814")
 	)
 	(wire
 		(pts
@@ -5985,16 +5985,6 @@
 	)
 	(wire
 		(pts
-			(xy 48.26 88.9) (xy 29.21 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "652afc6c-2e1f-494f-b32f-ea62a5427f2a")
-	)
-	(wire
-		(pts
 			(xy 271.78 153.67) (xy 271.78 154.94)
 		)
 		(stroke
@@ -6002,16 +5992,6 @@
 			(type default)
 		)
 		(uuid "67248547-028e-40fe-9e6b-9aad968054ba")
-	)
-	(wire
-		(pts
-			(xy 139.7 88.9) (xy 143.51 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "674bc5a7-d2ce-479c-a3d6-33c0993a6b02")
 	)
 	(wire
 		(pts
@@ -6593,6 +6573,16 @@
 		)
 		(uuid "a4d2d031-8dbf-4b61-9124-e07891b24584")
 	)
+	(wire
+		(pts
+			(xy 48.26 88.9) (xy 22.86 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a63ae8dc-1961-4470-9215-15b6506a8ca8")
+	)
 	(bus
 		(pts
 			(xy 165.1 157.48) (xy 165.1 154.94)
@@ -7005,6 +6995,16 @@
 	)
 	(wire
 		(pts
+			(xy 45.72 83.82) (xy 48.26 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d49503d7-d8b8-4de1-8bee-5325ea145f94")
+	)
+	(wire
+		(pts
 			(xy 45.72 48.26) (xy 48.26 48.26)
 		)
 		(stroke
@@ -7032,6 +7032,16 @@
 			(type default)
 		)
 		(uuid "d6d5e89e-2edd-485b-a179-2a859de4a7d0")
+	)
+	(wire
+		(pts
+			(xy 45.72 86.36) (xy 48.26 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d73db448-6fed-43c0-84a9-c7095b035a89")
 	)
 	(wire
 		(pts
@@ -7102,16 +7112,6 @@
 			(type default)
 		)
 		(uuid "e203f51e-e22f-48e2-8aee-2171d81fbb61")
-	)
-	(wire
-		(pts
-			(xy 45.72 96.52) (xy 48.26 96.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e5364bdf-5d6f-47dd-a2fb-dd0861020591")
 	)
 	(wire
 		(pts
@@ -7202,16 +7202,6 @@
 			(type default)
 		)
 		(uuid "f1c46329-1d12-44f8-bb58-1f7fcc43f3d7")
-	)
-	(wire
-		(pts
-			(xy 45.72 86.36) (xy 48.26 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f3ae4455-5607-4710-b730-ad6a61552dfa")
 	)
 	(wire
 		(pts
@@ -7342,6 +7332,16 @@
 			(justify left bottom)
 		)
 		(uuid "13e8ff7b-5530-45b3-93ad-02a2f218bbbd")
+	)
+	(label "PS2_DATA"
+		(at 166.37 88.9 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "1d0bba12-3f95-4f96-af3f-38bdcc2df5e6")
 	)
 	(label "PS2_CLK"
 		(at 166.37 91.44 180)
@@ -7492,16 +7492,6 @@
 			(justify left bottom)
 		)
 		(uuid "6c8090ad-6f86-4b50-ad8f-ed9c7f36aa46")
-	)
-	(label "PS2_DATA"
-		(at 29.21 88.9 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6f5e0540-fe48-49c7-82bc-fcb85aa55725")
 	)
 	(label "A13"
 		(at 33.02 154.94 0)
@@ -7663,6 +7653,16 @@
 		)
 		(uuid "c414e32a-f033-4926-8d87-16ce53beede7")
 	)
+	(label "CLK_FPGA"
+		(at 22.86 88.9 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c8a9344d-deed-4b0c-b273-1bce1c0b321f")
+	)
 	(label "A6"
 		(at 33.02 129.54 0)
 		(effects
@@ -7722,16 +7722,6 @@
 			(justify right bottom)
 		)
 		(uuid "e5332432-deb3-4a91-a926-99feba573942")
-	)
-	(label "CLK_FPGA"
-		(at 149.86 147.32 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "f1b2c8dd-c9c2-4b37-8b08-aab11e8cb90e")
 	)
 	(label "A7"
 		(at 33.02 137.16 0)
@@ -7807,17 +7797,6 @@
 		)
 		(uuid "0c066387-b9e9-4dbc-94c1-ceb03798fb3a")
 	)
-	(hierarchical_label "~{BS16}"
-		(shape output)
-		(at 45.72 86.36 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "10320e6f-d5f1-48b2-86b1-0f48a8d74f78")
-	)
 	(hierarchical_label "ISA_SBHE"
 		(shape output)
 		(at 148.59 104.14 0)
@@ -7883,6 +7862,17 @@
 			(justify left)
 		)
 		(uuid "1f89ef49-8873-4215-b2a5-cbccfb398766")
+	)
+	(hierarchical_label "NMI"
+		(shape output)
+		(at 45.72 81.28 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "223a609d-a4c0-40b8-b300-e102445d0c1c")
 	)
 	(hierarchical_label "~{PIC_CS}"
 		(shape output)
@@ -7960,17 +7950,6 @@
 			(justify left)
 		)
 		(uuid "3214b925-ba56-41f2-a0df-7b15ea8f00f0")
-	)
-	(hierarchical_label "CPU_RESET"
-		(shape input)
-		(at 45.72 96.52 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "3267e70a-ceb0-4357-8856-229e956eac4f")
 	)
 	(hierarchical_label "~{RAM_WE_B1}"
 		(shape output)
@@ -8137,17 +8116,6 @@
 		)
 		(uuid "7ede4c5b-b4f2-4cad-a6a8-98a03c7e1634")
 	)
-	(hierarchical_label "NMI"
-		(shape output)
-		(at 45.72 83.82 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "80761124-d8b6-4b5c-9fa6-c22871983354")
-	)
 	(hierarchical_label "TR_16B_1"
 		(shape output)
 		(at 154.94 165.1 0)
@@ -8291,6 +8259,17 @@
 		)
 		(uuid "c220c532-37a9-48ff-8b81-87a88139edf1")
 	)
+	(hierarchical_label "~{BS16}"
+		(shape output)
+		(at 45.72 83.82 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c74b6a34-7991-4a39-81ff-48bb68f0ad83")
+	)
 	(hierarchical_label "KB_INT"
 		(shape output)
 		(at 144.78 132.08 0)
@@ -8367,6 +8346,17 @@
 			(justify left)
 		)
 		(uuid "f8c530ec-88bb-4693-b1f0-dd0ca20d3128")
+	)
+	(hierarchical_label "CPU_RESET"
+		(shape input)
+		(at 45.72 86.36 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fc3ea2ff-b5ff-4434-8765-1d129e2328ec")
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -11495,73 +11485,6 @@
 			(project "homebrew_486"
 				(path "/360fb3b9-a21a-4226-8954-bf45cf17bb35/49c3128c-49f0-451c-bde3-bf7412e8a8c9"
 					(reference "#PWR0109")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint_Small")
-		(at 143.51 88.9 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "fea034e2-a33a-4f14-bcf2-486c0abeb39f")
-		(property "Reference" "TP15"
-			(at 137.16 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Value" "Free 126"
-			(at 144.272 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "486custom:TestPoint_Pad_D0.4mm"
-			(at 148.59 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 148.59 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 143.51 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ed07eee3-7180-478e-85a3-5d376beabf6d")
-		)
-		(instances
-			(project "homebrew_486"
-				(path "/360fb3b9-a21a-4226-8954-bf45cf17bb35/49c3128c-49f0-451c-bde3-bf7412e8a8c9"
-					(reference "TP15")
 					(unit 1)
 				)
 			)

@@ -56,7 +56,6 @@ BEGIN
 		LOCKED	=> LOCKED_int
 	);
 
-
 	BUFG_FB : BUFG
 	PORT MAP (
 		I => CLK0_raw,
