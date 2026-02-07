@@ -2980,7 +2980,7 @@
 	)
 	(wire
 		(pts
-			(xy 201.93 66.04) (xy 205.74 66.04)
+			(xy 203.2 66.04) (xy 205.74 66.04)
 		)
 		(stroke
 			(width 0)
@@ -3340,7 +3340,7 @@
 	)
 	(wire
 		(pts
-			(xy 201.93 63.5) (xy 205.74 63.5)
+			(xy 203.2 63.5) (xy 205.74 63.5)
 		)
 		(stroke
 			(width 0)
@@ -5126,7 +5126,7 @@
 	)
 	(hierarchical_label "TR_8B_3"
 		(shape input)
-		(at 201.93 66.04 180)
+		(at 203.2 66.04 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5170,7 +5170,7 @@
 	)
 	(hierarchical_label "~{W{slash}R}"
 		(shape input)
-		(at 201.93 63.5 180)
+		(at 203.2 63.5 180)
 		(effects
 			(font
 				(size 1.27 1.27)
