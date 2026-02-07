@@ -4297,12 +4297,6 @@
 		(uuid "aed61bd1-b111-4600-b57b-b0a5623cc010")
 	)
 	(junction
-		(at 114.3 135.89)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "af18f0ca-9158-4bce-bf16-0dd209c4893e")
-	)
-	(junction
 		(at 162.56 49.53)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4325,12 +4319,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "bb30e9db-fffe-4505-b284-bf166b5991f8")
-	)
-	(junction
-		(at 104.14 130.81)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "c111b336-3cec-448b-acb0-35fcb6dacd2d")
 	)
 	(junction
 		(at 158.75 49.53)
@@ -6966,16 +6954,6 @@
 			(type default)
 		)
 		(uuid "5df8acee-9dcd-4a4c-b663-70fc7080a491")
-	)
-	(wire
-		(pts
-			(xy 104.14 130.81) (xy 104.14 135.89)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5e5d73ef-eeb7-4643-99d8-ba7c0137ed35")
 	)
 	(wire
 		(pts
@@ -11006,74 +10984,6 @@
 			(project "homebrew_486"
 				(path "/360fb3b9-a21a-4226-8954-bf45cf17bb35/98e7b245-1892-4961-80dc-a2961de8ec76"
 					(reference "C18")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:Jumper_2_Open")
-		(at 109.22 135.89 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "0f104473-3fd8-40d7-a91c-4659aa00ccf9")
-		(property "Reference" "JP5"
-			(at 109.22 132.588 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "Jumper_2_Open"
-			(at 109.22 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm"
-			(at 109.22 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 109.22 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Jumper, 2-pole, open"
-			(at 109.22 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "80ef2991-0d84-44f1-ad8b-d093d5e3cb61")
-		)
-		(pin "1"
-			(uuid "8e1492a3-d233-4859-9a0d-be9160d3cce1")
-		)
-		(instances
-			(project "homebrew_486"
-				(path "/360fb3b9-a21a-4226-8954-bf45cf17bb35/98e7b245-1892-4961-80dc-a2961de8ec76"
-					(reference "JP5")
 					(unit 1)
 				)
 			)

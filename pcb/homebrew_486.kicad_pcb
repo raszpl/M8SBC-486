@@ -497,7 +497,7 @@
 	(net 350 "Net-(U1-~{EADS})")
 	(net 351 "Net-(JP4-B)")
 	(net 352 "Net-(U1-~{BLAST})")
-	(net 353 "Net-(JP5-B)")
+	(net 353 "Net-(U1-~{BRDY})")
 	(footprint "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical"
 		(layer "F.Cu")
 		(uuid "02c858f7-f6b9-4ddb-bc60-d818b8575aae")
@@ -9849,212 +9849,10 @@
 			)
 		)
 	)
-	(footprint "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm"
-		(layer "F.Cu")
-		(uuid "4cd0b633-f1a7-4f6b-a0a8-3d2cc14983d6")
-		(at 98.166348 129.925652 45)
-		(descr "SMD Solder Jumper, 1x1.5mm Triangular Pads, 0.3mm gap, open")
-		(tags "solder jumper open")
-		(property "Reference" "JP5"
-			(at 0 -1.8 45)
-			(layer "F.SilkS")
-			(uuid "90bfc161-6cab-4c5f-aee7-c6afa7de02e9")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Value" "Jumper_2_Open"
-			(at 0 1.9 45)
-			(layer "F.Fab")
-			(uuid "2f4be84c-02a5-4a4d-a78c-15cae036fb59")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 0 0 45)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "fece7c14-c57d-43b0-9bfe-aba8bc97ad56")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Description" "Jumper, 2-pole, open"
-			(at 0 0 45)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "f2b82fd4-4d8e-4ffd-b5f6-e864dd68dc8e")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property ki_fp_filters "Jumper* TestPoint*2Pads* TestPoint*Bridge*")
-		(path "/98e7b245-1892-4961-80dc-a2961de8ec76/0f104473-3fd8-40d7-a91c-4659aa00ccf9")
-		(sheetname "/CPU/")
-		(sheetfile "cpu.kicad_sch")
-		(zone_connect 1)
-		(attr exclude_from_pos_files allow_soldermask_bridges)
-		(fp_poly
-			(pts
-				(xy -1.225 -0.75) (xy -1.225 0.75) (xy 1.225 0.75) (xy 1.225 -0.75)
-			)
-			(stroke
-				(width 0)
-				(type default)
-			)
-			(fill yes)
-			(layer "F.Mask")
-			(uuid "9374bc9d-2566-43a2-a429-c45e27ce18d0")
-		)
-		(fp_line
-			(start -1.4 -1)
-			(end 1.4 -1)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "68e8e249-8990-4fe7-bca3-5c6e05f14d30")
-		)
-		(fp_line
-			(start -1.4 1)
-			(end -1.4 -1)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "1ea861c2-9526-4654-a13c-2cb9a5cbaffb")
-		)
-		(fp_line
-			(start 1.4 -1)
-			(end 1.4 1)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "b7db056d-5042-4f9d-9978-f4719b02d826")
-		)
-		(fp_line
-			(start 1.4 1)
-			(end -1.4 1)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "65f2a366-abee-4e54-8499-d5408aa28445")
-		)
-		(fp_line
-			(start -1.65 -1.25)
-			(end -1.65 1.25)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "a86f369e-ad8a-4b1a-9924-2066b1fc8c17")
-		)
-		(fp_line
-			(start -1.65 -1.25)
-			(end 1.65 -1.25)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "808dcb28-a8eb-4ece-bf6f-1ba9f0815e85")
-		)
-		(fp_line
-			(start 1.65 1.25)
-			(end -1.65 1.25)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "e37d03d9-1fc9-483f-9c2e-ed76455369ac")
-		)
-		(fp_line
-			(start 1.65 1.25)
-			(end 1.65 -1.25)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "F.CrtYd")
-			(uuid "7ba953de-4840-45f9-8dc9-7669dc23f1eb")
-		)
-		(pad "1" smd custom
-			(at -0.724999 0 45)
-			(size 0.3 0.3)
-			(layers "F.Cu" "F.Mask")
-			(net 4 "+5V")
-			(pinfunction "A")
-			(pintype "passive")
-			(zone_connect 2)
-			(thermal_bridge_angle 45)
-			(options
-				(clearance outline)
-				(anchor rect)
-			)
-			(primitives
-				(gr_poly
-					(pts
-						(xy 1 0) (xy 0.5 0.75) (xy -0.5 0.75) (xy -0.5 -0.75) (xy 0.5 -0.75)
-					)
-					(width 0)
-					(fill yes)
-				)
-			)
-			(uuid "c632344a-2b78-464b-8edf-34b9e31bea89")
-		)
-		(pad "2" smd custom
-			(at 0.724999 0 45)
-			(size 0.3 0.3)
-			(layers "F.Cu" "F.Mask")
-			(net 353 "Net-(JP5-B)")
-			(pinfunction "B")
-			(pintype "passive")
-			(zone_connect 2)
-			(thermal_bridge_angle 45)
-			(options
-				(clearance outline)
-				(anchor rect)
-			)
-			(primitives
-				(gr_poly
-					(pts
-						(xy 0.5 0.75) (xy -0.65 0.75) (xy -0.15 0) (xy -0.65 -0.75) (xy 0.5 -0.75)
-					)
-					(width 0)
-					(fill yes)
-				)
-			)
-			(uuid "41fdcbf9-1b4f-4af9-87c0-fd1f704a2a5b")
-		)
-		(embedded_fonts no)
-	)
 	(footprint "486custom:TestPoint_Pad_D0.4mm"
 		(layer "F.Cu")
 		(uuid "4e018913-137b-46bd-94d6-6c491bb6a0df")
-		(at 99.822 128.524)
+		(at 98.933 129.413 180)
 		(descr "SMD pad as test Point, diameter 1.0mm")
 		(tags "test point SMD pad")
 		(property "Reference" "TP14"
@@ -10081,7 +9879,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 0 0 0)
+			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -10094,7 +9892,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 0 0 0)
+			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -10145,10 +9943,10 @@
 			)
 		)
 		(pad "1" smd circle
-			(at 0 0)
+			(at 0 0 180)
 			(size 0.4 0.4)
 			(layers "F.Cu" "F.Mask")
-			(net 353 "Net-(JP5-B)")
+			(net 353 "Net-(U1-~{BRDY})")
 			(pinfunction "1")
 			(pintype "passive")
 			(uuid "6ddb904f-3bca-4557-a062-d213224dc750")
@@ -41591,7 +41389,7 @@
 			(drill 0.62)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 353 "Net-(JP5-B)")
+			(net 353 "Net-(U1-~{BRDY})")
 			(pinfunction "~{BRDY}")
 			(pintype "input")
 			(uuid "111d809c-077b-486f-ad15-f88f6bd15bb6")
@@ -53447,7 +53245,7 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "the 440 (VIAs) edition by Rasz_pl"
+	(gr_text "the 439 (VIAs) edition by Rasz_pl"
 		(at 110.109 131.064 0)
 		(layer "F.SilkS")
 		(uuid "bf48a03d-2d22-4248-8ae4-7ee3ff955521")
@@ -56375,15 +56173,6 @@
 		(free yes)
 		(net 4)
 		(uuid "bbd17c47-6215-4610-88ac-70856b42de0c")
-	)
-	(via
-		(at 97.282 130.937)
-		(size 0.5)
-		(drill 0.2)
-		(layers "F.Cu" "B.Cu")
-		(free yes)
-		(net 4)
-		(uuid "bde0bf40-1353-4390-8ac2-ba8b8020c214")
 	)
 	(via
 		(at 90.805 110.236)
