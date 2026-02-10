@@ -7333,6 +7333,16 @@
 		)
 		(uuid "13e8ff7b-5530-45b3-93ad-02a2f218bbbd")
 	)
+	(label "A15"
+		(at 33.02 157.48 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "18c99fe9-bb2c-4599-a5fc-b94735898582")
+	)
 	(label "PS2_DATA"
 		(at 166.37 88.9 180)
 		(effects
@@ -7352,6 +7362,16 @@
 			(justify right bottom)
 		)
 		(uuid "2077af94-97eb-410f-ac0f-433ea6f13141")
+	)
+	(label "A14"
+		(at 33.02 154.94 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2339396d-58cd-494a-8969-412d92e6ed02")
 	)
 	(label "SA0"
 		(at 162.56 129.54 180)
@@ -7463,6 +7483,16 @@
 		)
 		(uuid "59c5022f-e666-4577-8beb-7d023cc820a7")
 	)
+	(label "A13"
+		(at 33.02 149.86 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5ece2ad7-5e3f-40fd-8410-c13936acbc38")
+	)
 	(label "A8"
 		(at 33.02 139.7 0)
 		(effects
@@ -7492,16 +7522,6 @@
 			(justify left bottom)
 		)
 		(uuid "6c8090ad-6f86-4b50-ad8f-ed9c7f36aa46")
-	)
-	(label "A13"
-		(at 33.02 154.94 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6f5ed328-3857-4e81-8622-815421adcb4d")
 	)
 	(label "A18"
 		(at 33.02 167.64 0)
@@ -7533,16 +7553,6 @@
 		)
 		(uuid "829fc7d2-1916-46b7-946e-9b4e11676c13")
 	)
-	(label "A14"
-		(at 33.02 157.48 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "86804c68-71bb-41e1-9eab-2adea055d3f5")
-	)
 	(label "A19"
 		(at 33.02 170.18 0)
 		(effects
@@ -7553,15 +7563,15 @@
 		)
 		(uuid "8eccc965-9d28-42a4-b22f-43f6f0c2561e")
 	)
-	(label "A12"
-		(at 33.02 149.86 0)
+	(label "A16"
+		(at 33.02 160.02 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "98860583-4ac0-404d-8261-ed742b2f2b39")
+		(uuid "95db88f1-4f67-456c-9eab-edd7f8104331")
 	)
 	(label "DT4"
 		(at 162.56 144.78 180)
@@ -7582,6 +7592,16 @@
 			(justify left bottom)
 		)
 		(uuid "9b1f3a02-3290-4edf-b392-ab93dd1489e8")
+	)
+	(label "A12"
+		(at 33.02 162.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9c4b67f4-93f1-4b19-b18f-cfabb819742a")
 	)
 	(label "A5"
 		(at 33.02 124.46 0)
@@ -7683,16 +7703,6 @@
 		)
 		(uuid "d854cba3-efa3-4efc-963c-578c74ddcf35")
 	)
-	(label "A15"
-		(at 33.02 160.02 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "dc37d45b-8d14-4a44-a256-2c9d33d67f9d")
-	)
 	(label "DT7"
 		(at 162.56 160.02 180)
 		(effects
@@ -7742,16 +7752,6 @@
 			(justify right bottom)
 		)
 		(uuid "f3c3dc15-1e23-4af8-9c5f-58d91f4f02e4")
-	)
-	(label "A16"
-		(at 33.02 162.56 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "ffbe8a6d-ecdd-4576-938c-dc9987f5d942")
 	)
 	(hierarchical_label "CLK_ISA"
 		(shape output)
