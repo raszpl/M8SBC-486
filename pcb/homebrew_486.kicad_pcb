@@ -28729,6 +28729,7 @@
 		)
 		(embedded_fonts no)
 		(model "${KICAD9_3DMODEL_DIR}/Package_LCC.3dshapes/PLCC-28_THT-Socket.step"
+			(hide yes)
 			(offset
 				(xyz 0 0 0)
 			)
@@ -28737,6 +28738,17 @@
 			)
 			(rotate
 				(xyz 0 0 0)
+			)
+		)
+		(model "${KIPRJMOD}/486custom.pretty/walter/pth_plcc.3dshapes/plcc28_pth-skt.wrl"
+			(offset
+				(xyz -1.3 -3.8 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -0 -0 -180)
 			)
 		)
 	)
