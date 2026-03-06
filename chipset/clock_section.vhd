@@ -139,77 +139,77 @@ END Behavioral;
 --use UNISIM.vcomponents.all;
 --
 --entity clock_section is
---	  port (
---		  CLK_INPUT	  : in	std_logic;	-- 48 MHz input clock (on GCK pin)
---		  CPU_CLK_OUT : out std_logic	-- 12 MHz clock for CPU
---	  );
+--    port (
+--        CLK_INPUT   : in  std_logic;  -- 48 MHz input clock (on GCK pin)
+--        CPU_CLK_OUT : out std_logic   -- 12 MHz clock for CPU
+--    );
 --end entity;
 --
 --architecture Behavioral of clock_section is
 --
---	  -- Internal signals
---	  signal CLKIN_buf	: std_logic;
---	  signal CLKDV_raw	: std_logic;
---	  signal CLK0_raw	: std_logic;
---	  signal CLKFB		: std_logic;
---	  signal LOCKED_int : std_logic;
+--    -- Internal signals
+--    signal CLKIN_buf  : std_logic;
+--    signal CLKDV_raw  : std_logic;
+--    signal CLK0_raw   : std_logic;
+--    signal CLKFB      : std_logic;
+--    signal LOCKED_int : std_logic;
 --
 --begin
 --
---	  ----------------------------------------------------------------
---	  -- Input buffer for 48 MHz source
---	  ----------------------------------------------------------------
---	  CLKIN_IBUFG : IBUFG
---	  port map (
---		  I => CLK_INPUT,
---		  O => CLKIN_buf
---	  );
+--    ----------------------------------------------------------------
+--    -- Input buffer for 48 MHz source
+--    ----------------------------------------------------------------
+--    CLKIN_IBUFG : IBUFG
+--    port map (
+--        I => CLK_INPUT,
+--        O => CLKIN_buf
+--    );
 --
---	  ----------------------------------------------------------------
---	  -- Single DLL: divide 48 MHz -> 12 MHz (CLKDV output)
---	  ----------------------------------------------------------------
---	  CLKDLL_inst : CLKDLL
---	  generic map (
---		  CLKDV_DIVIDE => 1.5,
+--    ----------------------------------------------------------------
+--    -- Single DLL: divide 48 MHz -> 12 MHz (CLKDV output)
+--    ----------------------------------------------------------------
+--    CLKDLL_inst : CLKDLL
+--    generic map (
+--        CLKDV_DIVIDE => 1.5,  
 --		  -- We can divide by: 1.5,2.0,2.5,3.0,4.0,5.0,8.0 or 16.0
 --		  -- 4.0: 12.0 MHz
 --		  -- 3.0: 16.0 MHz
 --		  -- 2.5: 19.2 MHz
 --		  -- 2.0: 24.0 MHz
 --		  -- 1.5: 32.0 MHz
---		  DUTY_CYCLE_CORRECTION => TRUE,
---		  STARTUP_WAIT => TRUE
---	  )
---	  port map (
---		  CLKIN	  => CLKIN_buf, -- from input buffer
---		  CLKFB	  => CLKFB,		-- feedback from BUFG
---		  RST	  => '0',		-- no reset
---		  CLKDV	  => CLKDV_raw, -- divided clock
---		  CLK0	  => CLK0_raw,	-- 0° output for feedback
---		  CLK90	  => open,
---		  CLK180  => open,
---		  CLK270  => open,
---		  CLK2X	  => open,
---		  LOCKED  => LOCKED_int
---	  );
+--        DUTY_CYCLE_CORRECTION => TRUE,
+--        STARTUP_WAIT => TRUE
+--    )
+--    port map (
+--        CLKIN   => CLKIN_buf, -- from input buffer
+--        CLKFB   => CLKFB,     -- feedback from BUFG
+--        RST     => '0',       -- no reset
+--        CLKDV   => CLKDV_raw, -- divided clock
+--        CLK0    => CLK0_raw,  -- 0Â° output for feedback
+--        CLK90   => open,
+--        CLK180  => open,
+--        CLK270  => open,
+--        CLK2X   => open,
+--        LOCKED  => LOCKED_int
+--    );
 --
---	  ----------------------------------------------------------------
---	  -- Feedback BUFG for DLL (keeps CLK0 and CLKIN phase-aligned)
---	  ----------------------------------------------------------------
---	  BUFG_FB : BUFG
---	  port map (
---		  I => CLK0_raw,
---		  O => CLKFB
---	  );
+--    ----------------------------------------------------------------
+--    -- Feedback BUFG for DLL (keeps CLK0 and CLKIN phase-aligned)
+--    ----------------------------------------------------------------
+--    BUFG_FB : BUFG
+--    port map (
+--        I => CLK0_raw,
+--        O => CLKFB
+--    );
 --
---	  ----------------------------------------------------------------
---	  -- Global buffer for divided clock (drives CPU and FPGA logic)
---	  ----------------------------------------------------------------
---	  BUFG_CLKDV : BUFG
---	  port map (
---		  I => CLKDV_raw,
---		  O => CPU_CLK_OUT
---	  );
+--    ----------------------------------------------------------------
+--    -- Global buffer for divided clock (drives CPU and FPGA logic)
+--    ----------------------------------------------------------------
+--    BUFG_CLKDV : BUFG
+--    port map (
+--        I => CLKDV_raw,
+--        O => CPU_CLK_OUT
+--    );
 --
 --
 --end Behavioral;
