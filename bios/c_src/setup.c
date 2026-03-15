@@ -119,7 +119,24 @@ static void draw_modified() {
 static void bios_redraw() {
 	char print_buffer[40];
 
+<<<<<<< HEAD
 	vga_clear(0x70);
+=======
+    vga_print_string("SeaPig BIOS Settings", 30, 0, 0x07);
+    vga_print_string("UP/DOWN:Navigate  ESC:Exit  F1:Help  F10:Save", 1, 24, 0x0F);
+    for(int x=0; x<80; x++) {
+        vga_set_char_attr(0x2F, x, 0);
+        vga_set_char_attr(0x0F, x, 24);
+        vga_print_char('=', x, 23, 0x78);
+        vga_print_char('-', x, 2, 0x78);
+        vga_print_char('-', x, 10, 0x78);
+    }
+    vga_print_string("System info", 1, 2, 0x78);
+    vga_print_string("Settings", 1, 10, 0x78);
+    
+    vga_print_string(" " VERSION " ", 80 - sizeof(" " VERSION " "), 23, 0x78);
+    
+>>>>>>> f8e8425 (BIOS A2.01)
 
 	vga_print_string("SeaPig BIOS Settings", 30, 0, 0x07);
 	vga_print_string("UP/DOWN:Navigate	ESC:Exit  F1:Help  F10:Save", 1, 24, 0x0F);
@@ -134,11 +151,21 @@ static void bios_redraw() {
 	vga_print_string("Settings", 1, 10, 0x78);
 
 
+<<<<<<< HEAD
 	vga_print_string("Machine", 3, 4, 0x71);
 	vga_print_string("CPU Model", 3, 5, 0x71);
 	vga_print_string("FPU available", 3, 6, 0x71);
 	vga_print_string("Memory available", 3, 7, 0x71);
 	vga_print_string("Primary IDE", 3, 8, 0x71);
+=======
+    if(l_is_m8sbc) {
+        vga_print_string("M8SBC-486, chipset ver: ", 35, 4, 0x71);
+        itoapad(l_chp_version, print_buffer, 16, 4);
+        vga_print_string(print_buffer, 59, 4, 0x71);
+    } else {
+        vga_print_string("Unknown", 35, 4, 0x71);
+    }
+>>>>>>> f8e8425 (BIOS A2.01)
 
 	vga_print_char(':', 33, 4, 0x71);
 	vga_print_char(':', 33, 5, 0x71);

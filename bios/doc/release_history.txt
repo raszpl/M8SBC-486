@@ -1,0 +1,34 @@
+M8SBC-486 SeaPig BIOS release history
+
+Current known BIOS issues:
+  - No LBA write support
+  - Compact flash cards get randomly corrupted (unsure if it's a hardware or BIOS issue).
+
+
+A2.01:
+  Changes / fixes:
+    - Added a POST summary after the main POST screen
+    - Added proper POST codes
+    - Added real mode exception handler
+    - Added fixed pointer for INT15. This fixes QEMM compatibility
+    - IDE detection fixes
+    - Memory test error message update
+    - Version display in setup
+    
+
+A2.00:
+  First release based on BIOS by b-dmitry1
+
+  Improvements over base BIOS:
+    - Fancy POST screen
+    - LBA support (read)
+    - Hard drive detection
+    - BIOS setup
+    - Extended memory test
+    - Compatibility fixes
+  Known issues:
+    - No LBA write support
+    - Compact flash cards get randomly corrupted (unsure if it's a hardware or BIOS issue).
+
+1.00:
+  First testing BIOS, abandoned

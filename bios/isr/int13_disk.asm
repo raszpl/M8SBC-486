@@ -153,10 +153,6 @@ int13_write:
 	cmp dl, 0x80
 	jne int13_not_ready
 
-%if (DISKS_READONLY)
-	jmp int13_success
-%endif
-
 	cmp al, 0
 	jne int13_write_check_al_done
 	mov al, 1

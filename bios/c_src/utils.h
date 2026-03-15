@@ -5,7 +5,9 @@
 
 #include <stdint.h>
 
+char *strrev(char *str);
 char *itoa(int value, char *str, int base);
+char *itoapad(int value, char *str, int base, int width);
 
 char *strcat(char *dest, const char *src);
 char *strcpy(char *dest, const char *src);

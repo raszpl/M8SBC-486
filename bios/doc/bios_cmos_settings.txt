@@ -1,4 +1,4 @@
-CMOS register map on M8SBC-486 
+CMOS register map on M8SBC-486 (SeaPig BIOS version A2.01)
 
 I/O Ports:
 0x70 - CMOS index port

@@ -1,0 +1,31 @@
+M8SBC-486 SeaPig BIOS A2.01 POST codes
+
+| 01 | BIOS execution start
+| 02 | Initial PIC setup
+| 03 | Base 64K memory test
+| 04 | BIOS data setup (IVT, BDA)
+| 05 | Option ROM detection and execution
+| 06 | VGA init
+| 07 | L1 Cache enable
+| 08 | C entry
+| 09 | C execution done, Real mode PIT init
+| 0A | Read boot sector
+| 0B | Enable interrupts leaving
+| 0C | Start OS
+| 80 | C main() running. IDT init
+| 81 | CMOS read
+| 82 | CPU identification
+| 83 | PIT setup
+| 84 | PIT test pass
+| 85 | BIOS POST display init
+| 86 | BIOS POST display
+| 87 | Extended memory test
+| 88 | Primary IDE detection
+| 89 | POST display wait
+| 8A | Restore PIC
+| 8B | Restore VGA and print summary
+| A0 | About display
+| A1 | BIOS setup
+| E0 | Base 64K memory test failed
+| E1 | Extended memory test failed
+| EE | Real mode exception. POST code n-1 shows exception interrupt

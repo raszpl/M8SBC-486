@@ -4,68 +4,109 @@
 ; Licensed under the MIT License.
 ;
 
+; Traps / faults
+; If your system working properly this will never be executed
+;
+; Added with A2.01: Printing stack dump on VGA text screen
+;
 
-	; Traps / faults
-	; If your system working properly this will never be executed
-	; Otherwise you will see red error code in the top left corner of the screen
-	; and in the debug console. This may indicate RAM controller or CPU error
 
 trap:
-	mov dx, 0xB800
-	mov ds, dx
-
-	mov ah, 12
-	mov di, 150
-	cld
+    ; POST EE - Real mode exception. POST code n-1 shows exception interrupt
+	out 0x80, al
+	mov al, 0xEE
+	out 0x80, al
+    
+    ; Code below additionally prints expection and stack dump on the screen. Assuming video is working and current mode is text
+    ; No RAM usage
+    
+    mov dx, 0xB800      ; VGA segment
+	mov es, dx
+	; xor di, di          ; Start at the top left corner (0,0)
+    mov di, 3840          ; Bottom left corner (0,24)
+	cld 
+    
+    ; Print exception letter from bl
+    mov al, bl
+    mov ah, 0x4F        ; White text on red background
+    stosw               ; word store
 	
-	; mov al, 'T'
-	; out DEBUG_UART, al
-	; stosw
-	; mov al, 'r'
-	; out DEBUG_UART, al
-	; stosw
-	; mov al, 'a'
-	; out DEBUG_UART, al
-	; stosw
-	; mov al, 'p'
-	; out DEBUG_UART, al
-	; stosw
-	; mov al, bl
-	; out DEBUG_UART, al
-	; stosw
-
-	; mov al, 3
-	; out PORT_VMODE, al
-
-	jmp $
+    ; separators
+    mov al, ':'
+    stosw
+    mov al, ' '
+    stosw
+    
+    ; Stack dump print
+    mov bp, sp
+    mov cx, 8           ; Words amount, 8 words
+    
+.dump_word:
+    mov dx, ss:[bp]     ; dx - val
+    add bp, 2
+    
+    mov bh, 4           ; 4 nibbles in word
+.print_nibble:
+    rol dx, 4
+    mov al, dl
+    and al, 0x0F
+    cmp al, 9
+    jbe .is_digit
+    add al, 7
+.is_digit:
+    add al, '0'
+    mov ah, 0x4F        ; Attribute
+    stosw
+    dec bh
+    jnz .print_nibble
+    
+    ; Space between words
+    mov al, ' '
+    mov ah, 0x4F
+    stosw
+    
+    dec cx
+    jnz .dump_word
+    
+    cli
+.halt:
+    hlt
+	jmp .halt
 
 int00:
-	mov bl, 'Z'
+	mov bl, '0' ; Divide by 0
+    mov al, 0x00
 	jmp trap
 
 int01:
 	iret
-	mov bl, 'D'
+	mov bl, '1' ; Reserved
+    mov al, 0x01
 	jmp trap
 
 int02:
-	mov bl, 'N'
+	mov bl, '2' ; NMI Interrupt
+    mov al, 0x02
 	jmp trap
 
 int03:
-	mov bl, '3'
+	mov bl, '3' ; Breakpoint
+    mov al, 0x03
 	jmp trap
 
 int04:
-	mov bl, 'O'
+	mov bl, '4' ; Overflow
+    mov al, 0x04
 	jmp trap
 
 int05:
-	mov bl, 'B'
+	mov bl, '5' ; Bounds range exceeded
+    mov al, 0x05
 	jmp trap
 
 int06:
-	mov bl, 'I'
+	mov bl, '6' ; Invalid opcode
+    mov al, 0x06
 	jmp trap
 
 int07:
@@ -74,5 +115,5 @@ int07:
 	add word [bp + 2], 2
 	pop bp
 	iret
-	mov bl, 'E'
+	mov bl, '7' ; Device not available
 	jmp trap

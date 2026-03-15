@@ -2,7 +2,9 @@
 
 Minimal BIOS for M8SBC-486 that is capable of booting various operating systems such as MS-DOS, FreeDOS or Linux. 
 
-Current version: A2.00
+Current version: A2.01
+
+See docs/ for more technical information.
 
 ## Building
 

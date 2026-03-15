@@ -16,7 +16,7 @@ void vga_print_string(const char *str, int x, int y, uint8_t attr) {
     }
 }
 
-void vga_print_itoa(int value, int x, int y, uint8_t attr, int base, int width) { // width = extra parameter spaces to clear previous data
+int vga_print_itoa(int value, int x, int y, uint8_t attr, int base, int width) { // width = extra parameter spaces to clear previous data. Returns number len
     char str[16] = {0};
     itoa(value, str, base);
     vga_print_string(str, x, y, attr);
@@ -25,6 +25,7 @@ void vga_print_itoa(int value, int x, int y, uint8_t attr, int base, int width) 
     for(int i=len;i<width;i++) {
         vga_print_char(x, y + i, ' ', attr);
     }
+    return len;
 }
 
 void vga_set_char_attr(uint8_t attr, int x, int y) {

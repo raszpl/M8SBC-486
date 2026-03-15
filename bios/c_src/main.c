@@ -1,11 +1,11 @@
 #include <stdint.h>
-#include "x86io.h"
-#include "interrupts.h"
-#include "utils.h"
-#include "vga.h"
-#include "cpudetect.h"
-#include "ide.h"
-#include "cmos.h"
+#include "x86io.h"          // IN(), OUT(), INW(), OUTW()
+#include "interrupts.h"     // IDT, PIC, IRQ0 and IRQ1 ISR and handlers (timer + keyboard), keyboard functions
+#include "utils.h"          // C utility functions (strings, memory)
+#include "vga.h"            // VGA print, VGA text mode logo
+#include "cpudetect.h"      // CPUID parse, Cyrix check, FPU check
+#include "ide.h"            // IDE functions and detection
+#include "cmos.h"           // CMOS settings read, write, restore, save
 
 #include "about.h"
 #include "setup.h"
@@ -14,23 +14,30 @@
 #define VERSION "?.??"
 #endif
 
-#define POST(x) outb(0x80, 0x10 + (x))
+#define POST(x) outb(0x80, x)
 
-void fatal_error() { // TO UPDATE
-    vga_print_string("MEMORY ERROR", 0, 0, 0x0F);
-    cli();
-    asm volatile("hlt");
-    while(1) {}
-}
+volatile uint32_t *cpuid_edx = (uint32_t*)0x5F0;  // DX from reset is stored to 0x5F0 by ASM
 
+// Global variables
+uint16_t cpuid;
 int cyrix_cpu = 0;
 char cpu_model[48];
-volatile uint32_t *cpuid_edx = (uint32_t*)0x5F0; // DX from reset is stored to 0x5F0 by ASM
 int fpu_present = 0;
-int mem_total = 64; // base 64K already tested
-uint16_t cpuid;
+
+int mem_total = 64;             // base 64K already tested
 int ide_detected = 0;
 char ide_name[48];
+int skip_memory_test = 0;
+uint8_t cmos_status;
+
+// Memory test regions:
+// 0x0010000 - 0x009FFFF: start: 0x0010000, 9 blocks
+// 0x0100000 - 0x03FFFFF: start: 0x0100000, 48 blocks
+// 0x04A0000 - 0x04FFFFF: start: 0x04A0000, 6 blocks
+// block is 64K in size
+//
+// Base 64K was already tested before and it should 
+// be working if we already hit this point
 
 #define MEMTEST_REGIONS_TOTAL 3
 struct memtest_regions_struct {
@@ -42,33 +49,46 @@ struct memtest_regions_struct {
     {0x04A0000, 6}
 };
 
-int skip_memory_test = 0;
+void memory_error(uint32_t read, uint32_t expected, uint32_t location, int x_pos) { // TO UPDATE
+    char buf[16];
+    
+    POST(0xE1); // E1 - Extended memory test failed
+    
+    skip_memory_test = 0; // Clear if already selected
+    
+    location = location * 4;
+    
+    // FAIL: [address] - [read]: [value] [expected]: [value]
+    // example: FAIL: DEADBEEF - R: 12121212 E: 55AA55AA
+    vga_print_string("FAIL: ", x_pos, 10, 0x0C);
+    itoapad(location, buf, 16, 8);
+    vga_print_string(buf, x_pos + 6, 10, 0x0C); // x 14
+    vga_print_string("- R:", x_pos + 15, 10, 0x0C); // x 20
+    itoapad(read, buf, 16, 8);
+    vga_print_string(buf, x_pos + 20, 10, 0x0C); // x 28
+    vga_print_string("E: ", x_pos + 29, 10, 0x0C); // x 32
+    itoapad(expected, buf, 16, 8);
+    vga_print_string(buf, x_pos + 32, 10, 0x0C); 
+    vga_print_string("Press ESC to ignore", x_pos, 11, 0x0C);
+    
+    while(skip_memory_test==0) asm("nop");
+}
 
 __attribute__ ((optimize(2))) void memory_test(int quick) {
-    // Cache is ON but we gonna invalidate it 
-    //
-    // Test regions:
-    // 0x0010000 - 0x009FFFF: start: 0x0010000, 9 blocks
-    // 0x0100000 - 0x03FFFFF: start: 0x0100000, 48 blocks
-    // 0x04A0000 - 0x04FFFFF: start: 0x04A0000, 6 blocks
-    // block = 64K
-    //
-    // Base 64K was already tested before and it should 
-    // be working if we already hit this point
-
-
     volatile uint32_t *memory = (volatile uint32_t *)0x00000000;
+    
+    // At this point cache is already ON but we gonna invalidate it after writes
 
     mem_total = 64; // base 64k already tested
     char print_buf[20];
     int inc_amount;
+    int print_len = 0;
 
     if(quick) {
         inc_amount = 32; 
     } else {
         inc_amount = 1;
     }
-
 
     for(int region=0; region < MEMTEST_REGIONS_TOTAL; region++) {
         // 0x0010000
@@ -84,24 +104,26 @@ __attribute__ ((optimize(2))) void memory_test(int quick) {
                 *current_ptr = 0x55AA55AA;
             }
             asm volatile("wbinvd");
-            for(uint32_t rpos = 0; rpos < (0x10000/4); rpos+=inc_amount) { // uint32_t align is 4 so 1 offset = 4 bytes
+            for(uint32_t rpos = 0; rpos < (0x10000/4); rpos+=inc_amount) {
                 volatile uint32_t *current_ptr = memory + mem_offset + rpos;
                 if(*current_ptr != 0x55AA55AA) {
                     // ERROR
-                    fatal_error();
+                    memory_error(*current_ptr, 0x55AA55AA, mem_offset + rpos, 20 + print_len + 1);
+                    return;
                 }
             }
             // Swap bits
-            for(uint32_t wpos = 0; wpos < (0x10000/4); wpos+=inc_amount) { // uint32_t align is 4 so 1 offset = 4 bytes
+            for(uint32_t wpos = 0; wpos < (0x10000/4); wpos+=inc_amount) {
                 volatile uint32_t *current_ptr = memory + mem_offset + wpos;
                 *current_ptr = 0xAA55AA55;
             }
             asm volatile("wbinvd");
-            for(uint32_t rpos = 0; rpos < (0x10000/4); rpos+=inc_amount) { // uint32_t align is 4 so 1 offset = 4 bytes
+            for(uint32_t rpos = 0; rpos < (0x10000/4); rpos+=inc_amount) {
                 volatile uint32_t *current_ptr = memory + mem_offset + rpos;
                 if(*current_ptr != 0xAA55AA55) {
                     // ERROR
-                    fatal_error();
+                    memory_error(*current_ptr, 0xAA55AA55, mem_offset + rpos, 20 + print_len + 1);
+                    return;
                 }
             }
             // if mem test goes too fast, slow down by counting ticks
@@ -114,6 +136,7 @@ __attribute__ ((optimize(2))) void memory_test(int quick) {
             if(skip_memory_test==1) {
                 mem_total = 4096;
             }
+            
             itoa(mem_total, print_buf, 10);
             if(quick) {
                 strcat(print_buf, " KB (q)");
@@ -121,6 +144,8 @@ __attribute__ ((optimize(2))) void memory_test(int quick) {
                 strcat(print_buf, " KB");
             }
             vga_print_string(print_buf, 20, 10, 0x0F);
+            print_len = strlen(print_buf);
+            
             if(skip_memory_test==1) break;
             
         }
@@ -135,8 +160,6 @@ enum POST_action_enum {
     POST_SYSTEM_TEST,
     POST_ABOUT
 } POST_action;
-
-uint8_t cmos_status;
 
 void POST_irq1_int() {
     // kb buffer should be always not empty when this routine is executed
@@ -188,31 +211,34 @@ void POST_irq1_int() {
 
 void main() {
     // Interrupts are disabled
-    POST(0x00); // C entry
+    POST(0x80); // 80 - C main() running. IDT init
     
-    idt_init(); // Masks all IRQ
-    POST(0x01); // IDT set up
+    idt_init(); // Masks all IRQ internally
+    
+    POST(0x81); // 81 - CMOS read
 
     cmos_status = cmos_read();
+    
+    POST(0x82); // 82 - CPU identification
     fpu_present = is_fpu_present();
     cyrix_cpu = is_cyrix_cpu();
 
     cpuid = (uint16_t)(*cpuid_edx & 0xFFFF);
     detect_486_model(cpuid, cyrix_cpu, cpu_model, 0);
 
-    POST(0x02); // CPU ident OK
-    // PIT is not yet set
-    pit_set_int_freq(100);
+    POST(0x83); // 83 - PIT setup
+    
+    pit_set_int_freq(100); // PIT is not yet set
     kb_clear_buffer();
-    POST(0x03); // KB clear buffer OK
+    
     pic_set_mask(0b11111100); // keyboard and PIT
     sti();
     while(1) { // Verify that interrupts work
         if(irq0_ticks>3) break;
         asm volatile("nop");
     }
-
-    POST(0x04); // Timer and IRQ pass
+    
+    POST(0x84); // 84 - PIC test pass
 
     POST_action = POST_NORMAL;
     irq1_register_callback(POST_irq1_int);
@@ -220,21 +246,23 @@ void main() {
     cli();
 
     // Draw BIOS
+    
+    POST(0x85); // 85 - BIOS POST display init
 
     vga_load_logo(); 
     vga_draw_logo(60, 1);
     vga_draw_extra_logo(1,1);
     vga_draw_extra_logo(1,2);
-
-    POST(0x05); // BIOS POST logos draw pass
+    
+    POST(0x86); // 86 - BIOS POST display
 
     vga_print_string("SeaPig 486 Single Board Computer BIOS " VERSION , 4, 1, 0x07);
     vga_print_string("Copyright (C) 2024-2026, maniek86.xyz", 4, 2, 0x07);
     vga_print_string("M8SBC-486 REV 1.0 BIOS (DEV)", 1, 4, 0x07);
 
     vga_print_string("Main Processor :", 3, 7, 0x07);
-    vga_print_string("   FPU Present :", 3, 8, 0x07);
-    vga_print_string("   Memory Test :", 3, 10, 0x07);
+    vga_print_string("FPU Present :", 6, 8, 0x07);
+    vga_print_string("Memory Test :", 6, 10, 0x07);
 
     vga_print_string("---- Built " __DATE__ " " __TIME__ " / CHP V1 / Derived from BIOS by b-dmitry1 ----", 1, 23, 0x07);
 
@@ -277,11 +305,14 @@ void main() {
     }
     
     sti();
-    POST(0x06); // BIOS POST draw PASS
+    
+    POST(0x87); // 87 - Extended memory test
 
     memory_test(cmos_get(CMOS_QUICK_MEMTEST));
+    
+    POST(0x88); // 88 - Primary IDE detection
 
-    vga_print_string("   Primary IDE : detecting...", 3, 12, 0x07);
+    vga_print_string("Primary IDE : detecting...", 6, 12, 0x07);
 
     IDE_reset();
 
@@ -295,10 +326,10 @@ void main() {
         strcpy(ide_name, "None");
         ide_detected = 0;
     }
-      
+    
+    POST(0x89); // 89 - POST display wait
 
     irq1_register_callback(NULL);
-
 
     uint32_t boot_delay;
 
@@ -309,10 +340,12 @@ void main() {
     switch(POST_action) {
         case POST_ABOUT:
             boot_delay = irq0_ticks + 10;
+            POST(0xA0); // A0 - About display
             about_display();
             break;
 
         case POST_SETTINGS:
+            POST(0xA1); // A1 - BIOS setup
             boot_delay = irq0_ticks + 10;
             setup_display(cpuid, cyrix_cpu, mem_total, fpu_present, ide_name, ide_detected);
             break;
@@ -332,16 +365,41 @@ void main() {
 
 
     if(cmos_get(CMOS_LOCK_CMOS)) cmos_lock();
-
+    
+    POST(0x8A); // 8A - Restore PIC
     
     cli(); // Reset PIC to default
     pic_remap(8); 
     pic_set_mask(0x00); 
     idt_restore_real_mode();
+    
+    POST(0x8B); // 8B - Restore VGA and print summary
 
     vga_restore_font();
-
     vga_clear(0x07);
+    
+    for(int x=0; x<80; x++) {
+        vga_print_char('=', x, 0, 0x07);
+        vga_print_char('=', x, 4, 0x07);
+    }
+    vga_print_string(" SeaPig BIOS ", 32, 0, 0x07);
+    
+    vga_print_string("Processor", 1, 1, 0x07);
+    vga_print_char(':', 13, 1, 0x07); 
+    vga_print_string("Memory", 1, 2, 0x07);
+    vga_print_char(':', 13, 2, 0x07);
+    vga_print_string("Primary IDE", 1, 3, 0x07);
+    vga_print_char(':', 13, 3, 0x07);
+    
+    vga_print_string(cpu_model, 15, 1, 0x07);
+    int mem_str_len = vga_print_itoa(mem_total, 15, 2, 0x07, 10, 0);
+    vga_print_string("KB", 16+mem_str_len, 2, 0x07);
+    vga_print_string(ide_name, 15, 3, 0x07);
+    
+    // OS text should be printed at Y=6
+    
+    
+    // Cursor gets moved by real mode section
 
     return;
 }

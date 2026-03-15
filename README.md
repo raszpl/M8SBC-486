@@ -12,9 +12,9 @@ This project is a 486 Homebrew computer, with some efforts to make it kinda PC c
 - PGA-168 socket for 5V 486 CPUs.
 - Xilinx Spartan II XC2S100 FPGA as "chipset". Codename "Hamster 1"
 - 4MB SRAM, (8*HM628512)
-- 256KB of ROM (W29C020) (224 KB accessible)
+- 256KB of ROM (W29C020 or 39SF020A) (224 KB accessible)
 - 8254 Programmable Interval Timer
-- 8259 Programmable Interrupt controller
+- 8259 Programmable Interrupt Controller
 - Two 16-bit ISA slots
 - PS/2 Keyboard port. Controller is implemented in the FPGA
 - Simple CMOS RTC and CMOS storage. Implemented in the FPGA too
@@ -28,11 +28,11 @@ Secondary PIC and DMA are missing, so the compatibility is not full. The missing
 
 The hardware and FPGA are mostly done. BIOS is capable of booting DOS. There are a few issues & bugs, but they are being slowly fixed.
 
-Among the most impressive things the board (as time of writing: 09/01/2025) is capable of: 
+Among the most impressive things the board (as time of writing: 14/03/2026) is capable of: 
 
-- Booting Linux (2.2.26) (using custom bootloader, release TODO)
+- Booting Linux (2.2.26) ([using custom bootloader](https://github.com/maniekx86/linux_m8sbc_boot))
 
-- Booting MS-DOS and FreeDOS: The software compatibility is mixed. Some software hangs the system, throws exceptions, but some run fine. Most notable are: Second Reality demo (no sound, small glitches at two parts), Prince of Persia, Fasttracker II (PC speaker works in one mode, LPT DAC works okay), 3DBench 1.0c, CACHECHK.
+- Booting MS-DOS and FreeDOS: The software compatibility is mixed. Some software hangs the system, throws exceptions, but some run fine. Most notable are: Second Reality demo (no sound), Prince of Persia, Wolfenstein 3D, Fasttracker II (PC speaker works in one mode, LPT DAC works okay), 3DBench 1.0c, CACHECHK.
 
 - Running DOOM ([FastDOOM](https://github.com/viti95/FastDoom) running on FreeDOS 1.4)
 

@@ -10,7 +10,7 @@
 
 void vga_print_char(char c, int x, int y, uint8_t attr);
 void vga_print_string(const char *str, int x, int y, uint8_t attr);
-void vga_print_itoa(int value, int x, int y, uint8_t attr, int base, int width);
+int vga_print_itoa(int value, int x, int y, uint8_t attr, int base, int width);
 void vga_set_char_attr(uint8_t attr, int x, int y);
 void vga_clear(uint8_t attr);
 

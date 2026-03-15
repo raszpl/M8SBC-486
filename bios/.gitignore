@@ -5,5 +5,8 @@ c_src/out/
 *.bin
 *.elf
 
+bochsrc
+bx_enh_dbg.ini
+
 # keep empty template files
 !empty/*.bin

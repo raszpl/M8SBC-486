@@ -61,13 +61,6 @@ int15_a20_get:
 
 int15_a20_get_support:
 	xor ah, ah
-; %if ((CPU == CPU_CX486) || (CPU == CPU_TI486))
-; 	; No switch via port 0x92 support
-; 	mov bx, 0
-; %else
-; 	; Can use port 0x92
-; 	mov bx, 0x02
-; %endif
 	mov bx, 0
 	clc
 	jmp iret_carry

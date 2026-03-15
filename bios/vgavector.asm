@@ -1,3 +1,5 @@
+; INT 10 (Video) Entry Point
+
 cpu 486
 org 0xF065
 

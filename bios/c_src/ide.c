@@ -50,6 +50,7 @@ int IDE_detect(char *drive_name) {
 
         uint32_t elapsed = irq0_ticks - irq0_start;
         if(elapsed > 500) return 0; // 5 seconds
+        // TODO: add skip key?
 
         static uint32_t last_ticks = 0;
         if(last_ticks!=irq0_ticks) { // to not redraw every few cpu cycles
@@ -67,22 +68,28 @@ int IDE_detect(char *drive_name) {
         io_wait();
     }
 
-    // check sanity of the data
-    // TODO: fix detection in some cases
+    // Check sanity of the data
     int check = 1;
     
-    if((disk_data[0] & 0x8000) != 0) check = 0;
+    // Floating or empty bus
     if(disk_data[0] == 0x0000 || disk_data[0] == 0xFFFF) check = 0;
+    
+    if((disk_data[0] & 0x8000) != 0) { // ATA bit 15
+        if (disk_data[0] != 0x848A) { // CF ident
+            check = 0; // it's likely ATAPI (CD-ROM) or garbage, not an ATA HDD/CF
+        }
+    }
 
     for(int i=0;i<20;i++) {
-        // swap bytes
+        // Swap name bytes
         drive_name[i*2] = (disk_data[27 + i] >> 8) & 0xFF;
         drive_name[i*2 + 1] = disk_data[27 + i] & 0xFF;
     }
+    // Check if name is in ASCII printable range
     for(int i=0;i<40;i++) {
-        if(!((uint8_t)drive_name[i] >= 32 || (uint8_t)drive_name[i] <= 127 || (uint8_t)drive_name[i] == 0)) check = 0;
+        if( !(( (uint8_t)drive_name[i] >= 32 && (uint8_t)drive_name[i] <= 127 ) || (uint8_t)drive_name[i] == 0) ) check = 0;
     }
-    // check if all data is not the same
+    // Check if all data is not the same
     uint16_t f = disk_data[0];
     int fc = 0;
     for(int i=0;i<256;i++) {

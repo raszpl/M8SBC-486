@@ -25,9 +25,11 @@ image_start:
 
 	align 8
 
-times 0xFD - $ + image_start db 0xFF
+times 0xFA - $ + image_start db 0xFF
 
-; 0xF000:0x00FD - VBIOS jmp (F000:F065 JMPs to 00FD)
+; 0xF000:0x00FA - INT15 jmp (F000:F859 jumps to 00FA)
+jmp near int15 ; 3 bytes
+; 0xF000:0x00FD - VBIOS jmp (F000:F065 jumps to 00FD)
 jmp near int10
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -41,7 +43,7 @@ start:
 	cli
 	cld
 
-	mov al, 0x01 ; POST 0x01 - BIOS execution start
+	mov al, 0x01 ; POST 01 - BIOS execution start
 	out 0x80, al
 
 	mov al, 0x00 ; IO port clear
@@ -70,7 +72,7 @@ start:
 	; SKIP PMODE EXIT CHECKS - reset is implemented incorrectly in the M8SBC
 	jmp normal_restart
 
-	; ======== unused ========
+; ======== unused ========
 	; Check NVRAM for a protected mode exit flag
 	mov al, 0x0F
 	out 0x70, al
@@ -86,18 +88,17 @@ pmode_exit:
 	push word [pmode_exit_cs]
 	push word [pmode_exit_ip]
 	retf
-	; ========================
+; ========================
 
 normal_restart:
 
-	mov al, 0x02 ; POST 0x02 - normal_restart, entry
+	mov al, 0x02 ; POST 02 - Initial PIC setup
 	out 0x80, al
-
 
 	; Set interrupt controller (PICs 8259) registers
 %include "drivers/pic.asm"
 	
-	mov al, 0x03 ; POST 0x03 - PIC initialized
+	mov al, 0x03 ; POST 03 - Base 64K memory test
 	out 0x80, al
 
 	; base 64K memory test
@@ -116,7 +117,7 @@ normal_restart:
 	mov ss, ax
 	mov sp, 0x1000
 
-	mov al, 0x04 ; POST 0x04 - Base 64KB memory test passed
+	mov al, 0x04 ; POST 04 - BIOS data setup (IVT, BDA)
 	out 0x80, al
 
 
@@ -177,26 +178,9 @@ erase_ints2:
 	mov si, bios_data
 	mov cx, 0x100 + bios_data_end - bios_data + 1
 	rep movsb
-
-	; Display 'R' on the left top corner of the screen
-	mov ax, 0xB800
-	mov ds, ax
-	mov word [0], 0x0F00 + 'R'
 	
-	mov al, 0x05 ; POST 0x05 - IVT and BDA set up
+	mov al, 0x05 ; POST 05 - Option ROM detection and execution
 	out 0x80, al
-
-
-	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	; Before this point there were only writes to RAM                  ;
-	; Now we should try to read                                        ;
-	                                                                   ;
-	; If your RAM controller is not working properly                   ;
-	; or add-on ROM chips generate an error                            ;
-	; you will see "123" in the debug console and 'R' in the left top  ;
-	; corner of the screen and the system will hang or restart         ;
-	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 	; Check if we have additional BIOS chips
 	mov ax, 0x40
@@ -225,50 +209,49 @@ no_rom:
 	;mov [0x42 * 4 + 2], word 0xF000
 
 
-	mov al, 0x06 ; POST 0x06 - ROM detection & execution done
+	mov al, 0x06 ; POST 06 - VGA init
 	out 0x80, al
 
 	; Set the text mode normal way	
 	mov ax, 3
 	int 0x10
 
-	; Hide cursor
+	; Hide cursor using real mode interface
 	mov ah, 01h ; function: Set Cursor Shape
 	mov ch, 20h ; Bit 5 set (makes cursor invisible)
 	mov cl, 00h
 	int 10h
 
-	mov al, 0x07 ; POST 0x07 - Video set
+	mov al, 0x07 ; POST 07 - L1 Cache enable
 	out 0x80, al
-
-
-	; Display welcome message
-	; mov si, msg_reset
-	; call putsv
-
-	; Initialize COM-port
-	; mov ax, 0
-	; int 0x14
-                             
-	; mov al, 13
-	; call putchv
-	; mov al, 10
-	; call putchv
 
 	; Memory test OK, so now we can enable CPU's cache
 	call cache_enable
 
-	mov al, 0x08 ; POST 0x08 - Cache enabled
+	mov al, 0x08 ; POST 08 - C entry
 	out 0x80, al
 
 	; C entry
+    ; - switch to protected mode
+    ; - init C
+    ; - execute main()
+    ; - restore real mode and return here
 	call 0xF000:0x2000 
+    
+    mov al, 0x09 ; POST 09 - C execution done, Real mode PIT init
+    out 0x80, al
 
-	mov ah, 01h    ; Function: Set Cursor Shape
-	mov ch, 0Eh    ; Start Scan Line 
-	mov cl, 0Fh    ; End Scan 
-	int 10h
-
+    ; Restore cursor using real mode interface
+	mov ah, 0x01    ; Function: Set Cursor Shape
+	mov ch, 0x0E    ; Start Scan Line 
+	mov cl, 0x0F    ; End Scan 
+	int 0x10
+    ; Move cursor to 0,6
+    mov ah, 0x02
+    mov bh, 0x00
+    mov dl, 0
+    mov dh, 6
+    int 0x10
 
 	; Timer 1: 15 us / 0x12
 	; We don't need old-style timer DRAM regeneration so will use default value
@@ -299,30 +282,29 @@ no_rom:
 	mov al, 0
 	out 0x40, al
 	out 0x40, al
-
-	mov al, 0x09 ; POST 0x09 - PIT init done
-	out 0x80, al
-
-
+    
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    
+    mov al, 0x0A ; POST 0A - Read boot sector
+	out 0x80, al
 
 	mov ax, 0x0000
 	mov es, ax
-
 
 	; If we reached this point -> we have disk and can boot now
 	mov si, msg_bootsector
 	call putsv
 
 	; Load a very first sector from default boot drive
+    ; Note: maybe this should be moved to C code and from there checked if the drive is bootable(?)
 	xor ax, ax
 	mov es, ax
 	mov bx, 0x7C00
 	mov ax, 0x201
-	mov dx, BOOT_DRIVE
+	mov dx, 0x80 ; boot drive
 	mov cx, 1
 	int 0x13
-
+    
 	xor ax, ax
 	mov es, ax
 	mov ds, ax
@@ -354,18 +336,24 @@ no_rom:
 
 	mov si, msg_crlf
 	call putsv
+    
+    mov al, 0x0B ; POST 0B - Enable interrupts leaving
+	out 0x80, al
 
 	; Enable interrupts
 	mov al, 0x20
 	out 0x20, al
 	sti
+    
+    mov al, 0x0B ; POST 0C - Start OS
+	out 0x80, al
 
 
 	; Set general register default values
 	xor ax, ax
 	xor bx, bx
 	xor cx, cx
-	mov dx, BOOT_DRIVE	; Boot drive code should be in DL
+	mov dx, 0x80	; Boot drive code should be in DL
 	xor si, si
 	xor di, di
 	xor bp, bp
@@ -455,17 +443,8 @@ msg_ok:
 msg_crlf:
 	db 13, 10, 0
 
-msg_testingmemory:
-	db 13, "Testing RAM: ", 0
-
-msg_memorytestfailed:
-	db 13, 10, "RAM test FAILED", 13, 10, "System halted", 0
-
-msg_kbok:
-	db " KB OK   ", 0
-
 msg_bootsector:
-	db 13, 10, "Boot sector: ", 0
+	db "Boot sector: ", 0
 
 msg_failed:
 	db 'failed', 0
