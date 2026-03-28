@@ -1,7 +1,7 @@
 (kicad_sch
-	(version 20250114)
+	(version 20260306)
 	(generator "eeschema")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(uuid "360fb3b9-a21a-4226-8954-bf45cf17bb35")
 	(paper "A4")
 	(title_block
@@ -18,8 +18,12 @@
 			(exclude_from_sim no)
 			(in_bom no)
 			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "H"
 				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -28,6 +32,8 @@
 			)
 			(property "Value" "MountingHole"
 				(at 0 3.175 0)
+				(show_name no)
+				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -36,47 +42,57 @@
 			)
 			(property "Footprint" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
-			(property "Datasheet" "~"
+			(property "Datasheet" ""
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "Description" "Mounting Hole without connection"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_keywords" "mounting hole"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(property "ki_fp_filters" "MountingHole*"
 				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(hide yes)
 				)
 			)
 			(symbol "MountingHole_0_1"
@@ -211,7 +227,7 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 128.27) (xy 59.69 156.21)
+			(xy 60.96 128.27) (xy 60.96 154.94)
 		)
 		(stroke
 			(width 0)
@@ -221,7 +237,7 @@
 	)
 	(wire
 		(pts
-			(xy 64.77 151.13) (xy 119.38 151.13)
+			(xy 66.04 149.86) (xy 119.38 149.86)
 		)
 		(stroke
 			(width 0)
@@ -278,6 +294,16 @@
 			(type default)
 		)
 		(uuid "080a7bb7-fd97-46fb-bb56-3658c3dc6bee")
+	)
+	(wire
+		(pts
+			(xy 55.88 128.27) (xy 55.88 160.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0820cebb-a5eb-416a-93ca-c11fbfcefa06")
 	)
 	(bus
 		(pts
@@ -401,7 +427,7 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 128.27) (xy 76.2 133.35)
+			(xy 78.74 128.27) (xy 78.74 133.35)
 		)
 		(stroke
 			(width 0)
@@ -471,7 +497,7 @@
 	)
 	(wire
 		(pts
-			(xy 119.38 148.59) (xy 67.31 148.59)
+			(xy 119.38 147.32) (xy 68.58 147.32)
 		)
 		(stroke
 			(width 0)
@@ -531,7 +557,7 @@
 	)
 	(wire
 		(pts
-			(xy 73.66 135.89) (xy 119.38 135.89)
+			(xy 76.2 135.89) (xy 119.38 135.89)
 		)
 		(stroke
 			(width 0)
@@ -621,7 +647,7 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 146.05) (xy 119.38 146.05)
+			(xy 71.12 144.78) (xy 119.38 144.78)
 		)
 		(stroke
 			(width 0)
@@ -721,7 +747,7 @@
 	)
 	(wire
 		(pts
-			(xy 73.66 128.27) (xy 73.66 135.89)
+			(xy 76.2 128.27) (xy 76.2 135.89)
 		)
 		(stroke
 			(width 0)
@@ -781,7 +807,7 @@
 	)
 	(wire
 		(pts
-			(xy 119.38 153.67) (xy 62.23 153.67)
+			(xy 119.38 152.4) (xy 63.5 152.4)
 		)
 		(stroke
 			(width 0)
@@ -841,7 +867,7 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 128.27) (xy 69.85 146.05)
+			(xy 71.12 128.27) (xy 71.12 144.78)
 		)
 		(stroke
 			(width 0)
@@ -1001,7 +1027,7 @@
 	)
 	(wire
 		(pts
-			(xy 57.15 128.27) (xy 57.15 158.75)
+			(xy 58.42 128.27) (xy 58.42 157.48)
 		)
 		(stroke
 			(width 0)
@@ -1028,6 +1054,16 @@
 			(type default)
 		)
 		(uuid "88e0a206-57b2-4ba8-88c9-b27fb31d0f3a")
+	)
+	(wire
+		(pts
+			(xy 55.88 160.02) (xy 119.38 160.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8934c3e9-a7e6-41c9-9dc6-fdbb58d2ca0a")
 	)
 	(bus
 		(pts
@@ -1181,7 +1217,7 @@
 	)
 	(wire
 		(pts
-			(xy 67.31 128.27) (xy 67.31 148.59)
+			(xy 68.58 128.27) (xy 68.58 147.32)
 		)
 		(stroke
 			(width 0)
@@ -1211,7 +1247,7 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 128.27) (xy 62.23 153.67)
+			(xy 63.5 128.27) (xy 63.5 152.4)
 		)
 		(stroke
 			(width 0)
@@ -1481,7 +1517,7 @@
 	)
 	(wire
 		(pts
-			(xy 119.38 156.21) (xy 59.69 156.21)
+			(xy 119.38 154.94) (xy 60.96 154.94)
 		)
 		(stroke
 			(width 0)
@@ -1551,7 +1587,7 @@
 	)
 	(wire
 		(pts
-			(xy 64.77 128.27) (xy 64.77 151.13)
+			(xy 66.04 128.27) (xy 66.04 149.86)
 		)
 		(stroke
 			(width 0)
@@ -1681,7 +1717,7 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 133.35) (xy 119.38 133.35)
+			(xy 78.74 133.35) (xy 119.38 133.35)
 		)
 		(stroke
 			(width 0)
@@ -1691,7 +1727,7 @@
 	)
 	(wire
 		(pts
-			(xy 119.38 158.75) (xy 57.15 158.75)
+			(xy 119.38 157.48) (xy 58.42 157.48)
 		)
 		(stroke
 			(width 0)
@@ -2716,14 +2752,18 @@
 		(lib_id "Mechanical:MountingHole")
 		(at 69.85 193.04 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5d9376c8-c211-465d-947f-bf89f11ee91a")
 		(property "Reference" "H4"
 			(at 72.39 191.8278 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2733,6 +2773,8 @@
 		)
 		(property "Value" "MountingHole"
 			(at 72.39 194.2521 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2742,29 +2784,35 @@
 		)
 		(property "Footprint" "MountingHole:MountingHole_4mm"
 			(at 69.85 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 69.85 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "Mounting Hole without connection"
 			(at 69.85 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(instances
@@ -2780,14 +2828,18 @@
 		(lib_id "Mechanical:MountingHole")
 		(at 34.29 193.04 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6472c89a-b46c-4842-9e5a-164522d9a6a9")
 		(property "Reference" "H2"
 			(at 36.83 191.8278 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2797,6 +2849,8 @@
 		)
 		(property "Value" "MountingHole"
 			(at 36.83 194.2521 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2806,29 +2860,35 @@
 		)
 		(property "Footprint" "MountingHole:MountingHole_4mm"
 			(at 34.29 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 34.29 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "Mounting Hole without connection"
 			(at 34.29 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(instances
@@ -2844,14 +2904,18 @@
 		(lib_id "Mechanical:MountingHole")
 		(at 52.07 193.04 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ace82158-0eb1-441b-80b2-e14858921673")
 		(property "Reference" "H3"
 			(at 54.61 191.8278 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2861,6 +2925,8 @@
 		)
 		(property "Value" "MountingHole"
 			(at 54.61 194.2521 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2870,29 +2936,35 @@
 		)
 		(property "Footprint" "MountingHole:MountingHole_4mm"
 			(at 52.07 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 52.07 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "Mounting Hole without connection"
 			(at 52.07 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(instances
@@ -2908,14 +2980,18 @@
 		(lib_id "Mechanical:MountingHole")
 		(at 16.51 193.04 0)
 		(unit 1)
+		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
+		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b309edc8-8ab5-4cea-bdca-89e737403cf6")
 		(property "Reference" "H1"
 			(at 19.05 191.8278 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2925,6 +3001,8 @@
 		)
 		(property "Value" "MountingHole"
 			(at 19.05 194.2521 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2934,33 +3012,39 @@
 		)
 		(property "Footprint" "MountingHole:MountingHole_4mm"
 			(at 16.51 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" ""
 			(at 16.51 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Description" "Mounting Hole without connection"
 			(at 16.51 193.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(instances
-			(project ""
+			(project "homebrew_486"
 				(path "/360fb3b9-a21a-4226-8954-bf45cf17bb35"
 					(reference "H1")
 					(unit 1)
@@ -2980,11 +3064,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "0fbac7c2-a12e-482c-a1ee-b6a8a7ce57c3")
 		(property "Sheetname" "AVR"
 			(at 61.214 27.686 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2994,6 +3080,8 @@
 		)
 		(property "Sheetfile" "avr.kicad_sch"
 			(at 53.848 18.796 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3081,11 +3169,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "4473f6a5-ad82-4f82-96f4-7ead8b697ef7")
 		(property "Sheetname" "Address Bus buffers"
 			(at 221.488 84.074 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3095,6 +3185,8 @@
 		)
 		(property "Sheetfile" "address_bus_buff.kicad_sch"
 			(at 221.488 84.836 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3114,7 +3206,7 @@
 		)
 		(pin "SA[0..23]" output
 			(at 233.68 97.79 270)
-			(uuid "84609595-2626-4e32-b7e6-ee482d12b33b")
+			(uuid "dadb5fde-5db5-420d-9f3e-a825e9caad82")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3142,11 +3234,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "49c3128c-49f0-451c-bde3-bf7412e8a8c9")
 		(property "Sheetname" "FPGA"
 			(at 57.15 90.17 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3156,21 +3250,13 @@
 		)
 		(property "Sheetfile" "fpga.kicad_sch"
 			(at 50.038 90.932 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left top)
-			)
-		)
-		(pin "CLK_14_318MHz" output
-			(at 76.2 128.27 270)
-			(uuid "ceec5071-3264-46d7-bfb0-201e15ce2c19")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 			)
 		)
 		(pin "~{KEN}" output
@@ -3234,7 +3320,7 @@
 			)
 		)
 		(pin "CLK_ISA" output
-			(at 73.66 128.27 270)
+			(at 76.2 128.27 270)
 			(uuid "1213b0f2-f367-4c61-8f7a-39c90a346705")
 			(effects
 				(font
@@ -3354,7 +3440,7 @@
 			)
 		)
 		(pin "~{ISA_MEM_RD}" output
-			(at 67.31 128.27 270)
+			(at 68.58 128.27 270)
 			(uuid "d49b0bad-9ad1-40fe-9430-2bfb31e026c4")
 			(effects
 				(font
@@ -3364,7 +3450,7 @@
 			)
 		)
 		(pin "~{ISA_MEM_WR}" output
-			(at 64.77 128.27 270)
+			(at 66.04 128.27 270)
 			(uuid "96bf47ae-3f5e-4661-958a-fdfeb8b94963")
 			(effects
 				(font
@@ -3454,7 +3540,7 @@
 			)
 		)
 		(pin "~{ISA_MEMCS16}" input
-			(at 57.15 128.27 270)
+			(at 58.42 128.27 270)
 			(uuid "5f871d01-bca9-4a1b-bc2e-5ebfe11b340a")
 			(effects
 				(font
@@ -3554,7 +3640,7 @@
 			)
 		)
 		(pin "ISA_IO_READY" input
-			(at 69.85 128.27 270)
+			(at 71.12 128.27 270)
 			(uuid "d948a87f-010a-4576-97fb-433697fd6c9f")
 			(effects
 				(font
@@ -3624,7 +3710,7 @@
 			)
 		)
 		(pin "~{ISA_IOCS16}" input
-			(at 59.69 128.27 270)
+			(at 60.96 128.27 270)
 			(uuid "40fc9950-8dea-4c84-afd4-30d18e164697")
 			(effects
 				(font
@@ -3634,7 +3720,7 @@
 			)
 		)
 		(pin "ISA_SBHE" output
-			(at 62.23 128.27 270)
+			(at 63.5 128.27 270)
 			(uuid "d1af2823-d83a-4f1d-8969-631ca1aa6526")
 			(effects
 				(font
@@ -3683,9 +3769,29 @@
 				(justify right)
 			)
 		)
-		(pin "SA[0..23]" output
+		(pin "ISA_BALE" output
+			(at 55.88 128.27 270)
+			(uuid "1db1cbd1-972d-4bcd-9d4e-bcf7516edd8b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "CLK_14_318MHz" input
+			(at 78.74 128.27 270)
+			(uuid "3fc23999-a096-4a02-8900-b6d35150a9bc")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "SA[0..1]" output
 			(at 90.17 109.22 0)
-			(uuid "bcd7e444-2d3d-4725-9048-e89ece3ad9a7")
+			(uuid "24dce186-70d9-4c9b-a429-689696c4a32a")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3713,11 +3819,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "80d0c219-e690-401a-8c6a-4246d88de18d")
 		(property "Sheetname" "Data Bus transceivers"
 			(at 165.608 84.328 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3727,6 +3835,8 @@
 		)
 		(property "Sheetfile" "data_bus_tr.kicad_sch"
 			(at 165.608 84.836 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3834,7 +3944,7 @@
 	)
 	(sheet
 		(at 119.38 127)
-		(size 53.34 34.29)
+		(size 53.34 35.56)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -3844,11 +3954,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "8c5c6d69-b749-4a24-8458-c5389575129e")
 		(property "Sheetname" "ISA"
 			(at 144.526 144.526 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3858,6 +3970,8 @@
 		)
 		(property "Sheetfile" "isa.kicad_sch"
 			(at 136.906 145.796 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3896,7 +4010,7 @@
 			)
 		)
 		(pin "ISA_SBHE" input
-			(at 119.38 153.67 180)
+			(at 119.38 152.4 180)
 			(uuid "8c982183-2d53-465e-b4a4-2aea61ef5cb8")
 			(effects
 				(font
@@ -3916,7 +4030,7 @@
 			)
 		)
 		(pin "ISA_IO_READY" tri_state
-			(at 119.38 146.05 180)
+			(at 119.38 144.78 180)
 			(uuid "6ebf562c-eae4-4106-acbc-759d773fc71f")
 			(effects
 				(font
@@ -3966,7 +4080,7 @@
 			)
 		)
 		(pin "~{ISA_MEM_WR}" input
-			(at 119.38 151.13 180)
+			(at 119.38 149.86 180)
 			(uuid "8116cfca-3c06-4e53-948a-f2a7d01c6339")
 			(effects
 				(font
@@ -3986,7 +4100,7 @@
 			)
 		)
 		(pin "~{ISA_MEM_RD}" input
-			(at 119.38 148.59 180)
+			(at 119.38 147.32 180)
 			(uuid "8b64a551-9e7d-499c-9e4b-5d0794889f6e")
 			(effects
 				(font
@@ -4006,7 +4120,7 @@
 			)
 		)
 		(pin "~{ISA_IOCS16}" tri_state
-			(at 119.38 156.21 180)
+			(at 119.38 154.94 180)
 			(uuid "38f7fee4-e633-4371-bce4-fcb1fec8ae58")
 			(effects
 				(font
@@ -4016,7 +4130,7 @@
 			)
 		)
 		(pin "~{ISA_MEMCS16}" tri_state
-			(at 119.38 158.75 180)
+			(at 119.38 157.48 180)
 			(uuid "d6f349cc-8c87-4d80-bd6a-60054deed531")
 			(effects
 				(font
@@ -4055,6 +4169,16 @@
 				(justify right)
 			)
 		)
+		(pin "ISA_BALE" input
+			(at 119.38 160.02 180)
+			(uuid "5d2e69de-49a0-4ef1-ae45-9d0d75ccb492")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
 		(instances
 			(project "homebrew_486"
 				(path "/360fb3b9-a21a-4226-8954-bf45cf17bb35"
@@ -4075,11 +4199,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "98e7b245-1892-4961-80dc-a2961de8ec76")
 		(property "Sheetname" "CPU"
 			(at 137.668 23.368 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4089,6 +4215,8 @@
 		)
 		(property "Sheetfile" "cpu.kicad_sch"
 			(at 130.81 24.13 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4266,11 +4394,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "a079297a-8bd2-4ab2-b4a1-b608a7e51686")
 		(property "Sheetname" "PIC, PIT, BIOS"
 			(at 228.092 152.654 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4280,6 +4410,8 @@
 		)
 		(property "Sheetfile" "pic_pit_bios.kicad_sch"
 			(at 221.742 153.162 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4487,11 +4619,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "e1325e05-380c-469a-ad77-c2c9c9155003")
 		(property "Sheetname" "RAM"
 			(at 123.19 85.344 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4501,6 +4635,8 @@
 		)
 		(property "Sheetfile" "ram.kicad_sch"
 			(at 108.458 95.758 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4648,11 +4784,13 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "fbf186da-bb07-4f4b-b163-c8c06da16076")
 		(property "Sheetname" "Power"
 			(at 27.432 173.99 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4662,6 +4800,8 @@
 		)
 		(property "Sheetfile" "power.kicad_sch"
 			(at 20.32 174.752 0)
+			(show_name no)
+			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
