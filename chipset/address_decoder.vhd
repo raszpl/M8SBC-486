@@ -2,9 +2,9 @@
 -- Company: maniek86.xyz
 -- Engineer: Piotr Grzesik
 --
--- Create Date:	   01:03:23 09/21/2025
+-- Create Date:    01:03:23 09/21/2025
 -- Design Name:
--- Module Name:	   address_decoder - Behavioral
+-- Module Name:    address_decoder - Behavioral
 -- Project Name: Hamster 1 chipset
 -- Target Devices: M8SBC-486 REV 1.0
 -- Tool versions:
@@ -117,7 +117,7 @@ BEGIN
 	BEGIN
 		PIC_CS_I <= '1';
 		IF (CPU_MIO = '0') THEN --		 xxXXxxXX76543210
-			IF (ADDR_INT(15 downto 1)) = "000000000010000" THEN
+			IF (ADDR_INT(15 DOWNTO 1)) = "000000000010000" THEN
 				PIC_CS_I <= '0';
 			END IF;
 		END IF;
@@ -130,7 +130,7 @@ BEGIN
 	BEGIN
 		PIT_CS_I <= '1';
 		IF (CPU_MIO = '0') THEN --		 xxXXxxXX76543210
-			IF (ADDR_INT(15 downto 2)) = "00000000010000" THEN
+			IF (ADDR_INT(15 DOWNTO 2)) = "00000000010000" THEN
 				PIT_CS_I <= '0';
 			END IF;
 		END IF;
@@ -143,7 +143,7 @@ BEGIN
 	BEGIN
 		PS2_CS_I <= '1';
 		IF (CPU_MIO = '0') THEN --		 xxXXxxXX76543210
-			IF (ADDR_INT(15 downto 0)) = "0000000001100000" OR (ADDR_INT(15 downto 0)) = "0000000001100100" THEN
+			IF (ADDR_INT(15 DOWNTO 0)) = "0000000001100000" OR (ADDR_INT(15 DOWNTO 0)) = "0000000001100100" THEN
 				PS2_CS_I <= '0';
 			END IF;
 		END IF;
@@ -156,7 +156,7 @@ BEGIN
 	BEGIN
 		O61_CS_I <= '1';
 		IF (CPU_MIO = '0') THEN --		 xxXXxxXX76543210
-			IF (ADDR_INT(15 downto 0)) = "0000000001100001" THEN
+			IF (ADDR_INT(15 DOWNTO 0)) = "0000000001100001" THEN
 				O61_CS_I <= '0';
 			END IF;
 		END IF;
@@ -169,7 +169,7 @@ BEGIN
 	BEGIN
 		CMOS_CS_I <= '1';
 		IF (CPU_MIO = '0') THEN --		 xxXXxxXX76543210
-			IF (ADDR_INT(15 downto 1)) = "000000000111000" THEN
+			IF (ADDR_INT(15 DOWNTO 1)) = "000000000111000" THEN
 				CMOS_CS_I <= '0';
 			END IF;
 		END IF;

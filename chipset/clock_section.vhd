@@ -46,7 +46,7 @@ ARCHITECTURE Behavioral OF clock_section IS
 	SIGNAL cpu_clk	  : STD_LOGIC := '0';
 
 	-- Divider counter
-	SIGNAL cnt		  : unsigned(1 downto 0) := (others => '0'); -- 2 bits are enough for /2 or /3
+	SIGNAL cnt		  : unsigned(1 DOWNTO 0) := (OTHERS => '0'); -- 2 bits are enough for /2 or /3
 BEGIN
 
 	----------------------------------------------------------------
@@ -111,7 +111,7 @@ BEGIN
 				ELSIF DIVIDE_BY = 3 THEN
 					-- /3: count 0,1,2 and toggle on terminal count
 					IF cnt = 2 THEN
-						cnt		<= (others => '0');
+						cnt		<= (OTHERS => '0');
 						cpu_clk <= NOT cpu_clk;
 					ELSE
 						cnt <= cnt + 1;

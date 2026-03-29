@@ -2,9 +2,9 @@
 -- Company: maniek86.xyz
 -- Engineer: Piotr Grzesik
 --
--- Create Date:	   19:21:33 11/27/2025
+-- Create Date:    19:21:33 11/27/2025
 -- Design Name:
--- Module Name:	   CMOS - Behavioral
+-- Module Name:    CMOS - Behavioral
 -- Project Name: Hamster 1 chipset
 -- Target Devices: M8SBC-486 REV 1.0
 -- Tool versions:
@@ -24,8 +24,8 @@ USE IEEE.NUMERIC_STD.ALL;
 ENTITY CMOS IS
 	PORT (
 		CLK_IN			: IN	STD_LOGIC;
-		DATA_IN			: IN	STD_LOGIC_VECTOR(7 downto 0);
-		DATA_OUT		: OUT	STD_LOGIC_VECTOR(7 downto 0);
+		DATA_IN			: IN	STD_LOGIC_VECTOR(7 DOWNTO 0);
+		DATA_OUT		: OUT	STD_LOGIC_VECTOR(7 DOWNTO 0);
 		CMOS_CS			: IN	STD_LOGIC;
 		WR				: IN	STD_LOGIC;
 		RD				: IN	STD_LOGIC;
@@ -36,7 +36,7 @@ ENTITY CMOS IS
 		AVR_CLK			: IN	STD_LOGIC;
 		AVR_IO			: INOUT STD_LOGIC;
 
-		FPGA_VER		: IN	STD_LOGIC_VECTOR(31 downto 0);
+		FPGA_VER		: IN	STD_LOGIC_VECTOR(31 DOWNTO 0);
 		RESET			: IN	STD_LOGIC;
 
 		RAM_CACHEABLE	: OUT	STD_LOGIC;
@@ -55,7 +55,7 @@ ARCHITECTURE Behavioral OF CMOS IS
 	SIGNAL HOURS	: INTEGER RANGE 0 TO 24 := 0;
 	SIGNAL WEEKDAY	: INTEGER RANGE 0 TO 8 := 7; -- 1-7 (Sun-Sat)
 	SIGNAL DAY		: INTEGER RANGE 0 TO 32 := 1;
-	SIGNAL MONTH	: INTEGER RANGE 0 to 13 := 11;
+	SIGNAL MONTH	: INTEGER RANGE 0 TO 13 := 11;
 	SIGNAL YEAR		: INTEGER RANGE 0 TO 100 := 25;
 	SIGNAL CENTURY	: INTEGER RANGE 0 TO 99 := 20;
 
@@ -63,7 +63,7 @@ ARCHITECTURE Behavioral OF CMOS IS
 	SIGNAL MAX_DAYS_IN_MONTH : INTEGER RANGE 28 TO 31;
 	SIGNAL IS_LEAP_YEAR		 : BOOLEAN;
 
-	SIGNAL CURRENT_REGISTER		: STD_LOGIC_VECTOR(7 downto 0) := x"00";
+	SIGNAL CURRENT_REGISTER		: STD_LOGIC_VECTOR(7 DOWNTO 0) := x"00";
 	TYPE CMOS_REGISTERS_TYPE IS ARRAY (0 TO 31 ) OF std_logic_vector (7 DOWNTO 0);
 	SIGNAL CMOS_REGISTERS: CMOS_REGISTERS_TYPE :=(
 		x"00",x"00",x"00",x"00",-- 0x00
@@ -92,30 +92,29 @@ ARCHITECTURE Behavioral OF CMOS IS
 
 	SIGNAL CONFIG_COUNT		: INTEGER RANGE 0 TO 31 := 0;
 	SIGNAL CONFIG_C_BIT		: INTEGER RANGE 0 TO 7 := 0;
-	SIGNAL CONFIG_TEMP		: STD_LOGIC_VECTOR(7 downto 0) := x"00";
+	SIGNAL CONFIG_TEMP		: STD_LOGIC_VECTOR(7 DOWNTO 0) := x"00";
 
 	SIGNAL AVR_OUT			: STD_LOGIC := '0';
 
 	SIGNAL RAM_WRITE_EN, BUS_WRITER_EN	: STD_LOGIC;
-	SIGNAL CFG_WRITER_EN	: STD_LOGIC := '0';
-	SIGNAL CFG_WRITER_ADDR	: INTEGER RANGE 0 to 31 := 0;
-	SIGNAL RAM_WRITE_VAL, CFG_WRITER_VAL, RAM_OUT : STD_LOGIC_VECTOR(7 downto 0);
-	SIGNAL BUS_WRITER_VAL : STD_LOGIC_VECTOR(7 downto 0) := x"00";
-	SIGNAL RAM_WRITE_ADDR, BUS_WRITER_ADDR : INTEGER RANGE 0 to 31;
+	SIGNAL CFG_WRITER_EN				: STD_LOGIC := '0';
+	SIGNAL CFG_WRITER_ADDR				: INTEGER RANGE 0 TO 31 := 0;
+	SIGNAL BUS_WRITER_VAL				: STD_LOGIC_VECTOR(7 DOWNTO 0) := x"00";
+	SIGNAL RAM_WRITE_VAL, CFG_WRITER_VAL, RAM_OUT	: STD_LOGIC_VECTOR(7 DOWNTO 0);
+	SIGNAL RAM_WRITE_ADDR, BUS_WRITER_ADDR			: INTEGER RANGE 0 TO 31;
 
-	CONSTANT CYCLES_WAIT_TO_TRANSFER : INTEGER := 100000; -- How many CPU cycles to wait before attempting to store data
+	CONSTANT CYCLES_WAIT_TO_TRANSFER	: INTEGER := 100000; -- How many CPU cycles to wait before attempting to store data
 
-	SIGNAL TRANSFER_TIMER			: INTEGER RANGE 0 to CYCLES_WAIT_TO_TRANSFER+1 := 0;
+	SIGNAL TRANSFER_TIMER			: INTEGER RANGE 0 TO CYCLES_WAIT_TO_TRANSFER+1 := 0;
 	SIGNAL CONFIG_DATA_DIRTY		: STD_LOGIC := '0';
 	SIGNAL LAST_CONFIG_DATA_DIRTY	: STD_LOGIC := '0';
 	SIGNAL CONFIG_DO_WRITE			: STD_LOGIC := '0';
 	SIGNAL TRANSFER_DIRTY			: STD_LOGIC := '0';
-	SIGNAL CONFIG_WRITE_PHASE		: INTEGER RANGE 0 to 2 := 0;
+	SIGNAL CONFIG_WRITE_PHASE		: INTEGER RANGE 0 TO 2 := 0;
 	SIGNAL CFG_SKIP_CLK				: STD_LOGIC := '0';
 
 	SIGNAL BUS_ACCESS			: STD_LOGIC;
 	SIGNAL CMOS_IN_RANGE		: STD_LOGIC;
-
 BEGIN
 
 	-- AVR communication process
@@ -129,7 +128,7 @@ BEGIN
 	-- 11110101 [byte 0] [byte 1] [byte 2] ... [byte 31] 10101010
 	PROCESS(CLK_IN)
 		VARIABLE AVR_OUT_TMP		: STD_LOGIC;
-		VARIABLE CONFIG_TEMP_VAR	: STD_LOGIC_VECTOR (7 downto 0);
+		VARIABLE CONFIG_TEMP_VAR	: STD_LOGIC_VECTOR (7 DOWNTO 0);
 	BEGIN
 		IF FALLING_EDGE(CLK_IN) THEN
 			S1_AVR_CLK <= AVR_CLK; -- 2-FF sync
@@ -178,7 +177,7 @@ BEGIN
 				-- happens on rising edge
 				IF RECEIVED_CONFIG = '0' THEN
 
-					CONFIG_TEMP(7 downto 0) <= CONFIG_TEMP(6 downto 0) & S2_AVR_DIN;
+					CONFIG_TEMP(7 DOWNTO 0) <= CONFIG_TEMP(6 DOWNTO 0) & S2_AVR_DIN;
 
 					IF RECEIVED_PREAM = '1' THEN
 
@@ -229,46 +228,46 @@ BEGIN
 									-- while AVR is still probing for data
 
 								--ELSE -- Write loop (normal state)
-								CASE CONFIG_WRITE_PHASE IS
-									WHEN 0 =>
-										CONFIG_TEMP_VAR := X"F5";
-									WHEN 1 =>
-										CONFIG_TEMP_VAR := RAM_OUT;
-									WHEN 2 =>
-										CONFIG_TEMP_VAR := X"AA";
-								END CASE;
-
-								AVR_OUT_TMP := CONFIG_TEMP_VAR(7 - CONFIG_C_BIT); -- Send MSB first
-
-								IF TRANSFER_DIRTY = '1' THEN
-									AVR_OUT <= '0'; -- cancel
-								ELSE
-									IF AVR_OUT_TMP = '1' THEN
-										AVR_OUT <= 'Z'; -- replace with Z later
-									ELSE
-										AVR_OUT <= '0';
-									END IF;
-								END IF;
-
-								IF CONFIG_C_BIT = 7 THEN
-									CONFIG_C_BIT <= 0;
 									CASE CONFIG_WRITE_PHASE IS
 										WHEN 0 =>
-											CONFIG_WRITE_PHASE <= 1;
+											CONFIG_TEMP_VAR := X"F5";
 										WHEN 1 =>
-											IF CONFIG_COUNT = 31 THEN
-												CONFIG_WRITE_PHASE <= 2;
-											ELSE
-												CONFIG_COUNT <= CONFIG_COUNT + 1;
-											END IF;
+											CONFIG_TEMP_VAR := RAM_OUT;
 										WHEN 2 =>
-											-- Finish
-											TRANSFER_CONFIG <= '0';
-											CONFIG_DO_WRITE <= '0';
+											CONFIG_TEMP_VAR := X"AA";
 									END CASE;
-								ELSE
-									CONFIG_C_BIT <= CONFIG_C_BIT + 1;
-								END IF;
+
+									AVR_OUT_TMP := CONFIG_TEMP_VAR(7 - CONFIG_C_BIT); -- Send MSB first
+
+									IF TRANSFER_DIRTY = '1' THEN
+										AVR_OUT <= '0'; -- cancel
+									ELSE
+										IF AVR_OUT_TMP = '1' THEN
+											AVR_OUT <= 'Z'; -- replace with Z later
+										ELSE
+											AVR_OUT <= '0';
+										END IF;
+									END IF;
+
+									IF CONFIG_C_BIT = 7 THEN
+										CONFIG_C_BIT <= 0;
+										CASE CONFIG_WRITE_PHASE IS
+											WHEN 0 =>
+												CONFIG_WRITE_PHASE <= 1;
+											WHEN 1 =>
+												IF CONFIG_COUNT = 31 THEN
+													CONFIG_WRITE_PHASE <= 2;
+												ELSE
+													CONFIG_COUNT <= CONFIG_COUNT + 1;
+												END IF;
+											WHEN 2 =>
+												-- Finish
+												TRANSFER_CONFIG <= '0';
+												CONFIG_DO_WRITE <= '0';
+										END CASE;
+									ELSE
+										CONFIG_C_BIT <= CONFIG_C_BIT + 1;
+									END IF;
 
 								--END IF; -- transfer_dirty
 							ELSE -- If BUS access becomes 1 (bus access to CPU)
@@ -320,12 +319,12 @@ BEGIN
 	--RAM_OUT <= CMOS_REGISTERS(RAM_WRITE_ADDR); -- also read_addr (async)
 
 	PROCESS(CLK_IN, CURRENT_REGISTER, RESET, CMOS_CS, WR, RECEIVED_CONFIG, A0, CMOS_WRITE_PROTECT, RD, SECONDS, MINUTES, HOURS, DAY, MONTH, YEAR, CENTURY, FPGA_VER, RAM_OUT, WEEKDAY, CMOS_IN_RANGE)
-		VARIABLE DATA_OUT_FINAL		: STD_LOGIC_VECTOR(7 downto 0);
+		VARIABLE DATA_OUT_FINAL		: STD_LOGIC_VECTOR(7 DOWNTO 0);
 	BEGIN
 		DATA_OUT_FINAL := x"00";
 
-		BUS_WRITER_ADDR <= to_integer(unsigned(CURRENT_REGISTER(4 downto 0))); -- for base dividable by 0x20
-		--BUS_WRITER_ADDR <= to_integer(unsigned(CURRENT_REGISTER(5 downto 0)) - 16); -- for base dividable by 0x10
+		BUS_WRITER_ADDR <= to_integer(unsigned(CURRENT_REGISTER(4 DOWNTO 0))); -- for base dividable by 0x20
+		--BUS_WRITER_ADDR <= to_integer(unsigned(CURRENT_REGISTER(5 DOWNTO 0)) - 16); -- for base dividable by 0x10
 
 		IF RESET = '1' THEN
 			CMOS_WRITE_PROTECT <= '0';
@@ -406,13 +405,13 @@ BEGIN
 							DATA_OUT_FINAL := "00000110";
 
 						WHEN x"FC" =>
-							DATA_OUT_FINAL := FPGA_VER(31 downto 24);
+							DATA_OUT_FINAL := FPGA_VER(31 DOWNTO 24);
 						WHEN x"FD" =>
-							DATA_OUT_FINAL := FPGA_VER(23 downto 16);
+							DATA_OUT_FINAL := FPGA_VER(23 DOWNTO 16);
 						WHEN x"FE" =>
-							DATA_OUT_FINAL := FPGA_VER(15 downto 8);
+							DATA_OUT_FINAL := FPGA_VER(15 DOWNTO 8);
 						WHEN x"FF" =>
-							DATA_OUT_FINAL := FPGA_VER(7 downto 0);
+							DATA_OUT_FINAL := FPGA_VER(7 DOWNTO 0);
 
 						WHEN OTHERS =>
 							IF CMOS_IN_RANGE = '1' THEN

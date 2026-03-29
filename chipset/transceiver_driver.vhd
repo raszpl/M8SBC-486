@@ -23,11 +23,11 @@ USE IEEE.NUMERIC_STD.ALL;
 
 ENTITY transceiver_driver IS
 	PORT (
-		BE				: IN	STD_LOGIC_VECTOR(3 downto 0);
+		BE				: IN	STD_LOGIC_VECTOR(3 DOWNTO 0);
 		BS8				: IN	STD_LOGIC;
 		BS16			: IN	STD_LOGIC;
 
-		TR_8B			: OUT	STD_LOGIC_VECTOR(3 downto 0);
+		TR_8B			: OUT	STD_LOGIC_VECTOR(3 DOWNTO 0);
 		TR_16B_LOW		: OUT	STD_LOGIC;
 		TR_16B_HIGH		: OUT	STD_LOGIC
 	);
@@ -38,7 +38,7 @@ ARCHITECTURE Behavioral OF transceiver_driver IS
 BEGIN
 
 	PROCESS (BE, BS8, BS16)
-		VARIABLE bs_comb	: STD_LOGIC_VECTOR(1 downto 0);
+		VARIABLE bs_comb	: STD_LOGIC_VECTOR(1 DOWNTO 0);
 	BEGIN
 		bs_comb := BS8 & BS16;
 		CASE bs_comb IS

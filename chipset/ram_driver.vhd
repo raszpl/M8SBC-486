@@ -2,9 +2,9 @@
 -- Company: maniek86.xyz
 -- Engineer: Piotr Grzesik
 --
--- Create Date:	   21:24:19 09/19/2025
+-- Create Date:    21:24:19 09/19/2025
 -- Design Name:
--- Module Name:	   ram_driver - Behavioral
+-- Module Name:    ram_driver - Behavioral
 -- Project Name: Hamster 1 chipset
 -- Target Devices: M8SBC-486 REV 1.0
 -- Tool versions:
@@ -36,7 +36,7 @@ ENTITY ram_driver IS
 		RESET			: IN		STD_LOGIC;
 		BE				: IN		STD_LOGIC_VECTOR(3 downto 0);
 		ADS				: IN		STD_LOGIC; -- Active LOW
-		CPU_RW			: IN		STD_LOGIC; -- Inverted in x86!	0 - read, 1 - write
+		CPU_RW			: IN		STD_LOGIC; -- Inverted in x86! 0 - read, 1 - write
 		RAMCS			: IN		STD_LOGIC; -- Active LOW
 		ADDR21			: IN		STD_LOGIC; -- switches between first and second bank (2MB)
 
@@ -168,7 +168,7 @@ BEGIN
 				ELSE
 					WS_COUNT <= 0;
 				END IF;
-				--	 <output> <= <output>_i;
+				-- <output> <= <output>_i;
 				-- assign other outputs to internal signals
 
 				LAST_CS <= RAMCS;

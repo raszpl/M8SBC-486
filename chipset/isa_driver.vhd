@@ -56,7 +56,7 @@ ENTITY isa_driver IS
 END ISA_DRIVER;
 
 ARCHITECTURE behavioral OF isa_driver IS
-	TYPE drv_state_type IS (st1_wait_for_ads, st2_ts_wait_for_rise, st3_ts_wait_for_fall, st4_tc1_wait_for_rise, st5_tc1_wait_for_fall, st6_waitstates_wait );
+	TYPE drv_state_type IS (st1_wait_for_ads, st2_ts_wait_for_rise, st3_ts_wait_for_fall, st4_tc1_wait_for_rise, st5_tc1_wait_for_fall, st6_waitstates_wait);
 	SIGNAL drv_state, drv_next_state			: drv_state_type;
 
 	SIGNAL DIV_COUNT		: INTEGER RANGE 0 TO 15 := 0;
