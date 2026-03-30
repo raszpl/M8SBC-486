@@ -201,7 +201,7 @@ BEGIN
 
 	END PROCESS;
 
-	NEXT_STATE_DECODE: PROCESS(drv_state, ADS, EN_ISA, WS_COUNT, ISA_CLK_STATE, DIV_COUNT) -- in
+	NEXT_STATE_DECODE: PROCESS(drv_state, ADS, EN_ISA, WS_COUNT, ISA_CLK_STATE, ISA_CLK_LOW_CYCLES, ISA_IO_READY, ISA_DO_16B, DIV_COUNT) -- in
 	BEGIN
 		--declare default state for next_state to avoid latches
 		drv_next_state <= drv_state; -- default is to stay in current state
