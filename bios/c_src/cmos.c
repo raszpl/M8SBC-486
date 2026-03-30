@@ -62,35 +62,35 @@ void cmos_set(enum CMOS_SETTINGS setting, uint8_t value) {
 	switch(setting) {
 		case CMOS_QUICK_MEMTEST:
 			if(value > 0) {
-				cmos_data[0] |=	 0b00000001;
+				cmos_data[0] |=  0b00000001;
 			} else {
 				cmos_data[0] &= ~0b00000001;
 			}
 			break;
 		case CMOS_LBA_ENABLED:
 			if(value > 0) {
-				cmos_data[0] |=	 0b00000010;
+				cmos_data[0] |=  0b00000010;
 			} else {
 				cmos_data[0] &= ~0b00000010;
 			}
 			break;
 		case CMOS_LOCK_CMOS:
 			if(value > 0) {
-				cmos_data[0] |=	 0b00000100;
+				cmos_data[0] |=  0b00000100;
 			} else {
 				cmos_data[0] &= ~0b00000100;
 			}
 			break;
 		case CMOS_ROM_CACHEABLE:
 			if(value > 0) {
-				cmos_data[0] |=	 0b00001000;
+				cmos_data[0] |=  0b00001000;
 			} else {
 				cmos_data[0] &= ~0b00001000;
 			}
 			break;
 		case CMOS_RAM_CACHEABLE:
 			if(value > 0) {
-				cmos_data[0] |=	 0b00010000;
+				cmos_data[0] |=  0b00010000;
 			} else {
 				cmos_data[0] &= ~0b00010000;
 			}

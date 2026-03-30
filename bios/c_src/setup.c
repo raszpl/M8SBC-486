@@ -122,7 +122,7 @@ static void bios_redraw() {
 	vga_clear(0x70);
 
 	vga_print_string("SeaPig BIOS Settings", 30, 0, 0x07);
-	vga_print_string("UP/DOWN:Navigate	ESC:Exit  F1:Help  F10:Save", 1, 24, 0x0F);
+	vga_print_string("UP/DOWN:Navigate  ESC:Exit  F1:Help  F10:Save", 1, 24, 0x0F);
 	for(int x=0; x<80; x++) {
 		vga_set_char_attr(0x2F, x, 0);
 		vga_set_char_attr(0x0F, x, 24);

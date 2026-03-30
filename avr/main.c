@@ -56,29 +56,28 @@ extern const uint8_t bitstream_end[] PROGMEM;
 #define pgm_get_far_address(var) ((uint32_t)(&(var)))
 #endif
 
-
 #define FPGA_PROG_PORT PORTE
 #define FPGA_PROG_DDR  DDRE
-#define FPGA_PROG_BIT  PE5	 // PROG_B, output
+#define FPGA_PROG_BIT  PE5	// PROG_B, output
 
 #define FPGA_INIT_PIN  PINE
-#define FPGA_INIT_BIT  PE6	 // INIT_B, input
+#define FPGA_INIT_BIT  PE6	// INIT_B, input
 
 #define FPGA_DONE_PIN  PINE
-#define FPGA_DONE_BIT  PE4	 // DONE, input
+#define FPGA_DONE_BIT  PE4	// DONE, input
 
 #define RESET_OUT_PORT PORTE
 #define RESET_OUT_DDR  DDRE
-#define RESET_OUT_BIT  PE3	 // RESET_OUT, output, active high
+#define RESET_OUT_BIT  PE7	// RESET_OUT, output, active high
 
 #define RESET_BTN_PORT PORTB
 #define RESET_BTN_PIN  PINB
 #define RESET_BTN_DDR  DDRB
-#define RESET_BTN_BIT  PB4	 // RESET_BTN, input, active low
+#define RESET_BTN_BIT  PB4	// RESET_BTN, input, active low
 #define RESET_BTN_PRESSED  (!(RESET_BTN_PIN & (1 << RESET_BTN_BIT)))
 
 // SPI pins: PB1 - SCK (CCLK), PB2 - MOSI (DIN)
-#define SPI_DDR	 DDRB
+#define SPI_DDR  DDRB
 #define SPI_PORT PORTB
 
 // UART1 debug (PD3 TX1, PD2 RX1)
@@ -334,8 +333,8 @@ int main(void) {
 
 	RESET_BTN_DDR &= ~(1<<RESET_BTN_BIT); // RESET_BTN input
 	RESET_BTN_PORT |= (1<<RESET_BTN_BIT); // RESET_BTN pull-up
-	DDRE &= ~((1<<PE4)|(1<<PE6));	  // INIT and DONE inputs
-	RESET_OUT_DDR |= (1<<RESET_OUT_BIT);	// Reset out
+	FPGA_PROG_DDR &= ~((1<<FPGA_DONE_BIT)|(1<<FPGA_INIT_BIT)); // INIT and DONE inputs
+	RESET_OUT_DDR |= (1<<RESET_OUT_BIT); // Reset out
 
 	// Configuration jumpers (SPARE header)
 	// PC2 (1) - PC7 (6)
