@@ -2,9 +2,9 @@
 -- Company: maniek86.xyz
 -- Engineer: Piotr Grzesik
 --
--- Create Date:	   18:49:22 09/21/2025
+-- Create Date:    18:49:22 09/21/2025
 -- Design Name:
--- Module Name:	   wr_rd_generator - Behavioral
+-- Module Name:    wr_rd_generator - Behavioral
 -- Project Name: Hamster 1 chipset
 -- Target Devices: M8SBC-486 REV 1.0
 -- Tool versions:
