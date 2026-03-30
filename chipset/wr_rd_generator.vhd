@@ -28,8 +28,8 @@ ENTITY wr_rd_generator IS
 		ADS				: IN	STD_LOGIC;
 		RW				: IN	STD_LOGIC;
 		MIO				: IN	STD_LOGIC;
-		EN_WRRD			: IN  STD_LOGIC; -- negated
-		WAITSTATE_CNT	: IN  INTEGER RANGE 0 to 127;
+		EN_WRRD			: IN	STD_LOGIC; -- negated
+		WAITSTATE_CNT	: IN	INTEGER RANGE 0 to 127;
 
 		RDY				: OUT	STD_LOGIC;
 		IO_WR			: OUT	STD_LOGIC;
@@ -38,7 +38,7 @@ ENTITY wr_rd_generator IS
 END wr_rd_generator;
 
 ARCHITECTURE Behavioral OF wr_rd_generator IS
-	SIGNAL SET_WAITSTATES	: INTEGER RANGE 0 to 127;
+	SIGNAL SET_WAITSTATES				: INTEGER RANGE 0 to 127;
 
 	TYPE drv_state_type IS (st1_wait_for_ads, st2_wait_state);
 	SIGNAL drv_state, drv_next_state	: drv_state_type;
