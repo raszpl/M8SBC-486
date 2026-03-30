@@ -73,7 +73,6 @@ ENTITY m8sbc_main IS
 		TR_16B_HIGH			: OUT		STD_LOGIC;
 
 	-- Generic control lines
-
 		IO_WR				: OUT		STD_LOGIC;
 		IO_RD				: OUT		STD_LOGIC;
 
@@ -160,7 +159,7 @@ ARCHITECTURE Behavioral OF m8sbc_main IS
 	COMPONENT clock_section_pit IS
 		PORT (
 			CLK_INPUT	: IN	STD_LOGIC; -- 14.318 MHz in
-			CLK_OUT		: OUT	STD_LOGIC -- 1.193 MHz out
+			CLK_OUT		: OUT	STD_LOGIC  -- 1.193 MHz out
 		);
 	END COMPONENT;
 
