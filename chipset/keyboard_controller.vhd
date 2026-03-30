@@ -2,9 +2,9 @@
 -- Company: maniek86.xyz
 -- Engineer: Piotr Grzesik
 --
--- Create Date:	   13:50:01 09/22/2025
+-- Create Date:    13:50:01 09/22/2025
 -- Design Name:
--- Module Name:	   keyboard_controller - Behavioral
+-- Module Name:    keyboard_controller - Behavioral
 -- Project Name: Hamster 1 chipset
 -- Target Devices: M8SBC-486 REV 1.0
 -- Tool versions:
@@ -28,8 +28,8 @@ ENTITY keyboard_controller IS
 		PS2_DATA	: IN	STD_LOGIC;
 		RESET		: IN	STD_LOGIC;
 
-		D_OUT		: OUT	STD_LOGIC_VECTOR(7 downto 0); -- data port 0x60
-		DS_OUT		: OUT	STD_LOGIC_VECTOR(7 downto 0); -- status port 0x64
+		D_OUT		: OUT	STD_LOGIC_VECTOR(7 DOWNTO 0); -- data port 0x60
+		DS_OUT		: OUT	STD_LOGIC_VECTOR(7 DOWNTO 0); -- status port 0x64
 		CLK_CPU		: IN	STD_LOGIC; -- to clear flag
 		RD_CLEAR	: IN	STD_LOGIC; -- to clear flag
 		CLEAR_BUF	: IN	STD_LOGIC;
@@ -39,7 +39,7 @@ END keyboard_controller;
 
 ARCHITECTURE Behavioral OF keyboard_controller IS
 
-	TYPE rom_type IS ARRAY (0 to 255) OF STD_LOGIC_VECTOR(7 downto 0);
+	TYPE rom_type IS ARRAY (0 TO 255) OF STD_LOGIC_VECTOR(7 DOWNTO 0);
 
 	CONSTANT SET2_TO_SET1 : rom_type := ( -- NON EXT
 		16#1C# => X"1E", -- A
@@ -159,16 +159,16 @@ ARCHITECTURE Behavioral OF keyboard_controller IS
 	TYPE kb_state_type IS (st1_wait, st2_fetch);
 	SIGNAL kb_state, kb_next_state		: kb_state_type := st1_wait;
 
-	SIGNAL timeout			: INTEGER RANGE 0 to timeout_limit := 0;
+	SIGNAL timeout			: INTEGER RANGE 0 TO timeout_limit := 0;
 	SIGNAL REC_TIMEOUT		: STD_LOGIC := '0';
 
-	SIGNAL kb_data			: STD_LOGIC_VECTOR(7 downto 0);
-	SIGNAL kb_bit			: INTEGER RANGE 0 to 9 := 0;
-	SIGNAL kb_data_read		: STD_LOGIC_VECTOR(7 downto 0);
+	SIGNAL kb_data			: STD_LOGIC_VECTOR(7 DOWNTO 0);
+	SIGNAL kb_bit			: INTEGER RANGE 0 TO 9 := 0;
+	SIGNAL kb_data_read		: STD_LOGIC_VECTOR(7 DOWNTO 0);
 	SIGNAL kb_parity		: STD_LOGIC := '0';
 
 	SIGNAL pulse_int		: STD_LOGIC := '0';
-	SIGNAL int_hold			: INTEGER RANGE 0 to int_pulse_dur := int_pulse_dur;
+	SIGNAL int_hold			: INTEGER RANGE 0 TO int_pulse_dur := int_pulse_dur;
 
 	SIGNAL dflag			: STD_LOGIC := '0';
 	SIGNAL last_RD_CLEAR	: STD_LOGIC := '0';
@@ -219,7 +219,7 @@ BEGIN
 
 	PROCESS (PS2_CLK, PS2_DATA, RESET, REC_TIMEOUT, CLEAR_BUF)
 		VARIABLE data_parity		: STD_LOGIC;
-		VARIABLE result_scancode	: STD_LOGIC_VECTOR(7 downto 0);
+		VARIABLE result_scancode	: STD_LOGIC_VECTOR(7 DOWNTO 0);
 	BEGIN
 		IF RESET = '1' OR REC_TIMEOUT = '1' THEN
 			kb_data <= X"00";
@@ -252,7 +252,7 @@ BEGIN
 					IF kb_state = st2_fetch THEN
 						IF kb_bit = 9 THEN -- stop bit
 							kb_next_state <= st1_wait;
-							data_parity := NOT (kb_data(7) xor kb_data(6) xor kb_data(5) xor kb_data(4) xor kb_data(3) xor kb_data(2) xor kb_data(1) xor kb_data(0));
+							data_parity := NOT (kb_data(7) XOR kb_data(6) XOR kb_data(5) XOR kb_data(4) XOR kb_data(3) XOR kb_data(2) XOR kb_data(1) XOR kb_data(0));
 							IF kb_parity = data_parity THEN
 								-- proper data received
 
@@ -298,7 +298,7 @@ BEGIN
 							IF kb_bit = 8 THEN -- parity bit
 								kb_parity <= PS2_DATA;
 							ELSE
-								kb_data <= PS2_DATA & kb_data(7 downto 1); -- data bit
+								kb_data <= PS2_DATA & kb_data(7 DOWNTO 1); -- data bit
 							END IF;
 						END IF;
 						kb_bit <= kb_bit + 1;
