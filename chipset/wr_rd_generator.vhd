@@ -170,4 +170,5 @@ BEGIN
 	END PROCESS;
 
 	RDY <= RDY_I;
+
 END Behavioral;
