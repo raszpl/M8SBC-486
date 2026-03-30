@@ -57,7 +57,6 @@ ENTITY m8sbc_main IS
 
 	-- Reset
 		RESET_SYS_IN		: IN		STD_LOGIC;
-		RESET_REQ_OUT		: OUT		STD_LOGIC;
 
 	-- RAM control lines
 		RAM_CS0				: OUT		STD_LOGIC;
